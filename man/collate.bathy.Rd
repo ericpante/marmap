@@ -2,6 +2,7 @@
 \alias{collate.bathy}
 \title{
 Collates two bathy matrices with data from either sides of the antimeridian
+}
 \description{
 Collates two bathy matrices, one with longitude 0 to 180 degrees East, and the other with longitude 0 to 180 degrees West
 }
