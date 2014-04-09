@@ -59,7 +59,7 @@ label for the x axis of the plot
 label for the y axis of the plot
 }
   \item{asp}{
-numeric, giving the aspect ratio y/x of the plot. See \code{link{plot.window}}
+numeric, giving the aspect ratio y/x of the plot. See \code{\link{plot.window}}
 }
   \item{\dots}{
 Other arguments to be passed either to \code{countour} (default) or to \code{image} when argument \code{image=TRUE}.
@@ -105,7 +105,7 @@ Eric Pante, Benoit Simon-Bouhet (2013) marmap: A Package for Importing, Plotting
 	plot(atl, image=TRUE, deep=c(-8000,0), shallow=c(-1000,0), step=c(1000,0), 
 	     lwd=c(0.5,1), lty=c(1,1), col=c("grey","black"), drawlabels=c(FALSE,FALSE))
      
-## Example 4: make a pretty custom color ramp:
+## Example 4: make a pretty custom color ramp
 	colorRampPalette(c("purple","lightblue","cadetblue2","cadetblue1","white")) -> blues
 
 	plot(atl, image=TRUE, bpal=blues(100), deep=c(-6500,0), shallow=c(-50,0), step=c(500,0), 
@@ -113,7 +113,7 @@ Eric Pante, Benoit Simon-Bouhet (2013) marmap: A Package for Importing, Plotting
 	
 	scaleBathy(atl, deg=3, x="bottomleft", inset=5)
      
-## Example 5: add points corresponding to sampling locations: 
+## Example 5: add points corresponding to sampling locations
 ##            point colors correspond to the sampling depth
 	par(mai=c(1,1,1,1.5))
 	plot(atl, deep=c(-4500,0), shallow=c(-50,0), step=c(500,0), 
@@ -139,7 +139,7 @@ Eric Pante, Benoit Simon-Bouhet (2013) marmap: A Package for Importing, Plotting
 	require(shape)
 	colorlegend(zlim=c(-mx,0), col=rev(blues), main="depth (m)",posx=c(0.85,0.88))
 
-## Example 6: use packages maps and mapdata to generate coast data
+## Example 6: use packages maps and mapdata in combination with marmap
 	# use maps and mapdata to plot the coast
 	library(maps)
 	library(mapdata)
