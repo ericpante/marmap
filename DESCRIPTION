@@ -6,7 +6,6 @@ Date: 2013-10-19
 Author: Eric Pante and Benoit Simon-Bouhet
 Maintainer: Eric Pante <pante.eric@gmail.com>
 Depends: R (>= 2.10)
-Imports: RSQLite, gdistance, geosphere, sp, raster, ncdf,plotrix
 Imports: RSQLite, gdistance, geosphere, sp, raster, ncdf, plotrix
 Suggests: maps, mapdata, shape, lattice
 Description: Import, plot and analyze bathymetric and topographic data
