@@ -379,12 +379,19 @@ verb;getNOAA(); has an argument to deal with the antemeridian region. For the Al
 
 \begin{Schunk}
 \begin{Sinput}
-> getNOAA.bathy(165,-145,50,65, resolution=5, antimeridian=TRUE) -> aleu
+> getNOAA.bathy(165,-145,50,65, resolution=5,
+  + antimeridian=TRUE) -> aleu
 > summary(aleu)
-> plot(aleu, n=1,axes=FALSE)
+> plot(aleu, image=TRUE, 
+  + bpal=list(c(0,max(aleutians),grey(.7),grey(.9),grey(.95)),
+  + c(min(aleutians),0,"darkblue","lightblue")),
+  + land=TRUE,lwd=0.1,axes=FALSE)
+> plot(aleutians,n=1,lwd=.8,add=T
 > antimeridian.box(aleu)
 \end{Sinput}
 \end{Schunk}
+\includegraphics[width=\textwidth]{aleu.pdf}
+
 
 %First, download data from NOAA, for the Aleutian Islands. 
 %
