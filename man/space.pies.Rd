@@ -3,7 +3,7 @@
 \title{
 Automatic placement of piecharts on maps}
 \description{
-Attemps to automatically place piecharts on maps, avoiding overlap. 
+Attemps to automatically place piecharts on maps, avoiding overlap. Work in progress...
 }
 \usage{
 space.pies = (x, y, pie.slices, pie.colors=NULL, pie.radius=1, pie.space=1, 
@@ -55,7 +55,7 @@ Anchor point: spatial location of the data corresponding to the piechart (e.g. a
 Piechart(s) added to a plot. 
 }
 \author{
-Eric Pante, using functions \code{floating.pie} from package plotrix and \code{pointLabel} from maptools. 
+Eric Pante, using functions \code{\link{floating.pie}} from package plotrix and \code{\link{pointLabel}} from maptools. 
 }
 \references{
 Bivand, R. and Lewin-Koh, N. (2013) maptools: Tools for reading and handling spatial objects. R package version 0.8-25. http://CRAN.R-project.org/package=maptools
