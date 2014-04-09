@@ -1,4 +1,4 @@
-scaleBathy = function (mat, deg=1, x="bottomleft", y=NULL, inset=10) {
+scaleBathy = function (mat, deg=1, x="bottomleft", y=NULL, inset=10, ...) {
 			
 	usr=par("usr")
 	
@@ -31,6 +31,6 @@ scaleBathy = function (mat, deg=1, x="bottomleft", y=NULL, inset=10) {
 	arrows(X, Y, X+(deg),Y, code=3, length=0.05)
 	text((X + X+(deg))/2, Y, 
 			adj=c(0.5,-0.5),
-			labels=paste(round(perdeg*deg,0),"km"))	
+			labels=paste(round(perdeg*deg,0),"km"), ...)	
 	
 }

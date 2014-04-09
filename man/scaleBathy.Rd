@@ -7,7 +7,7 @@ Adds a scale to a map
 Uses geographic information from object of class \code{bathy} to calculate and plot a scale in kilometer.
 }
 \usage{
-scaleBathy(mat, deg=1, x="bottomleft", y=NULL, inset=10)
+scaleBathy(mat, deg=1, x="bottomleft", y=NULL, inset=10, ...)
 }
 \arguments{
   \item{mat}{
@@ -22,6 +22,10 @@ the coordinates used to plot the scale on the map (see Details)
   \item{inset}{
 when \code{x} is a keyword (e.g. \code{"bottomleft"}), \code{inset} is a percentage of the plotting space controlling the relative position of the plotted scale (see Examples)
 }
+  \item{...}{
+further arguments to be passed to \code{text}
+}
+
 }
 \details{
 \code{scaleBathy} is a simple utility to add a scale to the lower left corner of a \code{bathy} plot. The distance in kilometers between two points separated by 1 degree longitude is calculated based on the minimum latitude of the \code{bathy} object used to plot the map. Option \code{deg} allows the user to plot the distance separating more than one degree (default is one). 
