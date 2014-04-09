@@ -7,9 +7,9 @@ Ploting bathymetric data
 Plots contour map from bathymetric data matrix of class \code{bathy}
 }
 \usage{
-\method{plot}{bathy}(x, image=FALSE, bpal=NULL, land=FALSE, 
-           deepest.isobath, shallowest.isobath, step, n=20, 
-           lwd=1, lty=1, col="black", drawlabels = FALSE, 
+\method{plot}{bathy}(x, image=FALSE, bpal=NULL, default.col="white",
+           land=FALSE, deepest.isobath, shallowest.isobath, step, 
+           n=20, lwd=1, lty=1, col="black", drawlabels = FALSE, 
            xlab="Longitude", ylab="Latitude", asp=1, \dots)
 }
 \arguments{
@@ -20,7 +20,10 @@ bathymetric data matrix of class \code{bathy}, imported using \code{read.bathy}
 whether or not to color depth layers (default is \code{FALSE})
 }
   \item{bpal}{
-if image is \code{TRUE}, color palette (default is \code{NULL} and a simple blue color palette is used)
+if image is \code{TRUE}, either \code{NULL} (default: a simple blue color palette is used), a vector of colors, or a list of depth bounds and colors (see below)
+}
+  \item{default.col}{
+if image is \code{TRUE}, a color for the area of the matrix not bracketed by the list supplied to bpal (see below; default is \code{white})
 }
   \item{land}{
 whether or not to use topographic data that may be available in the \code{bathy} dataset (default is \code{FALSE})
@@ -64,6 +67,8 @@ Other arguments to be passed either to \code{countour} (default) or to \code{ima
 }
 \details{
 \code{plot.bathy} uses the base \code{contour} and \code{image} functions. If a vector of isobath characteristics is provided, different types of isobaths can be added to the same plot using a single call of \code{plot.bathy} (see examples)
+
+If \code{image=TRUE}, the user has three choices for colors: (1) bpal can be set to \code{NULL}, in which case a default blue color palette is generated; (2) colors can be user-defined as in example 4, in which case the palette can be generated with function \code{colorRampPalette} (colors are then supplied as a vector to \code{plot.bathy}) ; (3) colors can be constrained to bathymetry- and/or topography. In this last case, a list of vectors is supplied to \code{plot.bathy} (example 7): each vector corresponds to a bathymetry/topography layer (for example, one layer for bathymetry and one layer for topography). The first and second elements of the vector are the minimum and maximum bathymetry/topography, respectively. The other elements of the vector (3, onward) correspond to colors (see example 7).
 }
 \value{
 a bathymetric map with isobaths
@@ -147,4 +152,23 @@ Eric Pante, Benoit Simon-Bouhet (2013) marmap: A Package for Importing, Plotting
 	contour(lon, lat, atl, add=TRUE, lwd=0.3, col="grey50", 
 			levels=seq(-4500,-10,by=500), drawlabel=FALSE, xlab="a")
 
+## Example 7: provide a list of depths and colors to argument bpal to finely tune palette
+	# check out ?palette.bathy to see details on how the palette is handled 
+	
+	# creating depth-constrained palette for the ocean only
+	plot(atl, land = FALSE, n = 10, lwd = 0.5, image = TRUE,
+	     bpal = list(c(min(atl), 0, "purple", "blue", "lightblue")),
+	     default.col = "gray")
+	
+	# creating depth-constrained palette for 3 ocean "layers"
+	plot(atl, land = FALSE, n = 10, lwd = 0.7, image = TRUE, 
+	     bpal = list(c(min(atl), -3000, "purple","blue","grey"),
+	                 c(-3000, -150, "white"),
+	                 c(-150, 0, "yellow", "green", "brown")),
+	     default.col = "grey")
+	
+	# creating depth-constrained palette for land and ocean
+	plot(atl, land = TRUE, n = 10, lwd = 0.7, image = TRUE,
+	     bpal = list(c(min(atl), 0, "purple", "blue", "lightblue"),
+	                 c(0, max(atl), "gray90", "gray10")))
 }
