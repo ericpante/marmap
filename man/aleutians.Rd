@@ -1,0 +1,37 @@
+\name{aleutians}
+\alias{aleutians}
+\title{
+Bathymetric data for the Aleutians (Alaska)}
+\description{
+Bathymetric matrix of class \code{bathy} created from NOAA GEODAS data.
+}
+\usage{
+data(aleutians)
+}
+\details{
+Data imported from the NOAA GEODAS Grid Translator webpage (\url{http://www.ngdc.noaa.gov/mgg/gdas/gd_designagrid.html}) and transformed into an object of class \code{bathy} by \code{as.bathy}. 
+}
+\value{
+A text file.
+}
+\author{
+see \url{http://www.ngdc.noaa.gov/mgg/gdas/gd_designagrid.html}
+}
+\seealso{
+\code{\link{as.bathy}}, \code{\link{read.bathy}}, \code{\link{antimeridian.box}}
+}
+\examples{
+# load celt data
+data(aleutians)
+
+# class "bathy"
+class(aleutians)
+summary(aleutians)
+
+# test plot.bathy
+plot(aleutians,im=T, 
+     bpal=list(c(0,max(aleutians),"grey"),
+               c(min(aleutians),0,"darkblue","lightblue")), 
+     land=TRUE,lwd=0.1,axes=FALSE)
+antimeridian.box(aleutians, 10)
+}
