@@ -1,4 +1,4 @@
-plot.bathy <- function(x, image=FALSE, bpal=NULL, land=FALSE, deepest.isobath, shallowest.isobath, step, n=20, lwd=1, lty=1, col="black", drawlabels = FALSE, xlab="Longitude", ylab="Latitude", asp=1, ...){
+plot.bathy <- function(x, image=FALSE, bpal=NULL, land=FALSE, deepest.isobath, shallowest.isobath, step, n=20, lwd=1, lty=1, col="black", default.col="white", drawlabels = FALSE, xlab="Longitude", ylab="Latitude", asp=1, ...){
 	
 	x->mat # S3 compatibility
 	
@@ -10,15 +10,10 @@ plot.bathy <- function(x, image=FALSE, bpal=NULL, land=FALSE, deepest.isobath, s
 	
 	unique(as.numeric(rownames(mat))) -> lon
 	unique(as.numeric(colnames(mat))) -> lat
-	
-	if(is.null(bpal) == TRUE) {
-		colorRampPalette(c("darkblue","blue","lightblue","white")) -> ramp
-		bpal <- ramp(15)
-	}
 	  
-	if(land == FALSE) mat[mat >0] <- 0
+	if (land == FALSE) mat[mat >0] <- 0
 
-	if(image == FALSE){
+	if (image == FALSE){
 
 		if(n.levels == 1){
 			if (!missing("deepest.isobath") | !missing("shallowest.isobath") | !missing("step")) {
@@ -45,9 +40,16 @@ plot.bathy <- function(x, image=FALSE, bpal=NULL, land=FALSE, deepest.isobath, s
 			}
 		}
 
-	if(image == TRUE){
+	if (image == TRUE) {
 
-		if(n.levels == 1){
+		if (is.null(bpal)) {
+			colorRampPalette(c("darkblue","blue","lightblue","white")) -> ramp
+			bpal <- ramp(15)
+			}
+			
+		if (is.list(bpal))	bpal <- palette.bathy(mat, layers = bpal, land=land, default.col=default.col)
+
+		if (n.levels == 1){
 			if (!missing("deepest.isobath") | !missing("shallowest.isobath") | !missing("step")) {
 				seq(deepest.isobath, shallowest.isobath, by=step) -> level.param
 			} else {
@@ -58,7 +60,7 @@ plot.bathy <- function(x, image=FALSE, bpal=NULL, land=FALSE, deepest.isobath, s
 					lwd=lwd, lty=lty, col=col, drawlabels = drawlabels, add=TRUE)
 			}
 		
-		if(n.levels > 1){
+		if (n.levels > 1){
 			image(lon,lat,mat, col=bpal, xlab=xlab, ylab=ylab, asp=asp, ...)
 			seq(deepest.isobath[1], shallowest.isobath[1], by=step[1]) -> level.param
 			contour(lon,lat,mat,levels=level.param,
@@ -68,7 +70,6 @@ plot.bathy <- function(x, image=FALSE, bpal=NULL, land=FALSE, deepest.isobath, s
 				contour(lon,lat,mat,levels=level.param,
 						lwd=lwd[i], lty=lty[i], col=col[i], drawlabels = drawlabels[i], add=TRUE)
 				}	
-			# box(); axis(1); axis(2)
 			}
 		}
 }
