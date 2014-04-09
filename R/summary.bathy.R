@@ -6,7 +6,8 @@ summary.bathy = function(object, ...){
 	round(max(as.numeric(rownames(object))),2) -> lon.max
 	
 	lon.max2 <- ifelse(lon.max > 180, lon.max-360, lon.max)
-	flag.l1 <- ifelse(lon.min < 0, "W", "E")
+	lon.min2 <- ifelse(lon.min > 180, lon.min-360, lon.min)
+	flag.l1 <- ifelse(lon.min2 < 0, "W", "E")
 	flag.l2 <- ifelse(lon.max2 < 0, "W", "E")
 
 	flag.l3 <- ifelse(lat.min < 0, "S", "N")
@@ -18,7 +19,7 @@ summary.bathy = function(object, ...){
 	
 	cat(paste("Bathymetric data of class 'bathy', with",dim(object)[1],"rows and",dim(object)[2],"columns\n"))
 	cat(paste("Latitudinal range: ", lat.min," to ", lat.max, " (",abs(lat.min)," ",flag.l3," to ",abs(lat.max)," ",flag.l4,")\n",sep=""))
-	cat(paste("Longitudinal range: ", lon.min," to ", lon.max, " (",abs(lon.min)," ",flag.l1," to ",abs(lon.max2)," ",flag.l2,")\n",sep=""))
+	cat(paste("Longitudinal range: ", lon.min," to ", lon.max, " (",abs(lon.min2)," ",flag.l1," to ",abs(lon.max2)," ",flag.l2,")\n",sep=""))
 	cat(paste("Cell size:",cell.size.minute,"minute(s)\n"))
 	cat("\n")
 	cat("Depth statistics:\n")
