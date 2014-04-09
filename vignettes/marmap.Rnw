@@ -374,46 +374,56 @@ wireframe(out, shade = TRUE, zoom = 1.1,
 
 \subsection{Preparing maps in the Pacific antimeridian region}
 
-The antimeridian (or antemeridian) is the 180th meridian and is located about in the middle of the Pacific Ocean, east of New Zealand and Fidji, west of Hawaii and Tonga. If you want to prepare a map of the Aleutian islands (Alaska), your latitude values may, for example, go from 165 to 180 degrees East, and 180 to 165 degrees West. Crossing the antemeridian means that you will need to download data for the eastern (165 to 180) and the western (-180 to -165) portions of the area of interest (for example, GEBCO will tell you ``The Westernmost is more Easterly than the Easternmost. Please amend your search query'' if you try to download data for the Aleutians in one step). We are currently working on a version of \verb;getNOAA.bathy(); that takes care of this issue. In the mean time, here is how you can prepare maps from this region: 
-
-First, download data from NOAA, for the Aleutian Islands. 
+The antimeridian (or antemeridian) is the 180th meridian and is located about in the middle of the Pacific Ocean, east of New Zealand and Fidji, west of Hawaii and Tonga. If you want to prepare a map of the Aleutian Islands (Alaska), your latitude values may, for example, go from 165 to 180 degrees East, and 180 to 165 degrees West. Crossing the antemeridian means that you will need to download data for the eastern (165 to 180) and the western (-180 to -165) portions of the area of interest (for example, GEBCO will tell you ``The Westernmost is more Easterly than the Easternmost. Please amend your search query'' if you try to download data for the Aleutians in one step). %We are currently working on a version of \verb;getNOAA.bathy(); that takes care of this issue. In the mean time, here is how you can prepare maps from this region: 
+verb;getNOAA(); has an argument to deal with the antemeridian region. For the Aleutians, you would use the verb;antimeridian(); argument. verb;summary.bathy(); can interpret antimeridian areas. When you plot your antimeridian region, the default behavior of verb;plot.bathy(); is to scale longitudes from 0 to 360 degrees (170E to 170W would be displayed as 170, 190 instead of 170, -170). You can use the argument verb;axes=FALSE; in verb;plot.bathy(); and add correct labels with verb;antimeridian.box(); . We have set the default behavior of verb;plot.bathy(); in this way to remind the user that the scale of the bathy object, in the antimeridian region, goes from 0 to 360; if you need to plot points on the map, you need to take this into account (i.e. a point at -170 longitude must be plotted using 190, not 170 or -170). 
 
 \begin{Schunk}
 \begin{Sinput}
-> getNOAA.bathy(lon1=153,  lon2=180,  lat1=-8, lat2=-25, 
-      resolution=10, keep=T) -> a
-> getNOAA.bathy(lon1=-180, lon2=-170, lat1=-8, lat2=-25, 
-      resolution=10, keep=T) -> b
+> getNOAA.bathy(165,-145,50,65, resolution=5, antimeridian=TRUE) -> aleu
+> summary(aleu)
+> plot(aleu, n=1,axes=FALSE)
+> antimeridian.box(aleu)
 \end{Sinput}
 \end{Schunk}
 
-Second, we need to assemble these two matrices into one and change the coordinate system. Here instead of going from 153 to 180 and -180 to -170, we are going to go from 153 to $(-170)+360 = 190$. When merging the two datasets, we need to bear in mind that the antemeridian may be present in each dataset. We therefore use the function \verb;unique(); to remove the duplicated row. 
-
-\begin{Schunk}
-\begin{Sinput}
-as.numeric(rownames(b))+360 -> rownames(b)  # new coordinate system
-rbind(a,b) -> c                 # collate the two matrices into one
-c[unique(rownames(c)), ]->c    # remove the extra antimeridian line
-class(c)<-"bathy"          # assign the class bathy to new matrix c
-\end{Sinput}
-\end{Schunk}
-
-The new matrix is now ready to be utilized. Simply using \verb;plot.bathy(); will reveal the custom coordinate system: 
-
-\begin{Schunk}
-\begin{Sinput}
-plot(c, image=T, n=10, lwd=0.5)
-\end{Sinput}
-\end{Schunk}
-
-We therefore use the argument \verb;axes = FALSE; and re-draw both the plot box and the axes. Only axis 2 (the longitudes) need to be modified. If you need to add anything to this plot (e.g. points, segments, etc...), remember that the new coordinate system requires that 360 be added to the original longitudes. 
-
-\begin{Schunk}
-\begin{Sinput}
-plot(c, image=T, n=10, lwd=0.5, axes=F)
-box(); axis(2)
-axis(1, at=seq(160,240, by=20), labels=c(seq(160,180, by=20),seq(-160,-120, by=20)))\end{Sinput}
-\end{Schunk}
+%First, download data from NOAA, for the Aleutian Islands. 
+%
+%\begin{Schunk}
+%\begin{Sinput}
+%> getNOAA.bathy(lon1=153,  lon2=180,  lat1=-8, lat2=-25, 
+%      resolution=10, keep=T) -> a
+%> getNOAA.bathy(lon1=-180, lon2=-170, lat1=-8, lat2=-25, 
+%      resolution=10, keep=T) -> b
+%\end{Sinput}
+%\end{Schunk}
+%
+%Second, we need to assemble these two matrices into one and change the coordinate system. Here instead of going from 153 to 180 and -180 to -170, we are going to go from 153 to $(-170)+360 = 190$. When merging the two datasets, we need to bear in mind that the antemeridian may be present in each dataset. We therefore use the function \verb;unique(); to remove the duplicated row. 
+%
+%\begin{Schunk}
+%\begin{Sinput}
+%as.numeric(rownames(b))+360 -> rownames(b)  # new coordinate system
+%rbind(a,b) -> c                 # collate the two matrices into one
+%c[unique(rownames(c)), ]->c    # remove the extra antimeridian line
+%class(c)<-"bathy"          # assign the class bathy to new matrix c
+%\end{Sinput}
+%\end{Schunk}
+%
+%The new matrix is now ready to be utilized. Simply using \verb;plot.bathy(); will reveal the custom coordinate system: 
+%
+%\begin{Schunk}
+%\begin{Sinput}
+%plot(c, image=T, n=10, lwd=0.5)
+%\end{Sinput}
+%\end{Schunk}
+%
+%We therefore use the argument \verb;axes = FALSE; and re-draw both the plot box and the axes. Only axis 2 (the longitudes) need to be modified. If you need to add anything to this plot (e.g. points, segments, etc...), remember that the new coordinate system requires that 360 be added to the original longitudes. 
+%
+%\begin{Schunk}
+%\begin{Sinput}
+%plot(c, image=T, n=10, lwd=0.5, axes=F)
+%box(); axis(2)
+%axis(1, at=seq(160,240, by=20), labels=c(seq(160,180, by=20),seq(-160,-120, by=20)))\end{Sinput}
+%\end{Schunk}
 
 \section{Data import and export strategies in marmap}
 
