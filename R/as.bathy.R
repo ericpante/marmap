@@ -28,20 +28,23 @@ as.bathy <- function(x){
 	# if not, it has to be a 3-column table (xyz format)
 	if (ncol(x)==3 & !exists("bathy")) {
 		bath <- na.omit(x)
-		bath <- bath[order(bath[,2],bath[,1], decreasing=FALSE),]
+	    bath <- bath[order(bath[, 2], bath[, 1], decreasing = FALSE), ]
 
-		unique(bath[,2]) -> lat
-		unique(bath[,1]) -> lon
-	
-		length(lon) -> brow
-		length(lat) -> bcol
+	    lat <- unique(bath[, 2]) ; bcol <- length(lat)
+	    lon <- unique(bath[, 1]) ; brow <- length(lon)
 
-		bathy <- matrix(bath[,3], nrow=brow, ncol=bcol, byrow=FALSE, dimnames= list(lon,lat))
+		if ((bcol*brow) == nrow(bath)) {
+			bathy <- matrix(bath[, 3], nrow = brow, ncol = bcol, byrow = FALSE, dimnames = list(lon, lat))
+			} else {
+				id <- apply(bath[,-3],1,function(x) c(which(lon==x[1]) , which(lat==x[2])) )
+				pos.missing <- which(table(id[1,],id[2,])==0)
+				bathy <- matrix(add.nas(bath[,3],pos.missing), nrow = brow, ncol = bcol, byrow = FALSE, dimnames = list(lon, lat))
+			}
 	}
 
 	if (!exists("bathy")) stop("as.bathy requires a 3-column table, or an object of class RasterLayer or SpatialDataFrame")
 
-	check.bathy(bathy) -> ordered.mat
+	ordered.mat <- check.bathy(bathy)
 	class(ordered.mat) <- "bathy"
 	return(ordered.mat)
 

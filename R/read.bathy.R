@@ -10,37 +10,6 @@ read.bathy <- function(xyz, header=FALSE, sep=","){
     lat <- unique(bath[, 2]) ; bcol <- length(lat)
     lon <- unique(bath[, 1]) ; brow <- length(lon)
 
-
-	# Internal function adding NA's in vector vec at position pos.missing
-	# vec: vector of data
-	# pos.missing: vector. Position of missing value in the future bathy object
-	# returns un updated vector containing both the original dat and NAs in the right place.
-	# The length of the resulting vector equals the sum of lengths of vec and pos.missing
-	
-	add.nas <- function(vec,pos.missing) {
-
-		vec.new <- NULL
-		n.mis <- length(pos.missing)
-
-		for (i in 1:n.mis) {
-			modify.vec <- TRUE
-			range <- 1:(pos.missing[i]-1)
-	
-			if (identical(range,1:0)) {
-				range <- 0
-				modify.vec <- FALSE
-			}
-	
-			vec.new <- c(vec.new,vec[range],NA)
-			if (modify.vec) vec <- vec[-range]
-			pos.missing <- pos.missing - pos.missing[i]
-		}
-
-		vec.new <- c(vec.new,vec)
-		return(vec.new)
-	}
-
-
 	if ((bcol*brow) == nrow(bath)) {
 		mat <- matrix(bath[, 3], nrow = brow, ncol = bcol, byrow = FALSE, dimnames = list(lon, lat))
 		} else {
