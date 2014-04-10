@@ -1,6 +1,6 @@
-get.sample=function(mat, sample, col.lon, col.lat,...){
+get.sample=function(mat, sample, col.lon, col.lat, ...){
 	
-	locator(n=2,type="o",...)->coord
+	locator(n=2,type="n")->coord
 	as.numeric(rownames(mat), na.rm=TRUE) -> lon
 	as.numeric(colnames(mat), na.rm=TRUE) -> lat
 	
@@ -9,6 +9,9 @@ get.sample=function(mat, sample, col.lon, col.lat,...){
 		}
 		
 	if(length(coord$x) == 2) {
+		
+		rect(min(coord$x),min(coord$y),max(coord$x),max(coord$y),...)
+		
 		which(abs(lon-coord$x[1])==min(abs(lon-coord$x[1]))) -> x1
 		which(abs(lat-coord$y[1])==min(abs(lat-coord$y[1]))) -> y1
 		which(abs(lon-coord$x[2])==min(abs(lon-coord$x[2]))) -> x2
