@@ -25,7 +25,7 @@ options(width=60,continue="  ")
 options(SweaveHooks=list(fig=function()
               par(mar=c(5.1, 4.1, 1.1, 2.1))))
 library(marmap)
-read.bathy('png.xyz', header=F, sep="\t") -> papoue
+marmap::read.bathy('png.xyz', header=F, sep="\t") -> papoue
 @
 
 \begin{center}
@@ -375,7 +375,7 @@ wireframe(out, shade = TRUE, zoom = 1.1,
 \subsection{Preparing maps in the Pacific antimeridian region}
 
 The antimeridian (or antemeridian) is the 180th meridian and is located about in the middle of the Pacific Ocean, east of New Zealand and Fidji, west of Hawaii and Tonga. If you want to prepare a map of the Aleutian Islands (Alaska), your latitude values may, for example, go from 165 to 180 degrees East, and 180 to 165 degrees West. Crossing the antemeridian means that you will need to download data for the eastern (165 to 180) and the western (-180 to -165) portions of the area of interest (for example, GEBCO will tell you ``The Westernmost is more Easterly than the Easternmost. Please amend your search query'' if you try to download data for the Aleutians in one step). %We are currently working on a version of \verb;getNOAA.bathy(); that takes care of this issue. In the mean time, here is how you can prepare maps from this region: 
-verb;getNOAA(); has an argument to deal with the antemeridian region. For the Aleutians, you would use the verb;antimeridian(); argument. verb;summary.bathy(); can interpret antimeridian areas. When you plot your antimeridian region, the default behavior of verb;plot.bathy(); is to scale longitudes from 0 to 360 degrees (170E to 170W would be displayed as 170, 190 instead of 170, -170). You can use the argument verb;axes=FALSE; in verb;plot.bathy(); and add correct labels with verb;antimeridian.box(); . We have set the default behavior of verb;plot.bathy(); in this way to remind the user that the scale of the bathy object, in the antimeridian region, goes from 0 to 360; if you need to plot points on the map, you need to take this into account (i.e. a point at -170 longitude must be plotted using 190, not 170 or -170). 
+\verb;getNOAA(); has an argument to deal with the antemeridian region. For the Aleutians, you would use the verb;antimeridian(); argument. \verb;summary.bathy(); can interpret antimeridian areas. When you plot your antimeridian region, the default behavior of verb;plot.bathy(); is to scale longitudes from 0 to 360 degrees (170E to 170W would be displayed as 170, 190 instead of 170, -170). You can use the argument \verb;axes=FALSE; in \verb;plot.bathy(); and add correct labels with \verb;antimeridian.box(); . We have set the default behavior of \verb;plot.bathy(); in this way to remind the user that the scale of the bathy object, in the antimeridian region, goes from 0 to 360; if you need to plot points on the map, you need to take this into account (i.e. a point at -170 longitude must be plotted using 190, not 170 or -170). 
 
 \begin{Schunk}
 \begin{Sinput}
