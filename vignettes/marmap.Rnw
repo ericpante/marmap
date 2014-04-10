@@ -386,7 +386,7 @@ verb;getNOAA(); has an argument to deal with the antemeridian region. For the Al
   + bpal=list(c(0,max(aleutians),grey(.7),grey(.9),grey(.95)),
   + c(min(aleutians),0,"darkblue","lightblue")),
   + land=TRUE,lwd=0.1,axes=FALSE)
-> plot(aleutians,n=1,lwd=.8,add=T
+> plot(aleutians,n=1,lwd=.8,add=T)
 > antimeridian.box(aleu)
 \end{Sinput}
 \end{Schunk}
