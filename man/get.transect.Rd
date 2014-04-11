@@ -29,7 +29,7 @@ stop latitude of the transect (no default)
 whether to use locator to choose transect bounds interactively with a map (default is \code{FALSE})
 }
   \item{distance}{
-whether to use compute the haversine distance (in km) from the start of the transect, along the transect (default is \code{FALSE})
+whether to compute the haversine distance (in km) from the start of the transect, along the transect (default is \code{FALSE})
 }
   \item{\dots}{
 other arguments to be passed to \code{locator()} to specify the characteristics of the points and lines to draw on the bathymetric map when \code{locator=TRUE}.
@@ -39,7 +39,7 @@ other arguments to be passed to \code{locator()} to specify the characteristics 
 \code{get.transect} allows the user to compute an approximate linear depth cross section either by inputing start and stop coordinates, or by clicking on a map created with \code{plot.bathy}. In its interactive mode, this function uses the \code{locator} function (\code{graphics} package); after creating a map with \code{plot.bathy}, the user can click twice to delimit the bound of the transect of interest (for example, lower left and upper right corners of a rectangular area of interest), press Escape, and get a table with the transect information. 
 }
 \value{
-A table with, at least, longitude, latitude and depth along the transect, and if specified (distance=\code{TRUE}), the distance in kilometers form the start of the transect. The number of elements in the resulting table depends on the resolution of the \code{bathy} object.
+A table with, at least, longitude, latitude and depth along the transect, and if specified (distance=\code{TRUE}), the distance in kilometers from the start of the transect. The number of elements in the resulting table depends on the resolution of the \code{bathy} object.
 }
 \note{
 The distance option of \code{get.transect} is calculated based on the haversine formula for getting the great circle distance (takes into account the curvature of the Earth). \code{get.transect} uses an internal function called \code{diag.bathy} that extracts the approximate diagonal of a matrix, when that matrix has uneven dimentions (different numbers of columns and rows).
