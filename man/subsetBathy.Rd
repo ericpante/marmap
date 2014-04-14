@@ -7,7 +7,7 @@ Creates bathy objects from larger bathy objects
 Generates rectangular or non rectangular \code{bathy} objects by extracting bathymetric data from larger \code{bathy} objects.
 }
 \usage{
-subsetBathy(x, y=NULL, mat, locator=TRUE, \dots)
+subsetBathy(mat, x, y=NULL, locator=TRUE, \dots)
 }
 \arguments{
   \item{x}{
@@ -57,7 +57,7 @@ plot(aleutians, image=TRUE, land=TRUE, lwd=.2)
 polygon(lon,lat)
 
 # Use of subsetBathy to extract the new bathy object
-zoomed <- subsetBathy(x=lon, y=lat, mat=aleutians, locator=FALSE)
+zoomed <- subsetBathy(aleutians, x=lon, y=lat, locator=FALSE)
 
 # plot the new bathy object
 dev.new() ; plot(zoomed, land=TRUE, image=TRUE, lwd=.2)
@@ -65,7 +65,7 @@ dev.new() ; plot(zoomed, land=TRUE, image=TRUE, lwd=.2)
 # alternativeley once the map is plotted, use the interactive mode:
 \dontrun{
 plot(aleutians, image=TRUE, land=TRUE, lwd=.2)
-zoomed2 <- subsetBathy(mat = aleutians, pch=19, col=3)
+zoomed2 <- subsetBathy(aleutians, pch=19, col=3)
 dev.new() ; plot(zoomed2, land=TRUE, image=TRUE, lwd=.2)
 }
 # click several times and press Escape

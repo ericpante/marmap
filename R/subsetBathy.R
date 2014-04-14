@@ -1,4 +1,4 @@
-subsetBathy <- function(x, y=NULL, mat, locator=TRUE, ...) {
+subsetBathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 	
 	if (!is(mat,"bathy")) stop("'mat' must be of class 'bathy'")
 
