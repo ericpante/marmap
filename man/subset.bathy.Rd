@@ -30,7 +30,7 @@ Further arguments to be passed to \code{locator} when the interactive mode is us
 \code{subset.bathy} allows the user to generate new \code{bathy} objects by extracting data from larger \code{bathy} objects. The extraction of bathymetric data can be done interactively by clicking on a bathymetric map, or by providing longitudes and latitudes for the boundaries for the new \code{bathy} object. If two data points are provided, a rectangular area is selected. If more than two points are provided, a polygon is defined by linking the points and the bathymetic data is extracted within the polygon only. \code{subset.bathy} relies on the \code{point.in.polygon} function from package \code{sp} to identify which points of the initial bathy matrix lie witin the boundaries of the user-defined polygon.
 }
 \value{
-A matrix of class \class{bathy}.
+A matrix of class \code{bathy}.
 }
 \references{
 Pebesma, EJ, RS Bivand, (2005). Classes and methods for spatial data in R. R News 5 (2), \url{http://cran.r-project.org/doc/Rnews/.}
