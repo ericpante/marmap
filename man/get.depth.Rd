@@ -39,7 +39,7 @@ A data.frame with at least, longitude, latitude and depth with one line for each
 Benoit Simon-Bouhet and Eric Pante
 }
 \seealso{
-\code{\link{path.profile}}, \code{\link{get.transect}}, \code{\link{read.bathy}}, \code{\link{summary.bathy}}, \code{\link{subset.bathy}}, \code{\link{nw.atlantic}}
+\code{\link{path.profile}}, \code{\link{get.transect}}, \code{\link{read.bathy}}, \code{\link{summary.bathy}}, \code{\link{subsetBathy}}, \code{\link{nw.atlantic}}
 }
 \examples{
 # load NW Atlantic data and convert to class bathy

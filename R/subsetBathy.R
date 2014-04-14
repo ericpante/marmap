@@ -1,6 +1,4 @@
-subset.bathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
-	
-	# require(sp) ; require(mgcv)
+subsetBathy <- function(x, y=NULL, mat, locator=TRUE, ...) {
 	
 	if (!is(mat,"bathy")) stop("'mat' must be of class 'bathy'")
 
@@ -88,7 +86,7 @@ subset.bathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 		
 			xyz <- as.matrix(as.xyz(new.bathy))
 			out <- as.matrix(out)
-			inside <- point.in.polygon(xyz[,1],xyz[,2],out[,1],out[,2])
+			inside <- sp::point.in.polygon(xyz[,1],xyz[,2],out[,1],out[,2])
 			xyz[inside==0,3] <- NA
 			new.bathy <- as.bathy(xyz)
 		}

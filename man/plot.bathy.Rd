@@ -7,9 +7,9 @@ Ploting bathymetric data
 Plots contour map from bathymetric data matrix of class \code{bathy}
 }
 \usage{
-\method{plot}{bathy}(x, image=FALSE, bpal=NULL, default.col="white",
-           land=FALSE, deepest.isobath, shallowest.isobath, step, 
-           n=20, lwd=1, lty=1, col="black", drawlabels = FALSE, 
+\method{plot}{bathy}(x, image=FALSE, bpal=NULL, land=FALSE,
+           deepest.isobath, shallowest.isobath, step, n=20,
+           lwd=1, lty=1, col="black", default.col="white", drawlabels = FALSE, 
            xlab="Longitude", ylab="Latitude", asp=1, \dots)
 }
 \arguments{
@@ -21,9 +21,6 @@ whether or not to color depth layers (default is \code{FALSE})
 }
   \item{bpal}{
 if image is \code{TRUE}, either \code{NULL} (default: a simple blue color palette is used), a vector of colors, or a list of depth bounds and colors (see below)
-}
-  \item{default.col}{
-if image is \code{TRUE}, a color for the area of the matrix not bracketed by the list supplied to bpal (see below; default is \code{white})
 }
   \item{land}{
 whether or not to use topographic data that may be available in the \code{bathy} dataset (default is \code{FALSE})
@@ -48,6 +45,9 @@ isobath line type(s) (default is 1)
 }
   \item{col}{
 isobath line color(s) (default is black)
+}
+  \item{default.col}{
+if image is \code{TRUE}, a color for the area of the matrix not bracketed by the list supplied to bpal (see below; default is \code{white})
 }
   \item{drawlabels}{
 whether or not to plot isobath depth as a label (default is \code{FALSE}); may contain several elements
@@ -147,10 +147,8 @@ Eric Pante, Benoit Simon-Bouhet (2013) marmap: A Package for Importing, Plotting
 	box();axis(1);axis(2)
 	
 	# add bathymetric data from 'bathy' data
-	unique(as.numeric(rownames(atl))) -> lon
-	unique(as.numeric(colnames(atl))) -> lat
-	contour(lon, lat, atl, add=TRUE, lwd=0.3, col="grey50", 
-			levels=seq(-4500,-10,by=500), drawlabel=FALSE, xlab="a")
+    plot(atl, add=TRUE, lwd=.3, deep=-4500, shallow=-10, step=500, 
+		drawlabel=FALSE, col="grey50")
 
 ## Example 7: provide a list of depths and colors to argument bpal to finely tune palette
 	# check out ?palette.bathy to see details on how the palette is handled 

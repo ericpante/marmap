@@ -6,8 +6,8 @@ Automatic placement of piecharts on maps}
 Attemps to automatically place piecharts on maps, avoiding overlap. Work in progress...
 }
 \usage{
-space.pies = (x, y, pie.slices, pie.colors=NULL, pie.radius=1, pie.space=1, 
-              link=TRUE, seg.lwd=1, seg.col="blue", seg.lty=1, coord=NULL)
+space.pies(x, y, pie.slices, pie.colors=NULL, pie.radius=1, pie.space=5, 
+              link=TRUE, seg.lwd=1, seg.col=1, seg.lty=1, coord=NULL)
 }
 \arguments{
   \item{x}{
@@ -55,7 +55,7 @@ Anchor point: spatial location of the data corresponding to the piechart (e.g. a
 Piechart(s) added to a plot. 
 }
 \author{
-Eric Pante, using functions \code{\link{floating.pie}} from package plotrix and \code{\link{pointLabel}} from maptools. 
+Eric Pante, using functions \code{\link[plotrix]{floating.pie}} from package plotrix and \code{\link[maptools]{pointLabel}} from maptools. 
 }
 \references{
 Bivand, R. and Lewin-Koh, N. (2013) maptools: Tools for reading and handling spatial objects. R package version 0.8-25. http://CRAN.R-project.org/package=maptools
@@ -65,7 +65,7 @@ Lemon, J. (2006) Plotrix: a package in the red light district of R. R-News, 6(4)
 SANN code implemented in \code{pointLabel} based on: Jon Christensen, Joe Marks, and Stuart Shieber. Placing text labels on maps and diagrams. In Paul Heckbert, editor, Graphics Gems IV, pages 497-504. Academic Press, Boston, MA, 1994.
 }
 \seealso{
-\code{\link{plot.bathy}}, \code{\link{floating.pie}}, \code{\link{pointLabel}}
+\code{\link{plot.bathy}}, \code{\link[plotrix]{floating.pie}}, \code{\link[maptools]{pointLabel}}
 }
 \examples{
 # fake frequencies to feed to space.pies()

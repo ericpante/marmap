@@ -6,7 +6,7 @@ Build a bathymetry- and/or topography-constrained color palette}
 Build a constrained color palette based on depth / altitude bounds and given colors. 
 }
 \usage{
-palette.bathy(mat, layers, palcol, land=FALSE, default.col="white")
+palette.bathy(mat, layers, land=FALSE, default.col="white")
 }
 \arguments{
   \item{mat}{
@@ -43,7 +43,8 @@ Eric Pante and Benoit Simon-Bouhet
     newcol <- palette.bathy(mat=atl, 
 		layers = list(c(min(atl), 0, "purple", "blue", "lightblue")),
 		land = FALSE, default.col = "grey" )
-	plot(atl, land = FALSE, n = 10, lwd = 0.5, image = TRUE, bpal = newcol, default.col = "grey")
+	plot(atl, land = FALSE, n = 10, lwd = 0.5, image = TRUE, 
+		bpal = newcol, default.col = "grey")
 	
 # same:
 	plot(atl, land = FALSE, n = 10, lwd = 0.5, image = TRUE,
@@ -56,7 +57,8 @@ Eric Pante and Benoit Simon-Bouhet
 		c(-3000, -150, "white"),
 		c(-150, 0, "yellow", "green", "brown")),
 		land = FALSE, default.col = "grey")		
-	plot(atl, land = FALSE, n = 10, lwd = 0.7, image = TRUE, bpal = newcol, default.col = "grey")
+	plot(atl, land = FALSE, n = 10, lwd = 0.7, image = TRUE, 
+		bpal = newcol, default.col = "grey")
 
 # same
 	plot(atl, land = FALSE, n = 10, lwd = 0.7, image = TRUE, 

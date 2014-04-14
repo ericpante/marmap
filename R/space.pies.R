@@ -1,4 +1,4 @@
-space.pies <- function(x, y, pie.slices, pie.colors=NULL, pie.radius=1, pie.space=5, link=TRUE, seg.lwd=1, seg.col="blue", seg.lty=1, coord=NULL){
+space.pies <- function(x, y, pie.slices, pie.colors=NULL, pie.radius=1, pie.space=5, link=TRUE, seg.lwd=1, seg.col=1, seg.lty=1, coord=NULL){
 
 if(is.null(coord)){
 	
