@@ -1,6 +1,6 @@
 subset.bathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 	
-	require(sp)
+	# require(sp) ; require(mgcv)
 	
 	if (!is(mat,"bathy")) stop("'mat' must be of class 'bathy'")
 
@@ -54,8 +54,6 @@ subset.bathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 			coord <- locator(type="o",...)
 		}
 
-		print(coord)
-
 		as.numeric(rownames(mat)) -> lon
 		as.numeric(colnames(mat)) -> lat
 
@@ -78,22 +76,6 @@ subset.bathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 			class(new.bathy) <- "bathy"
 			
 		}
-	
-		# if (nrow(out)>2) {
-		# 	x1 <- which(abs(lon-min(out$Lon))==min(abs(lon-min(out$Lon))))
-		# 	y1 <- which(abs(lat-min(out$Lat))==min(abs(lat-min(out$Lat))))
-		# 	x2 <- which(abs(lon-max(out$Lon))==min(abs(lon-max(out$Lon))))
-		# 	y2 <- which(abs(lat-max(out$Lat))==min(abs(lat-max(out$Lat))))
-		# 	new.bathy <- mat[x1:x2, y1:y2]
-		# 	new.bathy <- check.bathy(new.bathy)
-		# 	class(new.bathy) <- "bathy"
-		# 
-		# 	xyz <- as.matrix(as.xyz(new.bathy))
-		# 	out <- as.matrix(out)
-		# 	inside <- in.out(out,xyz[,1:2])
-		# 	xyz[!inside,3] <- NA
-		# 	new.bathy <- as.bathy(xyz)
-		# }
 
 		if (nrow(out)>2) {
 			x1 <- which(abs(lon-min(out$Lon))==min(abs(lon-min(out$Lon))))
@@ -103,7 +85,7 @@ subset.bathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 			new.bathy <- mat[x1:x2, y1:y2]
 			new.bathy <- check.bathy(new.bathy)
 			class(new.bathy) <- "bathy"
-
+		
 			xyz <- as.matrix(as.xyz(new.bathy))
 			out <- as.matrix(out)
 			inside <- point.in.polygon(xyz[,1],xyz[,2],out[,1],out[,2])

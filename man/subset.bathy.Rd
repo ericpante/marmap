@@ -1,13 +1,13 @@
-\name{get.depth}
-\alias{get.depth}
+\name{subset.bathy}
+\alias{subset.bathy}
 \title{
-Get depth data by clicking on a map
+Creates bathy objects from larger bathy objects
 }
 \description{
-Outputs depth information based on points selected by clicking on a map
+Generates rectangular or non rectangular \code{bathy} objects by extracting bathymetric data from larger \code{bathy} objects.
 }
 \usage{
-get.depth(mat, x, y=NULL, locator=TRUE, distance=FALSE, \dots)
+subset.bathy(mat, x, y=NULL, locator=TRUE, \dots)
 }
 \arguments{
   \item{mat}{
@@ -22,44 +22,51 @@ Either \code{NULL} (default) or a numerical vector of latitudes. Ignored if \cod
   \item{locator}{
 Logical. Whether to choose data points interactively with a map or not. If \code{TRUE} (default), a bathymetric map must have been plotted and both \code{x} and \code{y} are both ignored.
 }
-  \item{distance}{
-whether to compute the haversine distance (in km) from the first data point on (default is \code{FALSE}). Only available when at least two points are provided.
-}
   \item{...}{
 Further arguments to be passed to \code{locator} when the interactive mode is used (\code{locator=TRUE}).
 }
 }
 \details{
-\code{get.depth} allows the user to get depth data by clicking on a map created with \code{plot.bathy} or by providing coordinates of points of interest. This function uses the \code{locator} function (\code{graphics} package); after creating a map with \code{plot.bathy}, the user can click on the map once or several times (if \code{locator=TRUE}), press the Escape button, and get the depth of those locations in a three-coumn data.frame (longitude, latitude and depth). Alternatively, when \code{locator=FALSE}, the user can submit a list of longitudes and latitudes, a two-column matrix or data.frame of longitudes and latitudes (as input for \code{x}), or one vector of longitudes (\code{x}) and one vector of latitudes (\code{y}). The non-interactive mode is well suited to get depth information for each point provided by GPS tracking devices. While \code{\link{get.transect}} gets every single depth value available in the bathymetric matrix between two points along a user-defined transect, \code{get.depth} only provides depth data for the specific points provided as input by the user.
+\code{subset.bathy} allows the user to generate new \code{bathy} objects by extracting data from larger \code{bathy} objects. The extraction of bathymetric data can be done interactively by clicking on a bathymetric map, or by providing longitudes and latitudes for the boundaries for the new \code{bathy} object. If two data points are provided, a rectangular area is selected. If more than two points are provided, a polygon is defined by linking the points and the bathymetic data is extracted within the polygon only. \code{subset.bathy} relies on the \code{point.in.polygon} function from package \code{sp} to identify which points of the initial bathy matrix lie witin the boundaries of the user-defined polygon.
 }
 \value{
-A data.frame with at least, longitude, latitude and depth with one line for each point of interest. If distance=\code{TRUE}, a fourth column containing the kilometric distance from the first point is added.
+A matrix of class \class{bathy}.
+}
+\references{
+Pebesma, EJ, RS Bivand, (2005). Classes and methods for spatial data in R. R News 5 (2), \url{http://cran.r-project.org/doc/Rnews/.}
+
+Bivand RS, Pebesma EJ, Gomez-Rubio V (2013). Applied spatial data analysis with R, Second edition. Springer, NY. \url{http://www.asdar-book.org/}
 }
 \author{
-Benoit Simon-Bouhet and Eric Pante
+Benoit Simon-Bouhet
 }
 \seealso{
-\code{\link{path.profile}}, \code{\link{get.transect}}, \code{\link{read.bathy}}, \code{\link{summary.bathy}}, \code{\link{subset.bathy}}, \code{\link{nw.atlantic}}
+\code{\link{plot.bathy}}, \code{\link{get.depth}}, \code{\link{summary.bathy}}, \code{\link{aleutians}}
 }
 \examples{
-# load NW Atlantic data and convert to class bathy
-data(nw.atlantic)
-atl <- as.bathy(nw.atlantic)
+# load aleutians dataset
+data(aleutians)
 
-# create vectors of latitude and longitude
-lon <- c(-70, -65, -63, -55)
-lat <- c(33, 35, 40, 37)
+# create vectors of latitude and longitude to define the boundary of a polygon
+lon <- c(188.56, 189.71, 191, 193.18, 196.18, 196.32, 196.32, 194.34, 188.83)
+lat <- c(54.33, 55.88, 56.06, 55.85, 55.23, 54.19, 52.01, 50.52, 51.71)
 
-# a simple example
-plot(atl, lwd=.5)
-points(lon,lat,pch=19,col=2)
 
-# Use get.depth to get the depth for each point
-get.depth(atl, x=lon, y=lat, locator=FALSE)
+# plot the initial bathy and overlay the polygon
+plot(aleutians, image=TRUE, land=TRUE, lwd=.2)
+polygon(lon,lat)
 
-# alternativeley once the map is plotted, use the iteractive mode:
+# Use subset.bathy to extract the new bathy object
+zoomed <- subset.bathy(aleutians, x=lon, y=lat, locator=FALSE)
+
+# plot the new bathy object
+dev.new() ; plot(zoomed, land=TRUE, image=TRUE, lwd=.2)
+
+# alternativeley once the map is plotted, use the interactive mode:
 \dontrun{
-get.depth(atl, locator=TRUE, pch=19, col=3)
+plot(aleutians, image=TRUE, land=TRUE, lwd=.2)
+zoomed2 <- subset.bathy(aleutians, locator=TRUE, pch=19, col=3)
+dev.new() ; plot(zoomed2, land=TRUE, image=TRUE, lwd=.2)
 }
 # click several times and press Escape
 

@@ -27,7 +27,7 @@ as.bathy <- function(x){
 	
 	# if not, it has to be a 3-column table (xyz format)
 	if (ncol(x)==3 & !exists("bathy")) {
-		bath <- na.omit(x)
+		bath <- x
 	    bath <- bath[order(bath[, 2], bath[, 1], decreasing = FALSE), ]
 
 	    lat <- unique(bath[, 2]) ; bcol <- length(lat)
