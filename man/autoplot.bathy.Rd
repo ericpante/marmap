@@ -60,7 +60,8 @@ Jean-Olivier Irisson
 	autoplot(atl, coast=FALSE)
     
   # better colour scale
-	autoplot(atl, geom=c("r", "c")) + scale_fill_gradient2(low="dodgerblue4", mid="gainsboro", high="darkgreen")
+	autoplot(atl, geom=c("r", "c")) +
+    scale_fill_gradient2(low="dodgerblue4", mid="gainsboro", high="darkgreen")
 
   # set aesthetics
 	autoplot(atl, geom=c("r", "c"), colour="white", size=0.1)

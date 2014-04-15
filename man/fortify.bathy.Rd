@@ -41,5 +41,8 @@ Jean-Olivier Irisson
   atl.df <- fortify(atl)
   ggplot(atl.df, aes(x=x, y=y)) +
     geom_raster(aes(fill=z), data=atl.df[atl.df$z <= 0,]) +
-    geom_contour(aes(z=z), breaks=c(-100, -200, -500, -1000, -2000, -4000), colour="white", size=0.1)
+    geom_contour(aes(z=z),
+      breaks=c(-100, -200, -500, -1000, -2000, -4000),
+      colour="white", size=0.1
+    )
 }
