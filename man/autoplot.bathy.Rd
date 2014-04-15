@@ -27,7 +27,7 @@ passed to the chosen geom(s)
 \details{
 \code{\link{fortify.bathy}} is called with argument \code{x} to produce a data.frame compatible with ggplot2. Then layers are added to the plot based om the argument \code{geom}. Finally, the whole plot is projected geographically using \code{\link{coord_map}} (for \code{geom="contour"}) or an approximation thereof.
 }
-}
+
 \author{
 Jean-Olivier Irisson
 }
