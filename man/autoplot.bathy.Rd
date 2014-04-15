@@ -72,4 +72,8 @@ Jean-Olivier Irisson
 	# add sampling locations
 	data(metallo)
   last_plot() + geom_point(aes(x=lon, y=lat), data=metallo, alpha=0.5)
+
+  # an alternative contour map making use of additional mappings
+  # see ?stat_contour in ggplot2 to understand the ..level.. argument
+	autoplot(atl, geom="contour", mapping=aes(colour=..level..))
 }
