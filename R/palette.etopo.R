@@ -20,9 +20,9 @@ etopo.colors <- function(n) {
 }
 
 scale_fill_etopo <- function(...) {
-  scale_fill_gradientn(colours=etopo$colours, values=etopo$altitudes01, limits=range(etopo$altitudes))
+  ggplot2::scale_fill_gradientn(colours=etopo$colours, values=etopo$altitudes01, limits=range(etopo$altitudes), ...)
 }
 
 scale_colour_etopo <- function(...) {
-  scale_colour_gradientn(colours=etopo$colours, values=etopo$altitudes01, limits=range(etopo$altitudes))
+  ggplot2::scale_colour_gradientn(colours=etopo$colours, values=etopo$altitudes01, limits=range(etopo$altitudes), ...)
 }

@@ -19,15 +19,15 @@ autoplot.bathy <- function(x, geom="contour", mapping=NULL, coast=TRUE, ...) {
   class(mapping) <- "uneval"
 
   # prepare the base plot
-  p <- ggplot(xdf, mapping=mapping) +
+  p <- ggplot2::ggplot(xdf, mapping=mapping) +
     # remove extra space around the plot
-    scale_x_continuous(expand=c(0,0)) +
-    scale_y_continuous(expand=c(0,0))
+    ggplot2::scale_x_continuous(expand=c(0,0)) +
+    ggplot2::scale_y_continuous(expand=c(0,0))
 
   # add layers
   if ("tile" %in% geom) {
     # "image" plot
-    p <- p + geom_tile(aes(fill=z), ...)
+    p <- p + ggplot2::geom_tile(ggplot2::aes(fill=z), ...)
 
   }
   
@@ -36,23 +36,23 @@ autoplot.bathy <- function(x, geom="contour", mapping=NULL, coast=TRUE, ...) {
     # NB: faster than geom_tile, gives smaller PDFs but:
     #     . is not resolution independent
     #     . does not work with non-square aspect ratios (i.e. coord_map())
-    p <- p + geom_raster(aes(fill=z), ...)
+    p <- p + ggplot2::geom_raster(ggplot2::aes(fill=z), ...)
   }
   
   if ("contour" %in% geom) {
     # bathy contours
     # (do not set colour if it is already specified in the mapping)
     if ("colour" %in% names(mapping) | "colour" %in% names(list(...))) {
-      contours <- geom_contour(aes(z=z), ...)
+      contours <- ggplot2::geom_contour(ggplot2::aes(z=z), ...)
     } else {
-      contours <- geom_contour(aes(z=z), colour="grey30", ...)
+      contours <- ggplot2::geom_contour(ggplot2::aes(z=z), colour="grey30", ...)
     }
     p <- p + contours
   }
 
   if ( coast ) {
     # "coastline" contour = 0 isobath
-    p <- p + geom_contour(aes(z=z), colour="black", linetype="solid", size=0.5, breaks=0, alpha=1)
+    p <- p + ggplot2::geom_contour(ggplot2::aes(z=z), colour="black", linetype="solid", size=0.5, breaks=0, alpha=1)
     # NB: set all the aesthetics so that they are not affected by what is specified in the function call
   }
 
@@ -67,10 +67,10 @@ autoplot.bathy <- function(x, geom="contour", mapping=NULL, coast=TRUE, ...) {
     x.dist <- ggplot2:::dist_central_angle(x.center + c(-0.5, 0.5), rep(y.center, 2))
     y.dist <- ggplot2:::dist_central_angle(rep(x.center, 2), y.center+c(-0.5, 0.5))
     ratio <- y.dist / x.dist
-    coord <- coord_fixed(ratio=ratio)
+    coord <- ggplot2::coord_fixed(ratio=ratio)
   } else {
     # true map projection
-    coord <- coord_map()
+    coord <- ggplot2::coord_map()
   }
   p <- p + coord
 
