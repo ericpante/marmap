@@ -15,7 +15,7 @@ autoplot.bathy <- function(x, geom="contour", mapping=NULL, coast=TRUE, ...) {
   if ( is.null(mapping) ) {
     mapping <- ggplot2::aes()
   }
-  mapping <- c(ggplot2::aes(x=x, y=y), mapping)
+  mapping <- c(ggplot2::aes_string(x='x', y='y'), mapping)
   class(mapping) <- "uneval"
 
   # prepare the base plot
@@ -27,7 +27,7 @@ autoplot.bathy <- function(x, geom="contour", mapping=NULL, coast=TRUE, ...) {
   # add layers
   if ("tile" %in% geom) {
     # "image" plot
-    p <- p + ggplot2::geom_tile(ggplot2::aes(fill=z), ...)
+    p <- p + ggplot2::geom_tile(ggplot2::aes_string(fill='z'), ...)
 
   }
   
@@ -36,23 +36,23 @@ autoplot.bathy <- function(x, geom="contour", mapping=NULL, coast=TRUE, ...) {
     # NB: faster than geom_tile, gives smaller PDFs but:
     #     . is not resolution independent
     #     . does not work with non-square aspect ratios (i.e. coord_map())
-    p <- p + ggplot2::geom_raster(ggplot2::aes(fill=z), ...)
+    p <- p + ggplot2::geom_raster(ggplot2::aes_string(fill='z'), ...)
   }
   
   if ("contour" %in% geom) {
     # bathy contours
     # (do not set colour if it is already specified in the mapping)
     if ("colour" %in% names(mapping) | "colour" %in% names(list(...))) {
-      contours <- ggplot2::geom_contour(ggplot2::aes(z=z), ...)
+      contours <- ggplot2::geom_contour(ggplot2::aes_string(z='z'), ...)
     } else {
-      contours <- ggplot2::geom_contour(ggplot2::aes(z=z), colour="grey30", ...)
+      contours <- ggplot2::geom_contour(ggplot2::aes_string(z='z'), colour="grey30", ...)
     }
     p <- p + contours
   }
 
   if ( coast ) {
     # "coastline" contour = 0 isobath
-    p <- p + ggplot2::geom_contour(ggplot2::aes(z=z), colour="black", linetype="solid", size=0.5, breaks=0, alpha=1)
+    p <- p + ggplot2::geom_contour(ggplot2::aes_string(z='z'), colour="black", linetype="solid", size=0.5, breaks=0, alpha=1)
     # NB: set all the aesthetics so that they are not affected by what is specified in the function call
   }
 
