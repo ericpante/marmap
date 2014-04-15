@@ -19,7 +19,7 @@ ignored
 \details{
 \code{fortify.bathy} is really just calling \code{\link{as.xyz}} and ensuring consistent names for the columns. It then allows to use ggplot2 functions directly.
 }
-}
+
 \author{
 Jean-Olivier Irisson
 }

@@ -6,6 +6,7 @@
 \alias{scale_fill_etopo}
 \title{
 Etopo colours
+}
 \description{
 Various ways to access the colours or on the etopo colour scale
 }
@@ -25,7 +26,7 @@ number of colours to get from the scale. Those are evenly spaced within the scal
 
 \code{scale_fill/contour_etopo} are meant to be used with ggplot2. They allow consistent plots in various subregions by setting the limits of the scale explicitly.
 }
-}
+
 \author{
 Jean-Olivier Irisson
 }
