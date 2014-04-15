@@ -1,4 +1,5 @@
 \name{etopo}
+\alias{etopo}
 \alias{etopo.colors}
 \alias{etopo.colours}
 \alias{scale_colour_etopo}
@@ -13,12 +14,15 @@ Various ways to access the colours or on the etopo colour scale
 \usage{
 etopo.colors(n)
 
-scale_fill_etopo()
-scale_colour_etopo()
+scale_fill_etopo(\dots)
+scale_colour_etopo(\dots)
 }
 \arguments{
   \item{n}{
 number of colours to get from the scale. Those are evenly spaced within the scale.
+}
+  \item{\dots}{
+passed to \code{scale_fill_gradientn} or \code{scale_colour_gradientn}
 }
 }
 \details{

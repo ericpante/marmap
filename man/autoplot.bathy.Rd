@@ -17,10 +17,10 @@ bathymetric data matrix of class \code{bathy}, imported using \code{\link{read.b
 geometry to use for the plot, i.e. type of plot; can be `contour', `tile' or `raster'. contour does a contour plot. tile and raster produce an image plot. tile allows true geographical projection through \code{\link{coord_map}}. raster only allows approximate projection but is faster to plot.
 Names can be abbreviated. Geometries can be combined by specifying several in a vector.
 }
-  \item{geom}{
   \item{mapping}{
 additional mappings between the data obtained from calling \code{\link{fortify.bathy}} on x and the aesthetics for all geoms. When not NULL, this is a call to aes().
 }
+  \item{coast}{
 boolean; wether to highlight the coast (isobath 0 m) as a black line
 }
   \item{\dots}{
