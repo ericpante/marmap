@@ -1,15 +1,6 @@
 autoplot.bathy <- function(x, geom="contour", mapping=aes(), coast=TRUE, ...) {
   # plot an object of class bathy
 
-  fortify.bathy <- function(x, ...) {
-    # Convert an object of class bathy into a data.frame, for ggplot
-    # x   object of class bathy
-
-    x <- as.xyz(x)
-    names(x) <- c("x", "y", "z")
-    return(x)
-  }
-
   # expand geom argument
   geom <- match.arg(geom, choices=c("contour", "raster", "tile"), several.ok=TRUE)
   if ( all(c("tile", "raster") %in% geom) ) {
