@@ -1,4 +1,4 @@
-autoplot.bathy <- function(x, geom="contour", mapping=aes(), coast=TRUE, ...) {
+autoplot.bathy <- function(x, geom="contour", mapping=NULL, coast=TRUE, ...) {
   # plot an object of class bathy
 
   # expand geom argument
@@ -12,7 +12,10 @@ autoplot.bathy <- function(x, geom="contour", mapping=aes(), coast=TRUE, ...) {
   xdf <- fortify.bathy(x)
 
   # set default mapping and add user-specified mappings
-  mapping <- c(aes(x=x, y=y), mapping)
+  if ( is.null(mapping) ) {
+    mapping <- ggplot2::aes()
+  }
+  mapping <- c(ggplot2::aes(x=x, y=y), mapping)
   class(mapping) <- "uneval"
 
   # prepare the base plot

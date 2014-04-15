@@ -7,7 +7,7 @@ Ploting bathymetric data with ggplot
 Plots contour or image map from bathymetric data matrix of class \code{bathy} with ggplot2
 }
 \usage{
-\method{autoplot}{bathy}(x, geom="contour", mapping=aes(), coast=TRUE, \dots)
+\method{autoplot}{bathy}(x, geom="contour", mapping=NULL, coast=TRUE, \dots)
 }
 \arguments{
   \item{x}{
@@ -18,6 +18,9 @@ geometry to use for the plot, i.e. type of plot; can be `contour', `tile' or `ra
 Names can be abbreviated. Geometries can be combined by specifying several in a vector.
 }
   \item{geom}{
+  \item{mapping}{
+additional mappings between the data obtained from calling \code{\link{fortify.bathy}} on x and the aesthetics for all geoms. When not NULL, this is a call to aes().
+}
 boolean; wether to highlight the coast (isobath 0 m) as a black line
 }
   \item{\dots}{
