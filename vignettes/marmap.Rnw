@@ -1,7 +1,5 @@
 \documentclass[a4paper]{article}
 \usepackage{cite}
-% \usepackage{fullpage}
-\usepackage{chngpage}
 \usepackage[pdftex,bookmarks=true,colorlinks=true,linkcolor=blue,citecolor=blue,breaklinks]{hyperref}
 \bibliographystyle{plos2009}
 
@@ -439,10 +437,9 @@ The antimeridian (or antemeridian) is the 180th meridian and is located about in
 \verb"getNOAA.bathy()" is the easiest way to load data into R, but it depends on the NOAA download protocol, and one must have an internet connection. The way to use this function is demonstrated in the tutorial above. \verb"read.bathy()" allows import of data into R, and this data can be located on a drive ; an internet connection is therefore not mandatory. This is a good way to import data that have been saved locally on your drive, and may be faster than re-downloading data from the NOAA server at the beginning of each R session. If the user is building maps routinely, we propose two functions to create a local database that can be accessed from within R. These functions are \verb"setSQL()" and \verb"subsetSQL()". \\
 
 \begin{table}
-\begin{adjustwidth}{-1in}{-1in}% adjust the L and R margins by 1 inch
 	\begin{center}
 		\small
-		\begin{tabular}{|l|p{3cm}|p{3cm}|p{3cm}|l|}
+		\begin{tabular}{|l|p{2.2cm}|p{2.2cm}|p{2.2cm}|l|}
 		\hline 
 		{\bf Function} &  {\bf Job} & {\bf Input} & {\bf Output} & {\bf Internet} \\
 		\hline
@@ -462,7 +459,6 @@ The antimeridian (or antemeridian) is the 180th meridian and is located about in
 		\hline
 		\end{tabular}
 	\end{center}
-\end{adjustwidth}
 \end{table}
 
 \subsection{Importing bathymetric data from GEBCO: readGEBCO.bathy()}
