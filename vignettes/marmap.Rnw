@@ -32,15 +32,15 @@ marmap::read.bathy('png.xyz', header=F, sep="\t") -> papoue
 
 \section{Introduction}
 
-In this vignette we introduce \verb"marmap", a package designed for manipulating bathymetric data in R. \verb"marmap" uses simple latitude-longitude-depth data in ascii format and takes advantage of the advanced plotting tools available in R to build publication-quality bathymetric maps. Functions to query data (bathymetry, sampling information...) directly by clicking on \verb"marmap" maps are available. Bathymetric and topographic can also be used to constrain the calculation of realistic shortest path distances. Such information can be used in molecular ecology, for example, to evaluate genetic isolation by distance in a spatially-explicit framework.
+In this vignette we introduce \verb"marmap", a package designed for manipulating bathymetric data in R. \verb"marmap" uses simple latitude-longitude-depth data in ascii format and takes advantage of the advanced plotting tools available in R to build publication-quality bathymetric maps. Functions to query data (bathymetry, sampling information...) directly by clicking on \verb"marmap" maps are available. Bathymetric and topographic data can also be used to constrain the calculation of realistic shortest path distances. Such information can be used in molecular ecology, for example, to evaluate genetic isolation by distance in a spatially-explicit framework.
 
 \section{A quick tutorial}
 
-In this section, we will produce a bathymetric maps of Papua New Guinea, Hawaii and the NW Atlantic. 
+In this section, we will produce bathymetric maps of Papua New Guinea, Hawaii and the NW Atlantic. 
 
 \subsection{Getting data into R}
 
-Launch R. Navigate to your work folder (for example, with \verb"setwd()"). Then launch the marmap  package.  The simplest way to get bathymetric data into R for use with \verb"marmap" is to use the \verb"getNOAA.bathy()" function. It queries the ETOPO1 dataset (Armante and Eakins 2009) hosted on the NOAA server, based on coordinate a resolution given by the user (please note that this function depends on the availability of the NOAA server!). In one line, we can get the data into R and start plotting: 
+Launch R. Navigate to your work folder (for example, with \verb"setwd()"). Then launch the marmap  package.  The simplest way to get bathymetric data into R for use with \verb"marmap" is to use the \verb"getNOAA.bathy()" function. It queries the ETOPO1 dataset (Armante and Eakins 2009) hosted on the NOAA server, based on coordinates and a resolution given by the user (please note that this function depends on the availability of the NOAA server!). In one line, we can get the data into R and start plotting: 
 
 <<eval=FALSE,echo=TRUE>>=
 library(marmap)
@@ -78,7 +78,7 @@ colorRampPalette(c("red","purple","blue","cadetblue1",
 plot(papoue, image = TRUE, bpal = blues(100))
 @
 
-For maps using the \verb"image" option of \verb"plot.bathy()", you will see that the PDF rendering of your map is slightly different from the way it looks in R: the small space between cells becomes visible. This is probably due to the way your system handles PDFs. A simple way around this phenomenon is to export the map in a raster (rather than vector) format. You can use the \verb"tiff()", \verb"jpeg()", \verb"bmp()" or \verb"png()" functions available in R. This map looks a little crowded ; let's dim the isobaths (dark grey color and lighter line width), and strengthen the coastline (black color and thicker line width). The deepest isobaths will be hard to see on a dark blue background ; we can therefore choose to plot these in light grey to improve contrast. The option \verb"drawlabel" controls whether isobath labels (e.g. ``-3000'') are plotted or not. 
+For maps using the \verb"image" option of \verb"plot.bathy()", you might see that the PDF rendering of your map is slightly different from the way it looks in R: the small space between cells becomes visible. This is probably due to the way your system handles PDFs. A simple way around this phenomenon is to export the map in a raster (rather than vector) format. You can use the \verb"tiff()", \verb"jpeg()", \verb"bmp()" or \verb"png()" functions available in R. This map looks a little crowded ; let's dim the isobaths (dark grey color and lighter line width), and strengthen the coastline (black color and thicker line width). The deepest isobaths will be hard to see on a dark blue background ; we can therefore choose to plot these in light grey to improve contrast. The option \verb"drawlabel" controls whether isobath labels (e.g. ``-3000'') are plotted or not. 
 
 <<fig=TRUE,echo=TRUE>>=
 plot(papoue, image = TRUE, bpal = blues(100),
@@ -106,34 +106,19 @@ plotProfile(transect)
 @
 \setkeys{Gin}{width=.8\textwidth}
 
- We can also use \verb"get.sample()" and \verb"get.depth()" to retrieve depth information and sample information by clicking on the map (see help pages). The output will look like this (pound symbols are followed by comments): 
+We can also use \verb"get.depth()" to retrieve depth information by either clicking on the map or by providing a set of longitude/latitude pairs (see help pages). This is helpfull to get depth information along a GPS track record for instance. If the argument \verb;distance; is set to TRUE, the haversine distance (in km) from the first data point on will also be computed. The output will look like this: 
  
 \begin{verbatim}
-> # click once on the map:
-> get.depth(papoue)  
-[1] -1655
-
-> # click twice on the map to delimit an area:
-> get.depth(papoue) 
-Bathymetric data of class 'bathy', with 17 rows and 14 columns
-Latitudinal range: -5.833333 to -3.666667 
-Longitudinal range: 146.833333 to 149.5 
-Cell size: 10 minute(s)
-
-Depth statistics:
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  -2222   -1827   -1538   -1301   -1109     770 
-
-First 5 columns and rows of the bathymetric matrix:
-           -3.666667 -3.833333    -4 -4.166667 -4.333333
-146.833333     -1929     -1924 -2097     -1976     -1891
-147            -1922     -2037 -1986     -1985     -1850
-147.166667     -1930     -1822 -1905     -1939     -1894
-147.333333     -1807     -1690 -1909     -1973     -1970
-147.5          -1390     -1598 -1672     -2050     -1973
+> get.depth(papoue, distance=TRUE)  
+Waiting for interactive input: click any number of times on the map, then press 'Esc'
+       Lon       Lat Depth  Dist.km
+1 146.0200 -2.601702  -758   0.0000
+2 147.6167 -1.844152  -583 196.3933
+3 149.3193 -2.607345 -2121 366.4942
+4 150.7295 -4.249027 -2289 553.8867
 \end{verbatim}
 
-\verb"get.sample()" is used in combination with a table containing sampling information. Let's make a fake table of sampling data, print it in a file, then, for the sake of the example, import it in R as a csv file, and use it for plotting and use with \verb"get.sample()": 
+\verb"get.sample()" can be used in combination with a table containing sampling information to retrieve sample information by clicking on the map. Let's make a fake table of sampling data and use it for plotting and use with \verb"get.sample()": 
 
 <<fig=FALSE,echo=TRUE>>=
 x = c(142.1390, 142.9593, 144.0466, 145.9141,
@@ -147,15 +132,12 @@ y = c(-2.972065, -3.209449, -3.391399, -4.675720,
 
 paste("station",1:16, sep = "") -> station
 data.frame(x, y, station) -> sampling
-write.table(sampling, "sampling.csv", sep = ",", 
-	quote = FALSE, row.names = FALSE)
 @
 
-We have now created a small example file that we can use for further analysis. Let's load these data, and plot them on a map:
+We have now created a small table that we can use for further analysis. Let's plot them on a map:
 
 <<fig=TRUE,echo=TRUE>>=
-read.csv("sampling.csv", header = TRUE) -> samp
-head(samp) # a preview of the first 6 lines of the dataset. 
+head(sampling) # a preview of the first 6 lines of the dataset. 
 
 plot(papoue, image = TRUE, bpal = blues(100),
 	deep = c(-9000, -3000, 0), shallow = c(-3000, -10, 0),
@@ -164,7 +146,7 @@ plot(papoue, image = TRUE, bpal = blues(100),
 	lty = c(1, 1, 1), drawlabel = c(FALSE, FALSE, FALSE))
 
 # add points from the sampling.csv, and add text to the plot:
-points(samp$x, samp$y, pch = 21, col = "black", 
+points(sampling$x, sampling$y, pch = 21, col = "black", 
 	bg = "yellow", cex = 1.3)
 text(152, -7.2, "New Britain\nTrench", col = "white", font = 3)
 @
@@ -173,7 +155,7 @@ By clicking on the map, we can select the area in the New Britain Trench, to get
 
  \begin{verbatim}
 > # click twice on the map to delimit an area:
-> get.sample(papoue, samp, col.lon = 1, col.lat = 2)
+> get.sample(papoue, sampling, col.lon = 1, col.lat = 2)
           x         y   station
 12 152.7475 -6.005769 station12
 13 152.5025 -6.211152 station13
@@ -372,11 +354,10 @@ wireframe(out, shade = TRUE, zoom = 1.1,
 
 \subsection{Preparing maps in the Pacific antimeridian region}
 
-The antimeridian (or antemeridian) is the 180th meridian and is located about in the middle of the Pacific Ocean, east of New Zealand and Fidji, west of Hawaii and Tonga. If you want to prepare a map of the Aleutian Islands (Alaska), your latitude values may, for example, go from 165 to 180 degrees East, and 180 to 165 degrees West. Crossing the antemeridian means that you will need to download data for the eastern (165 to 180) and the western (-180 to -165) portions of the area of interest (for example, GEBCO will tell you ``The Westernmost is more Easterly than the Easternmost. Please amend your search query'' if you try to download data for the Aleutians in one step). %We are currently working on a version of \verb;getNOAA.bathy(); that takes care of this issue. In the mean time, here is how you can prepare maps from this region: 
-\verb;getNOAA(); has an argument to deal with the antemeridian region. For the Aleutians, you would use the verb;antimeridian(); argument. \verb;summary.bathy(); can interpret antimeridian areas. When you plot your antimeridian region, the default behavior of verb;plot.bathy(); is to scale longitudes from 0 to 360 degrees (170E to 170W would be displayed as 170, 190 instead of 170, -170). You can use the argument \verb;axes=FALSE; in \verb;plot.bathy(); and add correct labels with \verb;antimeridian.box(); . We have set the default behavior of \verb;plot.bathy(); in this way to remind the user that the scale of the bathy object, in the antimeridian region, goes from 0 to 360; if you need to plot points on the map, you need to take this into account (i.e. a point at -170 longitude must be plotted using 190, not 170 or -170). 
+The antimeridian (or antemeridian) is the 180th meridian and is located about in the middle of the Pacific Ocean, east of New Zealand and Fidji, west of Hawaii and Tonga. If you want to prepare a map of the Aleutian Islands (Alaska), your latitude values may, for example, go from 165 to 180 degrees East, and 180 to 165 degrees West. Crossing the antemeridian means that you will need to download data for the eastern (165 to 180) and the western (-180 to -165) portions of the area of interest (for example, GEBCO will tell you ``The Westernmost is more Easterly than the Easternmost. Please amend your search query'' if you try to download data for the Aleutians in one step). 
+\verb;getNOAA(); has an argument to deal with the antemeridian region. For the Aleutians, you would use the \verb;antimeridian; argument. \verb;summary.bathy(); can interpret antimeridian areas as well. When you plot your antimeridian region, the default behavior of \verb;plot.bathy(); is to scale longitudes from 0 to 360 degrees (170E to 170W would be displayed as 170, 190 instead of 170, -170). You can use the argument \verb;axes=FALSE; in \verb;plot.bathy(); and add correct labels with \verb;antimeridian.box();. We have set the default behavior of \verb;plot.bathy(); in this way to remind the user that the scale of the bathy object, in the antimeridian region, goes from 0 to 360; if you need to plot points on the map, you need to take this into account (i.e. a point at -170 longitude must be plotted using 190, not 170 or -170). 
 
-\begin{Schunk}
-\begin{Sinput}
+\begin{verbatim}
 > getNOAA.bathy(165,-145,50,65, resolution=5,
   + antimeridian=TRUE) -> aleu
 > summary(aleu)
@@ -386,55 +367,22 @@ The antimeridian (or antemeridian) is the 180th meridian and is located about in
   + land=TRUE,lwd=0.1,axes=FALSE)
 > plot(aleutians,n=1,lwd=.8,add=T)
 > antimeridian.box(aleu)
-\end{Sinput}
-\end{Schunk}
+\end{verbatim}
 \includegraphics[width=\textwidth]{aleu.pdf}
 
+Alternatively, it is possible to import two compatible \verb;bathy; objects (for instance from GEBCO), one for the eastern part and one for the western part of the area of interest. The function \verb;collate.bathy; takes care of the stitching process: relabelling longitudes in the 0-360 degrees range, removing duplicated data (is.e. the data for longitude 180 is often present once in each individual dataset and needs to be removed once), etc. Providing that we downloaded two files east.nc and west.nc from the GEBCO website, creating a proper bathy object for the antimeridian region is simple:
 
-%First, download data from NOAA, for the Aleutian Islands. 
-%
-%\begin{Schunk}
-%\begin{Sinput}
-%> getNOAA.bathy(lon1=153,  lon2=180,  lat1=-8, lat2=-25, 
-%      resolution=10, keep=T) -> a
-%> getNOAA.bathy(lon1=-180, lon2=-170, lat1=-8, lat2=-25, 
-%      resolution=10, keep=T) -> b
-%\end{Sinput}
-%\end{Schunk}
-%
-%Second, we need to assemble these two matrices into one and change the coordinate system. Here instead of going from 153 to 180 and -180 to -170, we are going to go from 153 to $(-170)+360 = 190$. When merging the two datasets, we need to bear in mind that the antemeridian may be present in each dataset. We therefore use the function \verb;unique(); to remove the duplicated row. 
-%
-%\begin{Schunk}
-%\begin{Sinput}
-%as.numeric(rownames(b))+360 -> rownames(b)  # new coordinate system
-%rbind(a,b) -> c                 # collate the two matrices into one
-%c[unique(rownames(c)), ]->c    # remove the extra antimeridian line
-%class(c)<-"bathy"          # assign the class bathy to new matrix c
-%\end{Sinput}
-%\end{Schunk}
-%
-%The new matrix is now ready to be utilized. Simply using \verb;plot.bathy(); will reveal the custom coordinate system: 
-%
-%\begin{Schunk}
-%\begin{Sinput}
-%plot(c, image=T, n=10, lwd=0.5)
-%\end{Sinput}
-%\end{Schunk}
-%
-%We therefore use the argument \verb;axes = FALSE; and re-draw both the plot box and the axes. Only axis 2 (the longitudes) need to be modified. If you need to add anything to this plot (e.g. points, segments, etc...), remember that the new coordinate system requires that 360 be added to the original longitudes. 
-%
-%\begin{Schunk}
-%\begin{Sinput}
-%plot(c, image=T, n=10, lwd=0.5, axes=F)
-%box(); axis(2)
-%axis(1, at=seq(160,240, by=20), labels=c(seq(160,180, by=20),seq(-160,-120, by=20)))\end{Sinput}
-%\end{Schunk}
+\begin{verbatim}
+> a <- getGEBCO.bathy("east.nc")
+> b <- getGEBCO.bathy("west.nc")
+> stitched <- collate.bathy(a,b)
+\end{verbatim}
 
 \section{Data import and export strategies in marmap}
 
 \subsection{Overview of the different import and export strategies available in marmap}
 
-\verb"getNOAA.bathy()" is the easiest way to load data into R, but it depends on the NOAA download protocol, and one must have an internet connection. The way to use this function is demonstrated in the tutorial above. \verb"read.bathy()" allows import of data into R, and this data can be located on a drive ; an internet connection is therefore not mandatory. This is a good way to import data that have been saved locally on your drive, and may be faster than re-downloading data from the NOAA server at the beginning of each R session. If the user is building maps routinely, we propose two functions to create a local database that can be accessed from within R. These functions are \verb"setSQL()" and \verb"subsetSQL()". \\
+\verb"getNOAA.bathy()" is the easiest way to load data into R, but it depends on the NOAA download protocol, and one must have an internet connection (see above). Setting the \verb;keep; argument to \verb;TRUE; will save on disk the data downloaded from the NOAA servers. This allows the users to run scripts without having to download the same data again and again, and without having to modify the script since \verb;getNOAA.bathy; scans the current working directory for bathy objects already available before fetching data on NOAA servers. \verb"read.bathy()" allows import of data into R, and this data can be located on a drive ; an internet connection is therefore not mandatory. This is a good way to import data that have been saved locally on your drive, and may be faster than re-downloading data from the NOAA server at the beginning of each R session. If the user is building maps routinely, we propose two functions to create a local database that can be accessed from within R. These functions are \verb"setSQL()" and \verb"subsetSQL()". \\
 
 \begin{table}
 	\begin{center}
@@ -505,7 +453,9 @@ read.bathy('png.xyz', header = FALSE, sep = "\t") -> papoue
 summary(papoue)
 @
 
-\subsection{Getting bathymetric data from NOAA: local SQL database}
+The \verb;read.bathy; function can import bathymetric data for non rectangular areas as is often the case for custom datasets acquired by various types of sonar systems (e.g. Multibeam Echo Sounders). Please note however that depending on the size of the xyz file, the resolution of the data and the shape of the area covered by the data, the import can take up to sevral minutes.
+
+\subsection{Getting bathymetric data from NOAA: local SQL data{\-}base}
 
 \verb"setSQL()" and \verb"subsetSQL()" create and query a local SQL database for bathymetric data. These tools are made for routine use with no internet connection. The full ETOPO1 database, or a subset (for example), can be downloaded on your computer, and used to set an SQL database, which size will be approximately the same as your original xyz data (unzipped ETOPO1 is about 5 Go). The advantage of SQL, a language for querying large databases, are manyfold. Its use will allow rapid upload of data into R, directly as bathy objects (and therefore directly useable for plotting and analysis) with a smaller footprint on your memory than if you tried to load a very large xyz file into R and then subset-ed it. Here is a simple example on how to set up and use an SQL database for marmap. 
 

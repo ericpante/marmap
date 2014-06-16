@@ -48,7 +48,7 @@ get.depth <- function(mat, x, y=NULL, locator=TRUE, distance=FALSE, ...){
 			}
 			
 		} else {
-			cat('Waiting for interactive input: click any number of times on the map\n')
+			cat("Waiting for interactive input: click any number of times on the map, then press 'Esc'\n")
 			coord <- locator(type="p",...)
 		}
 	

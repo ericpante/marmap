@@ -10,14 +10,14 @@ Generates rectangular or non rectangular \code{bathy} objects by extracting bath
 subsetBathy(mat, x, y=NULL, locator=TRUE, \dots)
 }
 \arguments{
+  \item{mat}{
+Bathymetric data matrix of class \code{bathy}, as imported with \code{read.bathy}.
+}
   \item{x}{
 Either a list of two elements (numeric vectors of longitude and latitude), a 2-column matrix or data.frame of longitudes and latitudes, or a numeric vector of longitudes.
 }
   \item{y}{
 Either \code{NULL} (default) or a numerical vector of latitudes. Ignored if \code{x} is not a numeric vector.
-}
-  \item{mat}{
-Bathymetric data matrix of class \code{bathy}, as imported with \code{read.bathy}.
 }
   \item{locator}{
 Logical. Whether to choose data points interactively with a map or not. If \code{TRUE} (default), a bathymetric map must have been plotted and both \code{x} and \code{y} are both ignored.
