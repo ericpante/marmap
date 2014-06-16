@@ -136,7 +136,7 @@ Eric Pante, Benoit Simon-Bouhet (2013) marmap: A Package for Importing, Plotting
 	
 	# plot sampling locations:
 	points(metallo, col="black", bg=blues[metallo$depth], pch=21,cex=1.5)
-	require(shape)
+	library(shape)
 	colorlegend(zlim=c(-mx,0), col=rev(blues), main="depth (m)",posx=c(0.85,0.88))
 
 ## Example 6: use packages maps and mapdata in combination with marmap
