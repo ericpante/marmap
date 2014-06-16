@@ -169,7 +169,7 @@ We can use the depth data when plotting points:
 <<fig=TRUE,echo=TRUE>>=
 # make a table of fake sampling information, with fake depth
 samp.depth = sample(seq(-3000, -1000, by = 50), size = 16)
-data.frame(samp$x, samp$y, samp.depth) -> sp
+data.frame(sampling$x, sampling$y, samp.depth) -> sp
 names(sp) <- c("lon", "lat", "depth")
 head(sp)
 
