@@ -16,9 +16,9 @@ function(lon1,lon2,lat1,lat2, resolution = 4, keep=FALSE, antimeridian=FALSE){
 	
 	# Naming the file
 	if (antimeridian) {
-		FILE <- paste("marmap_coord_",x1,":",y1,":",x2,":",y2,"_res_",resolution,"_anti",".csv", sep="")
+		FILE <- paste("marmap_coord_",x1,";",y1,";",x2,";",y2,"_res_",resolution,"_anti",".csv", sep="")
 	} else {
-		FILE <- paste("marmap_coord_",x1,":",y1,":",x2,":",y2,"_res_",resolution,".csv", sep="")
+		FILE <- paste("marmap_coord_",x1,";",y1,";",x2,";",y2,"_res_",resolution,".csv", sep="")
 	}
 	
 	# If file exists in the working directory, load it,
