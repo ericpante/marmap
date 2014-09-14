@@ -61,7 +61,7 @@ get.depth <- function(mat, x, y=NULL, locator=TRUE, distance=FALSE, ...){
 	if (outside.lon | outside.lat) stop("Some data points are oustide the range of mat")
 		
 	out <- data.frame(Lon=coord$x, Lat=coord$y)
-	out$Depth <- apply(out, 1, function(x) mat[ which(abs(lon-x[1])==min(abs(lon-x[1]))) , which(abs(lat-x[2])==min(abs(lat-x[2]))) ])
+	out$Depth <- apply(out, 1, function(x) mat[ which(abs(lon-x[1])==min(abs(lon-x[1]))) , which(abs(lat-x[2])==min(abs(lat-x[2]))) ][1])
 	
 	if(distance){
 		
