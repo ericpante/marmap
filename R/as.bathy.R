@@ -36,9 +36,8 @@ as.bathy <- function(x){
 		if ((bcol*brow) == nrow(bath)) {
 			bathy <- matrix(bath[, 3], nrow = brow, ncol = bcol, byrow = FALSE, dimnames = list(lon, lat))
 			} else {
-				id <- apply(bath[,-3],1,function(x) c(which(lon==x[1]) , which(lat==x[2])) )
-				pos.missing <- which(table(id[1,],id[2,])==0)
-				bathy <- matrix(add.nas(bath[,3],pos.missing), nrow = brow, ncol = bcol, byrow = FALSE, dimnames = list(lon, lat))
+				colnames(bath) <- paste("V",1:3,sep="")
+				bathy <- unclass(as.matrix(reshape::cast(bath, V1~V2, value="V3")))
 			}
 	}
 
