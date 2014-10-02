@@ -1,4 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 importFrom(shape,colorlegend)
 importFrom(reshape,cast)
+importFrom(reshape,cast_parse_formula)
+importFrom(reshape,check_formula)
 
