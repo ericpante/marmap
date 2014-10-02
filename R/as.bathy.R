@@ -37,7 +37,7 @@ as.bathy <- function(x){
 			bathy <- matrix(bath[, 3], nrow = brow, ncol = bcol, byrow = FALSE, dimnames = list(lon, lat))
 			} else {
 				colnames(bath) <- paste("V",1:3,sep="")
-				bathy <- unclass(as.matrix(reshape::cast(bath, V1~V2, value="V3")))
+				bathy <- reshape2::acast(bath, V1~V2, value.var="V3")
 			}
 	}
 

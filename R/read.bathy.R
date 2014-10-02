@@ -14,7 +14,7 @@ read.bathy <- function(xyz, header=FALSE, sep=","){
 		mat <- matrix(bath[, 3], nrow = brow, ncol = bcol, byrow = FALSE, dimnames = list(lon, lat))
 		} else {
 			colnames(bath) <- paste("V",1:3,sep="")
-			mat <- unclass(as.matrix(reshape::cast(bath, V1~V2, value="V3")))
+			mat <- reshape2::acast(bath, V1~V2, value.var="V3")
 		}
 		
     ordered.mat <- check.bathy(mat)
