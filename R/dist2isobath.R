@@ -63,7 +63,7 @@ dist2isobath <- function(mat, x, y=NULL, isobath=0, locator=FALSE, ...) {
 	# Get contour lines for a given isobath
 	lon <- unique(as.numeric(rownames(mat)))
 	lat <- unique(as.numeric(colnames(mat)))
-	iso <- contourLines(lon, lat, mat, level=isobath)
+	iso <- contourLines(lon, lat, mat, levels = isobath)
 		
 	# Transform the list from contourLines into a SpatialLines
 	iso <- lapply(iso, function(k) sp::Line(matrix(c(k$x,k$y),ncol=2)))

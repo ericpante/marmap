@@ -19,7 +19,7 @@ Two-column data.frame or matrix of longitudes and latitudes for end points. The 
   \item{n}{
 Numeric. The number of intermediate points to add along the great circle line between the start end end points.
 }
-  \item{antimeridan}{
+  \item{antimeridian}{
 Logical indicating if the map on which the great circle lines will be plotted covers the antimeridian region. The antimeridian (or antemeridian) is the 180th meridian and is located in the middle of the Pacific Ocean, east of New Zealand and Fidji, west of Hawaii and Tonga.
 }
   \item{...}{
