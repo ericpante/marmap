@@ -54,7 +54,7 @@ blues <- c("lightsteelblue4","lightsteelblue3","lightsteelblue2","lightsteelblue
 # Visualize the great circle distances
 plot(atl, image=TRUE, lwd=0.1, land=TRUE, bpal = list(c(0,max(atl),"grey"), c(min(atl),0,blues)))
 points(lon,lat, pch=21, col="orange4", bg="orange2", cex=.8)
-linesGCD(d[2:3],d[4:5])
+linesGC(d[2:3],d[4:5])
 
 # Load aleutians data and plot the map
 data(aleutians)
