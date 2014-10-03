@@ -33,7 +33,7 @@ Further arguments to be passed to \code{locator} when the interactive mode is us
 \code{get.depth} allows the user to get depth data by clicking on a map created with \code{plot.bathy} or by providing coordinates of points of interest. This function uses the \code{locator} function (\code{graphics} package); after creating a map with \code{plot.bathy}, the user can click on the map once or several times (if \code{locator=TRUE}), press the Escape button, and get the depth of those locations in a three-coumn data.frame (longitude, latitude and depth). Alternatively, when \code{locator=FALSE}, the user can submit a list of longitudes and latitudes, a two-column matrix or data.frame of longitudes and latitudes (as input for \code{x}), or one vector of longitudes (\code{x}) and one vector of latitudes (\code{y}). The non-interactive mode is well suited to get depth information for each point provided by GPS tracking devices. While \code{\link{get.transect}} gets every single depth value available in the bathymetric matrix between two points along a user-defined transect, \code{get.depth} only provides depth data for the specific points provided as input by the user.
 }
 \value{
-A data.frame with at least, longitude, latitude and depth with one line for each point of interest. If distance=\code{TRUE}, a fourth column containing the kilometric distance from the first point is added.
+A data.frame with at least, longitude, latitude and depth with one line for each point of interest. If \code{distance=TRUE}, a fourth column containing the kilometric distance from the first point is added.
 }
 \author{
 Benoit Simon-Bouhet and Eric Pante
