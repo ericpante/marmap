@@ -56,6 +56,7 @@ d
 
 # Visualize the great circle distances
 plot(atl, image=TRUE, lwd=0.1, land=TRUE, bpal = list(c(0,max(atl),"grey"), c(min(atl),0,"lightsteelblue4","lightsteelblue3","lightsteelblue2","lightsteelblue1")))
+plot(atl, deep=-200, shallow=-200, step=0, lwd=0.6, add=T)
 points(lon,lat, pch=21, col="orange4", bg="orange2", cex=.8)
 linesGC(d[2:3],d[4:5])
 }
