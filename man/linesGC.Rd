@@ -52,13 +52,15 @@ d
 blues <- c("lightsteelblue4","lightsteelblue3","lightsteelblue2","lightsteelblue1")
 
 # Visualize the great circle distances
-plot(atl, image=TRUE, lwd=0.1, land=TRUE, bpal = list(c(0,max(atl),"grey"), c(min(atl),0,blues)))
+plot(atl, image=TRUE, lwd=0.1, land=TRUE, 
+	 bpal = list(c(0,max(atl),"grey"), c(min(atl),0,blues)))
 points(lon,lat, pch=21, col="orange4", bg="orange2", cex=.8)
 linesGC(d[2:3],d[4:5])
 
 # Load aleutians data and plot the map
 data(aleutians)
-plot(aleutians, image=TRUE, lwd=0.1, land=TRUE, bpal = list(c(0,max(aleutians),"grey"), c(min(aleutians),0,blues)))
+plot(aleutians, image=TRUE, lwd=0.1, land=TRUE, 
+	 bpal = list(c(0,max(aleutians),"grey"), c(min(aleutians),0,blues)))
 
 # define start and end points
 start <- matrix(c(170,55, 190, 60), ncol=2, byrow=TRUE, dimnames=list(1:2, c("lon","lat")))
