@@ -43,7 +43,7 @@ Eric Pante
 \note{
 There must be no database file called \code{bathy_db} in the working directory prior to running \code{setSQL}. 
 Make sure that your "bathy" input text file (for function \code{setSQL}) is made of comma-separated fields, and that the table headers are 'lon', 'lat' and 'depth', in that order.
-\code{setSQL} and \code{subsetSQL} were modified on Nov. 2, 2014 to comply to RSQLite 1.0.0.
+\code{setSQL} and \code{subsetSQL} were modified on Nov. 2, 2014 to comply with RSQLite 1.0.0.
 }
 \examples{
 # load NW Atlantic data and make column headers
