@@ -1,7 +1,7 @@
 subsetSQL = function(min_lon, max_lon, min_lat, max_lat){
 
 	# prepare ("connect") SQL database
-	con <- DBI::dbConnect(SQLite(), dbname = "bathy_db")
+	con <- DBI::dbConnect(RSQLite::SQLite(), dbname = "bathy_db")
 
 	# build SQL request: 
     paste("SELECT * from bathy_db where lon >",min_lon,
