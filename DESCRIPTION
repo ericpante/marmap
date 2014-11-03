@@ -7,7 +7,8 @@ Author: Eric Pante, Benoit Simon-Bouhet, and Jean-Olivier Irisson
 Maintainer: Eric Pante <pante.eric@gmail.com>
 Depends: R (>= 2.10)
 Imports: DBI, RSQLite, gdistance, geosphere, sp, raster, ncdf, plotrix, shape, reshape2
-Suggests: maps, mapdata, lattice, mapproj
+Suggests: maps, mapdata, lattice, mapproj, knitr
 Description: Import, plot and analyze bathymetric and topographic data
 License: GPL (>= 3)
 Packaged: 2014-10-02 05:50:00 UTC; ep
+VignetteBuilder: knitr
