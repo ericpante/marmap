@@ -8,12 +8,18 @@ Creating and querying local SQL database for bathymetric data
 \code{subsetSQL} queries the local SQL database created with \code{setSQL} to extract smaller data subsets.
 }
 \usage{
-setSQL(bathy)
+setSQL(bathy, header = TRUE, sep = ",")
 subsetSQL(min_lon, max_lon, min_lat, max_lat)
 }
 \arguments{
   \item{bathy}{
 A text file containing a comma-separated, three-column table with longitude, latitude and depth data (no default)
+}
+  \item{header}{
+does the xyz file contains a row of column names (default = TRUE)
+}
+  \item{sep}{
+character separating columns in the xyz file, (default=",")
 }
   \item{min_lon}{
 minimum longitude of the data to be extracted from the local SQL database
@@ -42,7 +48,7 @@ Eric Pante
 }
 \note{
 There must be no database file called \code{bathy_db} in the working directory prior to running \code{setSQL}. 
-Make sure that your "bathy" input text file (for function \code{setSQL}) is made of comma-separated fields, and that the table headers are 'lon', 'lat' and 'depth', in that order.
+Make sure that your "bathy" input text file (for function \code{setSQL}) is made of comma-separated fields, and that the table columns contain longitude, latitude and depth data, in that order.
 \code{setSQL} and \code{subsetSQL} were modified on Nov. 2, 2014 to comply with RSQLite 1.0.0.
 }
 \examples{
