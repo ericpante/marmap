@@ -48,13 +48,12 @@ Eric Pante
 }
 \note{
 There must be no database file called \code{bathy_db} in the working directory prior to running \code{setSQL}. 
-Make sure that your "bathy" input text file (for function \code{setSQL}) is made of comma-separated fields, and that the table columns contain longitude, latitude and depth data, in that order.
+Make sure that your "bathy" input is a xyz text file (for function \code{setSQL}) with 3 columns containing longitude, latitude and depth data, in that order.
 \code{setSQL} and \code{subsetSQL} were modified on Nov. 2, 2014 to comply with RSQLite 1.0.0.
 }
 \examples{
-# load NW Atlantic data and make column headers
+# load NW Atlantic data
 data(nw.atlantic)
-colnames(nw.atlantic) <- c('lon', 'lat', 'depth')
 
 # write data to disk as a comma-separated text file
 write.table(nw.atlantic, "NW_Atlantic.csv", sep=",", quote=FALSE, row.names=FALSE)
