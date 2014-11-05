@@ -1,4 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 importFrom(shape,colorlegend)
 importFrom(reshape2,acast)
+importFrom(DBI,dbConnect,dbWriteTable,dbSendQuery,fetch,dbClearResult,dbDisconnect,dbListFields)
+importFrom(RSQLite,SQLite)
 
