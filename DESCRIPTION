@@ -1,7 +1,7 @@
 Package: marmap
 Type: Package
 Title: Import, plot and analyze bathymetric and topographic data
-Version: 0.9
+Version: 1.0
 Date: 2014-11-05
 Author: Eric Pante, Benoit Simon-Bouhet, and Jean-Olivier Irisson
 Maintainer: Eric Pante <pante.eric@gmail.com>

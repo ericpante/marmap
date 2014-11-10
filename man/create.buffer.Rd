@@ -30,7 +30,7 @@ An object of class \code{bathy} of the same size as \code{mat} containing only \
 Benoit Simon-Bouhet
 }
 \seealso{
-\code{\link{outline.buffer}}, \code{\link{combine.buffer}}, \code{\link{plot.bathy}}
+\code{\link{outline.buffer}}, \code{\link{combine.buffers}}, \code{\link{plot.bathy}}
 }
 \examples{
 # load and plot a bathymetry

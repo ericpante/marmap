@@ -40,7 +40,11 @@ buf2 <- create.buffer(florida, loc[2,], radius=1.2)
 # combine both buffers
 buf <- combine.buffers(list(buf1,buf2))
 
-# highlight isobath with the buffer and add outline
-plot(buf, add = TRUE, n = 10, col = 2, lwd=.4)
-plot(outline.buffer(buf), add = TRUE, lwd = 0.7, col = 2)
+\dontrun{
+# Add outline of the resulting buffer in red 
+# and the outline of the original buffers in blue
+plot(outline.buffer(buf), add = TRUE, lwd = 3, col = 2)
+plot(outline.buffer(buf1), add = TRUE, lwd = 0.5, col="blue")
+plot(outline.buffer(buf2), add = TRUE, lwd = 0.5, col="blue")
+}
 }

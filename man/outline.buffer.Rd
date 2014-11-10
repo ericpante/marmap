@@ -24,7 +24,7 @@ An object of class \code{bathy} of the same dimension as \code{buffer} containin
 Benoit Simon-Bouhet
 }
 \seealso{
-\code{\link{create.buffer}}, \code{\link{combine.buffer}}, \code{\link{plot.bathy}}
+\code{\link{create.buffer}}, \code{\link{combine.buffers}}, \code{\link{plot.bathy}}
 }
 \examples{
 # load and plot a bathymetry
