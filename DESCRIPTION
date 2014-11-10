@@ -6,7 +6,7 @@ Date: 2014-11-05
 Author: Eric Pante, Benoit Simon-Bouhet, and Jean-Olivier Irisson
 Maintainer: Eric Pante <pante.eric@gmail.com>
 Depends: R (>= 2.10)
-Imports: DBI, RSQLite, gdistance, geosphere, sp, raster, ncdf, plotrix, shape, reshape2
+Imports: DBI, RSQLite, gdistance, geosphere, sp, raster, ncdf, plotrix, shape, reshape2, adehabitatMA
 Suggests: maps, mapdata, lattice, mapproj, R.rsp
 Description: Import, plot and analyze bathymetric and topographic data
 License: GPL (>= 3)

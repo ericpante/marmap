@@ -36,7 +36,7 @@ A list of four objects: the projeced surface area in squared kilometers, a matri
 Benoit Simon-Bouhet and Eric Pante
 }
 \seealso{
-\code{\link{plot.bathy}}, \code{\link{contour}}, \code{\link{areaPolygon}}
+\code{\link{plotArea}}, \code{\link{plot.bathy}}, \code{\link{contour}}, \code{\link{areaPolygon}}
 }
 \examples{
 
@@ -48,12 +48,13 @@ Benoit Simon-Bouhet and Eric Pante
 	bathyal <- get.area(hawaii, level.inf=-4000, level.sup=-1000)
 	abyssal <- get.area(hawaii, level.inf=min(hawaii), level.sup=-4000)
 	
-	image(mesopelagic$Lon, mesopelagic$Lat, mesopelagic$Area, 
-	      col=c(rgb(0,0,0,0), rgb(.3,0,.7,.3)), add=TRUE)
-	image(bathyal$Lon, bathyal$Lat, bathyal$Area, 
-	      col=c(rgb(0,0,0,0), rgb(.7,0,0,.3)), add=TRUE)
-	image(abyssal$Lon, abyssal$Lat, abyssal$Area, 
-	      col=c(rgb(0,0,0,0), rgb(.7,.7,0.3,.3)), add=TRUE)
+	col.meso <- rgb(0.3, 0, 0.7, 0.3) 
+	col.bath <- rgb(0.7, 0, 0, 0.3) 
+	col.abys <- rgb(0.7, 0.7, 0.3, 0.3) 
+
+	plotArea(mesopelagic, col = col.meso)
+	plotArea(bathyal, col = col.bath)
+	plotArea(abyssal, col = col.abys)
 	
 	me <- round(mesopelagic$Square.Km, 0)
 	ba <- round(bathyal$Square.Km, 0)
@@ -64,7 +65,7 @@ Benoit Simon-Bouhet and Eric Pante
 		         paste("bathyal:",ba,"km2"), 
 		         paste("abyssal:",ab,"km2")), 
 		col="black", pch=21, 
-		pt.bg=c(rgb(.3,0,.7,.3), rgb(.7,0,0,.3), rgb(.7,.7,0,.3)) )
+		pt.bg=c(col.meso,col.bath,col.abys))
 
 # Use of xlim and ylim
 	data(hawaii)
@@ -77,12 +78,13 @@ Benoit Simon-Bouhet and Eric Pante
 	abyssal <- get.area(hawaii, xlim=c(-161.4,-159), ylim=c(21,23),
 	                        level.inf=min(hawaii), level.sup=-4000)
 	
-	image(mesopelagic$Lon, mesopelagic$Lat, mesopelagic$Area, 
-	      col=c(rgb(0,0,0,0), rgb(.3,0,.7,.3)), add=TRUE)
-	image(bathyal$Lon, bathyal$Lat, bathyal$Area, 
-	      col=c(rgb(0,0,0,0), rgb(.7,0,0,.3)), add=TRUE)
-	image(abyssal$Lon, abyssal$Lat, abyssal$Area, 
-	      col=c(rgb(0,0,0,0), rgb(.7,.7,0.3,.3)), add=TRUE)
+	col.meso <- rgb(0.3, 0, 0.7, 0.3) 
+	col.bath <- rgb(0.7, 0, 0, 0.3) 
+	col.abys <- rgb(0.7, 0.7, 0.3, 0.3) 
+	
+	plotArea(mesopelagic, col = col.meso)
+	plotArea(bathyal, col = col.bath)
+	plotArea(abyssal, col = col.abys)
 	
 	me <- round(mesopelagic$Square.Km, 0)
 	ba <- round(bathyal$Square.Km, 0)
@@ -93,5 +95,5 @@ Benoit Simon-Bouhet and Eric Pante
 		         paste("bathyal:",ba,"km2"), 
 		         paste("abyssal:",ab,"km2")), 
 		col="black", pch=21, 
-		pt.bg=c(rgb(.3,0,.7,.3), rgb(.7,0,0,.3), rgb(.7,.7,0,.3)) )
+		pt.bg=c(col.meso,col.bath,col.abys))
 }

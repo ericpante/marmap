@@ -9,6 +9,7 @@ get.area <- function(mat, level.inf, level.sup=0, xlim=NULL, ylim=NULL) {
 
 	if (is.null(xlim)) xlim <- range(lon)
 	if (is.null(ylim)) ylim <- range(lat)
+	if (any(is.na(mat))) mat[is.na(mat)] <- 100000*max(mat,na.rm=TRUE)
 
 	x1b <- which.min(abs(lon - xlim[1]))
 	y1b <- which.min(abs(lat - ylim[1]))
