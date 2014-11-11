@@ -60,8 +60,8 @@ get.depth <- function(mat, x, y=NULL, locator=TRUE, distance=FALSE, ...){
 	
 	if (outside.lon | outside.lat) stop("Some data points are oustide the range of mat")
 		
-	out <- data.frame(Lon=coord$x, Lat=coord$y)
-	out$Depth <- apply(out, 1, function(x) mat[ which(abs(lon-x[1])==min(abs(lon-x[1]))) , which(abs(lat-x[2])==min(abs(lat-x[2]))) ][1])
+	out <- data.frame(lon=coord$x, lat=coord$y)
+	out$depth <- apply(out, 1, function(x) mat[ which(abs(lon-x[1])==min(abs(lon-x[1]))) , which(abs(lat-x[2])==min(abs(lat-x[2]))) ][1])
 	
 	if(distance){
 		
@@ -84,10 +84,11 @@ get.depth <- function(mat, x, y=NULL, locator=TRUE, distance=FALSE, ...){
 		}
 		
 		dist.km = NULL
-		for(i in 1:length(out$Depth)){
-			dist.km = c(dist.km, deg2km(x1=out$Lon[1],y1=out$Lat[1],x2=out$Lon[i],y2=out$Lat[i]))
+		for(i in 2:length(out$depth)){
+			dist.km = c(dist.km, deg2km(x1=out$lon[i-1],y1=out$lat[i-1],x2=out$lon[i],y2=out$lat[i]))
 		}
-		out$Dist.km <- dist.km
+		out$dist.km <- cumsum(c(0,dist.km))
+		out <- out[,c(1,2,4,3)]
 	}
 	
 	return(out)

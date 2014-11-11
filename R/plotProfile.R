@@ -1,8 +1,8 @@
 plotProfile <- function(profile,shadow=TRUE,xlim,ylim,col.sea,col.bottom,xlab,ylab,...){
 	
 	if (ncol(profile)!=4) stop("The profile object should have 4 columns (Longitude, Latitude, Kilomtric distance from start of path and Depth)")
-	if (missing(xlim)) xlim <- range(profile$dist.km)
-	if (missing(ylim)) ylim <- range(c(0,profile$depth))
+	if (missing(xlim)) xlim <- range(profile[,3])
+	if (missing(ylim)) ylim <- range(c(0,profile[,4]))
 	if (missing(col.bottom)) col.bottom <- rgb(198,184,151,maxColorValue=255)
 	if (missing(col.sea)) col.sea <- rgb(130,180,212,maxColorValue=255)
 	if (missing(xlab)) xlab <- "Distance from start of transect (km)"
