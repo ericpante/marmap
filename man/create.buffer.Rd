@@ -7,7 +7,7 @@ Create a buffer of specified radius around one or several points
 Create a circular buffer of user-defined radius around one or several points defined by their longitudes and latitudes.
 }
 \usage{
-create.buffer(mat, loc, radius)
+create.buffer(mat, loc, radius, km = FALSE)
 }
 \arguments{
   \item{mat}{
@@ -17,8 +17,12 @@ an object of class \code{bathy}
 a 2-column \code{data.frame} of longitudes and latitudes for points around which the buffer is to be created.
 }
   \item{radius}{
-\code{numeric}. Radius of the buffer in the same unit as the \code{bathy} object (i.e. usually decimal degrees)
+\code{numeric}. Radius of the buffer in the same unit as the \code{bathy} object (i.e. usually decimal degrees) when \code{km=FALSE} (default) or in kilometers when \code{radius=TRUE}.
 }
+  \item{km}{
+\code{logical}. If \code{TRUE}, the \code{radius} should be provided in kilometers. When \code{FALSE} (default) the radius is in the same unit as the \code{bathy} object (i.e. usually decimal degrees).
+}
+
 }
 \details{
 This function takes advantage of the \code{buffer} function from package \code{adehabitatMA} and several functions from packages \code{sp} to define the buffer around the points provided by the user.
