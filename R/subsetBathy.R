@@ -64,7 +64,7 @@ subsetBathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 		if (nrow(out)==1) stop("'subset.bathy' needs at least two points")
 
 		if (nrow(out)==2) {
-			rect(min(out$Lon),min(out$Lat),max(out$Lon),max(out$Lat))
+			try(rect(min(out$Lon),min(out$Lat),max(out$Lon),max(out$Lat)),silent=TRUE)
 			x1 <- which(abs(lon-out$Lon[1])==min(abs(lon-out$Lon[1])))
 			y1 <- which(abs(lat-out$Lat[1])==min(abs(lat-out$Lat[1])))
 			x2 <- which(abs(lon-out$Lon[2])==min(abs(lon-out$Lon[2])))
