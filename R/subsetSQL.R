@@ -14,5 +14,6 @@ subsetSQL = function(min_lon, max_lon, min_lat, max_lat){
     data <- DBI::fetch(res, n = -1)
 	DBI::dbClearResult(res)
 	DBI::dbDisconnect(con)
+	if (!is.numeric(data[,3])) data[,3] <- suppressWarnings(as.numeric(data[,3]))
     return(as.bathy(data))
 }
