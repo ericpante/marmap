@@ -1,4 +1,4 @@
-read.bathy <- function(xyz, header=FALSE, sep=","){
+read.bathy <- function(xyz, header=FALSE, sep=",", ...){
 
 ### xyz: three-column table with longitude (x), latitude (y) and depth (z) (no default)
 ### header: whether this table has a row of column names (default = FALSE)

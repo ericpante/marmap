@@ -7,7 +7,7 @@ Read bathymetric data in XYZ format
 Reads a three-column table containing longitude (x), latitude (y) and depth (z) data. 
 }
 \usage{
-read.bathy(xyz, header = FALSE, sep = ",")
+read.bathy(xyz, header = FALSE, sep = ",", ...)
 }
 \arguments{
   \item{xyz}{
@@ -18,6 +18,9 @@ whether this table has a row of column names (default = FALSE)
 }
   \item{sep}{
 character separating columns, (default=",")
+}
+  \item{...}{
+further arguments to be passed to \code{read.table()}
 }
 }
 \details{
