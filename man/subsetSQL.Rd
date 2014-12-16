@@ -8,8 +8,8 @@ Creating and querying local SQL database for bathymetric data
 \code{subsetSQL} queries the local SQL database created with \code{setSQL} to extract smaller data subsets.
 }
 \usage{
-setSQL(bathy, header = TRUE, sep = ",")
-subsetSQL(min_lon, max_lon, min_lat, max_lat)
+setSQL(bathy, header = TRUE, sep = ",", db.name = "bathy_db")
+subsetSQL(min_lon, max_lon, min_lat, max_lat, db.name = "bathy_db")
 }
 \arguments{
   \item{bathy}{
@@ -33,6 +33,9 @@ minimum latitude of the data to be extracted from the local SQL database
   \item{max_lat}{
 maximum latitude of the data to be extracted from the local SQL database
 }
+  \item{db.name}{
+The name of (or path to) the SQL database to be created on disk by \code{setSQL} or from which \code{subsetSQL} will extract data ("bathy_db" by default)
+}
 }
 \details{
 Functions \code{setSQL} and \code{subsetSQL} were built to work together. \code{setSQL} builds an SQL database and saves it on disk. \code{subsetSQL} queries that local database and the fields \code{min_lon}, \code{max_lon}, etc, are used to extract a subset of the database. The functions were built as two entities so that multiple queries can be done multiple times, without re-building the database each time. These functions were designed to access the very large (>5Go) ETOPO1 file that can be downloaded from the NOAA website (\url{http://www.ngdc.noaa.gov/mgg/global/global.html})
@@ -47,7 +50,7 @@ Amante, C. and B. W. Eakins, ETOPO1 1 Arc-Minute Global Relief Model: Procedures
 Eric Pante
 }
 \note{
-There must be no database file called \code{bathy_db} in the working directory prior to running \code{setSQL}. 
+If unspecified, \code{db.name} is set to "bathy_db" by default. Thus, theere must be no database file called \code{bathy_db} in the working directory prior to running \code{setSQL} unless a different name is used for the new database. 
 Make sure that your "bathy" input is a xyz text file (for function \code{setSQL}) with 3 columns containing longitude, latitude and depth data, in that order.
 \code{setSQL} and \code{subsetSQL} were modified on Nov. 2, 2014 to comply with RSQLite 1.0.0.
 }
