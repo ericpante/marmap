@@ -1,4 +1,4 @@
-scaleBathy = function (mat, deg=1, x="bottomleft", y=NULL, inset=10, ...) {
+scaleBathy = function (mat, deg=1, x="bottomleft", y=NULL, inset=10, angle=90, ...) {
 			
 	usr=par("usr")
 	
@@ -28,7 +28,7 @@ scaleBathy = function (mat, deg=1, x="bottomleft", y=NULL, inset=10, ...) {
 	cos.lat <- cos((2 * pi * lat)/360)
 	perdeg <- (2 * pi * (6372.798 + 21.38 * cos.lat) * cos.lat)/360
           	
-	arrows(X, Y, X+(deg),Y, code=3, length=0.05)
+	arrows(X, Y, X+(deg),Y, code=3, length=0.05, angle=angle)
 	text((X + X+(deg))/2, Y, 
 			adj=c(0.5,-0.5),
 			labels=paste(round(perdeg*deg,0),"km"), ...)	

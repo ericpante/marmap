@@ -7,7 +7,7 @@ Adds a scale to a map
 Uses geographic information from object of class \code{bathy} to calculate and plot a scale in kilometer.
 }
 \usage{
-scaleBathy(mat, deg=1, x="bottomleft", y=NULL, inset=10, ...)
+scaleBathy(mat, deg=1, x="bottomleft", y=NULL, inset=10, angle=90, ...)
 }
 \arguments{
   \item{mat}{
@@ -21,6 +21,9 @@ the coordinates used to plot the scale on the map (see Details)
 }
   \item{inset}{
 when \code{x} is a keyword (e.g. \code{"bottomleft"}), \code{inset} is a percentage of the plotting space controlling the relative position of the plotted scale (see Examples)
+}
+  \item{angle}{
+angle from the shaft of the arrow to the edge of the arrow head
 }
   \item{...}{
 further arguments to be passed to \code{text}
