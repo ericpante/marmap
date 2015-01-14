@@ -1,4 +1,4 @@
-readGEBCO.bathy <- function(file, db="GEBCO_1min", resolution=1){
+readGEBCO.bathy <- function(file, resolution=1){
 
 	# require(ncdf)
 
@@ -10,35 +10,35 @@ readGEBCO.bathy <- function(file, db="GEBCO_1min", resolution=1){
 
 		# get data from netCDF file
 		nc <- ncdf::open.ncdf(file)
-		ncells <- length(ncdf::get.var.ncdf(nc, "xysize"))
-		z <- ncdf::get.var.ncdf(nc,"z")
-		xrg <- ncdf::get.var.ncdf(nc, "x_range")
-		yrg <- ncdf::get.var.ncdf(nc, "y_range")
+		# ncells <- length(ncdf::get.var.ncdf(nc, "xysize"))
+		z <- ncdf::get.var.ncdf(nc,"elevation")
+		lat <- ncdf::get.var.ncdf(nc, "lat")
+		lon <- ncdf::get.var.ncdf(nc, "lon")
 	
 		# dimensions of the matrix, depending on type of database
-		if(db == "GEBCO_1min") db.scale <- 1/60
-		if(db == "GEBCO_08")   db.scale <- 1/120
-		xdim <- seq(xrg[1],xrg[2], by=db.scale)
-		ydim <- seq(yrg[1],yrg[2], by=db.scale)
+		# if(db == "GEBCO_1min") db.scale <- 1/60
+		# if(db == "GEBCO_08")   db.scale <- 1/120
+		# xdim <- seq(xrg[1],xrg[2], by=db.scale)
+		# ydim <- seq(yrg[1],yrg[2], by=db.scale)
 		
-		# for some reason sometimes the z vector is shorter than the product of the 
-		# length of the latitude and longitude vectors
-		# so we check that z and xy are compatible, otherwise we crop the matrix dimentions. 
-		if(length(xdim) * length(ydim) != ncells) {
-			warning("The number of cells in the .nc file (", ncells , ") do not correspond exactly to the range of latitude x longitude values (", length(xdim) * length(ydim), ")...\n  Cropping the matrix dimentions (see ?readGEBCO.bathy for details)...")
-			xdim<-xdim[-length(xdim)];ydim<-ydim[-length(ydim)] # removing last x and y values
-		}
+		# # for some reason sometimes the z vector is shorter than the product of the
+		# # length of the latitude and longitude vectors
+		# # so we check that z and xy are compatible, otherwise we crop the matrix dimentions.
+		# if(length(xdim) * length(ydim) != ncells) {
+		# 	warning("The number of cells in the .nc file (", ncells , ") do not correspond exactly to the range of latitude x longitude values (", length(xdim) * length(ydim), ")...\n  Cropping the matrix dimentions (see ?readGEBCO.bathy for details)...")
+		# 	xdim<-xdim[-length(xdim)];ydim<-ydim[-length(ydim)] # removing last x and y values
+		# }
 
 		# build matrix 
-		mat <- matrix(data=z, nrow=length(xdim),ncol=length(ydim), byrow=F)
-		mat <- mat[,ncol(mat):1] # (merci benoit!)
-		rownames(mat) <- xdim
-		colnames(mat) <- ydim
+		mat <- matrix(data=rev(z), nrow=length(lon),ncol=length(lat), byrow=F, dimnames=list(rev(lon),rev(lat)))
+		# mat <- mat[,ncol(mat):1] # (merci benoit!)
+		# rownames(mat) <- xdim
+		# colnames(mat) <- ydim
 		mat <- check.bathy(mat[,ncol(mat):1])
 	
 		# adapt the resolution
-		xindex <- seq(1,length(xdim),by=resolution)
-		yindex <- seq(1,length(ydim),by=resolution)
+		xindex <- seq(1,length(lon),by=resolution)
+		yindex <- seq(1,length(lat),by=resolution)
 		mat[xindex,yindex] -> final
 		
 		class(final) <- "bathy"
