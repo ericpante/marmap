@@ -10,13 +10,13 @@ Coastline data for the North West Atlantic, as downloaded using the NOAA Coastli
 data(nw.atlantic.coast)
 }
 \details{
-Coastline data for the NW Atlantic was obtained using the NOAA Coastline Extractor tool. To get more coastline data, got o \url{http://www.ngdc.noaa.gov/mgg_coastline/}, use the java applet to select the area of interest, or enter manually coordinates. "Coast Format options" should be "Splus". 
+Coastline data for the NW Atlantic was obtained using the NOAA Coastline Extractor tool. To get more coastline data, go to \url{http://www.ngdc.noaa.gov/mgg/shorelines/}. 
 }
 \value{
 A 2-column data frame
 }
 \references{
-see \url{http://www.ngdc.noaa.gov/mgg_coastline/}
+see \url{http://www.ngdc.noaa.gov/mgg/shorelines/}
 }
 \seealso{
 \code{\link{nw.atlantic}}

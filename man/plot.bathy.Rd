@@ -80,8 +80,7 @@ Eric Pante and Benoit Simon-Bouhet
 \code{plot.bathy} uses a matrix of class \code{bathy}, and can therefore be substituted for \code{plot}.
 }
 \references{
-Eric Pante, Benoit Simon-Bouhet (2013) marmap: A Package for Importing, Plotting and Analyzing Bathymetric and Topographic Data in R. PLoS ONE 8(9): e73051. doi:10.1371/journal.pone.0073051. \url{http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0073051
-	}
+Eric Pante, Benoit Simon-Bouhet (2013) marmap: A Package for Importing, Plotting and Analyzing Bathymetric and Topographic Data in R. PLoS ONE 8(9): e73051. doi:10.1371/journal.pone.0073051. \url{http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0073051}
 }
 \seealso{
 \code{\link{read.bathy}}, \code{\link{summary.bathy}}, \code{\link{nw.atlantic}}, \code{\link{metallo}}
