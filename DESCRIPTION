@@ -10,5 +10,5 @@ Imports: DBI, RSQLite, gdistance, geosphere, sp, raster, ncdf, plotrix, shape, r
 Suggests: maps, mapdata, lattice, mapproj, R.rsp
 Description: Import xyz data from the NOAA, GEBCO and other sources, plot xyz data to prepare publication-ready figures, analyze xyz data to extract transects, get depth / altitude based on geographical coordinates, or calculate z-constrained least-cost paths.
 License: GPL (>= 3)
-Packaged: 2015-09-30 08:40:00 UTC; ep
+Packaged: 2015-09-30 12:29:00 UTC; ep
 VignetteBuilder: R.rsp
