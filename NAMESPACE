@@ -12,3 +12,4 @@ importFrom("graphics", "abline", "arrows", "axis", "box", "contour", "image", "l
 importFrom("stats", "na.omit", "runif")
 importFrom("utils", "combn", "read.table", "setTxtProgressBar", "txtProgressBar", "write.table")
 importFrom("raster", "raster", "rasterize", "extent", "resample")
+importFrom("methods", "as", "is")
