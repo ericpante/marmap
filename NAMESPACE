@@ -11,3 +11,4 @@ importFrom("grDevices", "as.graphicsAnnot", "col2rgb", "colorRampPalette", "cont
 importFrom("graphics", "abline", "arrows", "axis", "box", "contour", "image", "lines", "locator", "par", "plot", "polygon", "rect", "segments", "strheight", "strwidth", "text")
 importFrom("stats", "na.omit", "runif")
 importFrom("utils", "combn", "read.table", "setTxtProgressBar", "txtProgressBar", "write.table")
+importFrom("raster", "raster", "rasterize", "extent", "resample")
