@@ -43,8 +43,8 @@ plot.bathy <- function(x, image=FALSE, bpal=NULL, land=FALSE, deepest.isobath, s
 	if (image == TRUE) {
 
 		if (is.null(bpal)) {
-			colorRampPalette(c("darkblue","blue","lightblue","white")) -> ramp
-			bpal <- ramp(15)
+			colorRampPalette(c("#245372","#4871D9","#7D86A1","white")) -> ramp
+			bpal <- ramp(100)
 			}
 			
 		if (is.list(bpal))	bpal <- palette.bathy(mat, layers = bpal, land=land, default.col=default.col)
