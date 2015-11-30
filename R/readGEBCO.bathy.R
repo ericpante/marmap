@@ -9,11 +9,11 @@ readGEBCO.bathy <- function(file, resolution=1){
 	if(resolution<1 | !is.wholenumber(resolution)) stop(message) else {
 
 		# get data from netCDF file
-		nc <- ncdf::open.ncdf(file)
+		nc <- ncdf4::nc_open(file)
 		# ncells <- length(ncdf::get.var.ncdf(nc, "xysize"))
-		z <- ncdf::get.var.ncdf(nc,"elevation")
-		lat <- ncdf::get.var.ncdf(nc, "lat")
-		lon <- ncdf::get.var.ncdf(nc, "lon")
+		z <- ncdf4::ncvar_get(nc,"elevation")
+		lat <- ncdf4::ncvar_get(nc, "lat")
+		lon <- ncdf4::ncvar_get(nc, "lon")
 	
 		# dimensions of the matrix, depending on type of database
 		# if(db == "GEBCO_1min") db.scale <- 1/60

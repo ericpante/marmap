@@ -17,7 +17,7 @@ resolution of the grid, in units of the selected database (default is 1; see det
 }
 }
 \details{
-\code{readGEBCO.bathy} reads a 30 arcseconds or 1 arcminute bathymetry file downloaded from the GEBCO (General Bathymetric Chart of the Oceans) website (British Oceanographic Data Center). The website allows the download of bathymetric data in the netCDF format. \code{readGEBCO.bathy} uses the \code{ncdf} package to load the data into R, and parses it into an object of class \code{bathy}. 
+\code{readGEBCO.bathy} reads a 30 arcseconds or 1 arcminute bathymetry file downloaded from the GEBCO (General Bathymetric Chart of the Oceans) website (British Oceanographic Data Center). The website allows the download of bathymetric data in the netCDF format. \code{readGEBCO.bathy} uses the \code{ncdf4} package to load the data into R, and parses it into an object of class \code{bathy}. 
 
 Data can be downloaded from the 30 arcseconds database (GEBCO_08) or the 1 arcminute database (GEBCO_1min, the default). A third database type, GEBCO_08 SID, is available from the website. This database includes a source identifier specifying which grid cells have depth information based on soundings ; it does not include bathymetry or topography data. \code{readGEBCO.bathy} can read this type of database and only the SID information will be included in the object of class \code{bathy}. Therefore, to display a map with both the bathymetry and the SID information, you will have to download both datasets from GEBCO, and import and plot both independently. 
 
@@ -32,7 +32,7 @@ British Oceanographic Data Center: General Bathymetric Chart of the Oceans gridd
 
 General Bathymetric Chart of the Oceans website (accessed Oct 5, 2013) \url{http://www.gebco.net}
 
-David Pierce (2011). ncdf: Interface to Unidata netCDF data files. R package version 1.6.6. http://CRAN.R-project.org/package=ncdf
+David Pierce (2015). ncdf4: Interface to Unidata netCDF (Version 4 or Earlier) Format Data Files. R package version 1.14. http://CRAN.R-project.org/package=ncdf4
 }
 \author{
 Eric Pante and Benoit Simon-Bouhet

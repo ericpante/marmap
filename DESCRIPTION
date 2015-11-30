@@ -6,7 +6,7 @@ Date: 2015-10-05
 Author: Eric Pante, Benoit Simon-Bouhet, and Jean-Olivier Irisson
 Maintainer: Eric Pante <pante.eric@gmail.com>
 Depends: R (>= 2.10)
-Imports: DBI, RSQLite, gdistance, geosphere, sp, raster, ncdf, plotrix, shape, reshape2, adehabitatMA, ggplot2, methods
+Imports: DBI, RSQLite, gdistance, geosphere, sp, raster, ncdf4, plotrix, shape, reshape2, adehabitatMA, ggplot2, methods
 Suggests: maps, mapdata, lattice, mapproj, R.rsp
 Description: Import xyz data from the NOAA, GEBCO and other sources, plot xyz data to prepare publication-ready figures, analyze xyz data to extract transects, get depth / altitude based on geographical coordinates, or calculate z-constrained least-cost paths.
 License: GPL (>= 3)
