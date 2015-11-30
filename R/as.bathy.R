@@ -1,8 +1,5 @@
 as.bathy <- function(x){
 
-	# require(raster)
-	# require(sp)
-
 	if (is(x,"bathy")) stop("Object is already of class 'bathy'")
 
 	if (is(x,"SpatialGridDataFrame")) x <- raster::raster(x)

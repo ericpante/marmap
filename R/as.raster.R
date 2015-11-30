@@ -1,7 +1,4 @@
 as.raster <- function(bathy) {
-
-	# require(raster)
-	# require(sp)
 	
 	if (!is(bathy,"bathy")) stop("Objet is not of class bathy")
 
