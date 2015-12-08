@@ -29,7 +29,7 @@ plot.bathy <- function(x, image=FALSE, bpal=NULL, land=FALSE, deepest.isobath, s
 		if(n.levels > 1){
 			seq(deepest.isobath[1], shallowest.isobath[1], by=step[1]) -> level.param
 			contour(lon,lat,mat,levels=level.param,
-					lwd=lwd[1], lty=lty[1], col=col[1], drawlabels = drawlabels[1], add=FALSE, 
+					lwd=lwd[1], lty=lty[1], col=col[1], drawlabels = drawlabels[1], 
 					xlab=xlab, ylab=ylab, asp=asp, ...)
 			for(i in 2:n.levels){
 				seq(deepest.isobath[i], shallowest.isobath[i], by=step[i]) -> level.param
