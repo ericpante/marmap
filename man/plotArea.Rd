@@ -50,7 +50,7 @@ col.surf3 <- rgb(0.7, 0, 0, 0.3)
 plotArea(surf1, col = col.surf1)
 plotArea(surf2, col = col.surf2)
 plotArea(surf3, col = col.surf3)
-plot(outline.buffer(buf), add = TRUE, lwd = 0.7)
+plot(buf, lwd = 0.7)
 points(loc, pch = 19, col = "red")
 
 ## Add legend

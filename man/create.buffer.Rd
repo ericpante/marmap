@@ -8,10 +8,10 @@ Create a buffer of specified radius around one or several points
 Create a circular buffer of user-defined radius around one or several points defined by their longitudes and latitudes.
 }
 \usage{
-create.buffer(mat, loc, radius, km = FALSE)
+create.buffer(x, loc, radius, km = FALSE)
 }
 \arguments{
-  \item{mat}{
+  \item{x}{
 an object of class \code{bathy}
 }
   \item{loc}{
@@ -52,6 +52,6 @@ buf <- create.buffer(florida, loc, radius=1.5)
 buf
 
 # highlight isobath with the buffer and add outline
-plot(buf, add = TRUE, n = 10, col = 2, lwd=.4)
-plot(outline.buffer(buf), add = TRUE, lwd = 0.7, col = 2)
+plot(buf, outline=FALSE, n = 10, col = 2, lwd=.4)
+plot(buf, lwd = 0.7, fg = 2)
 }

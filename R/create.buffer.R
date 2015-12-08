@@ -1,6 +1,8 @@
-create.buffer <- function(mat, loc, radius, km=FALSE){
+create.buffer <- function(x, loc, radius, km=FALSE){
 	
-	if (!is(mat,"bathy")) stop("mat must be an object of class bathy")
+	mat <- x # S3 compatibility
+	
+	if (!is(mat,"bathy")) stop("x must be an object of class bathy")
 	if (!is.data.frame(loc)) stop("loc must be a two-column data.frame (longitude and latitude)")
 	if (!is.numeric(radius)) stop("radius must be numeric")
 	if (length(radius) > 1) warning("only the first value of radius was used")

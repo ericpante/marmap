@@ -1,4 +1,4 @@
-print.buffer <- function(x){
+print.buffer <- function(x, ...){
 	
 	if (!is(x,"buffer")) stop("x must be an object of class buffer")
 	

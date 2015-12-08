@@ -2,7 +2,9 @@ get.area <- function(mat, level.inf, level.sup=0, xlim=NULL, ylim=NULL) {
 	
 	# require(geosphere)
 	
-	if (class(mat)!="bathy") stop("mat must be of class bathy")
+	if (!is(mat,"bathy") & !is(mat,"buffer")) stop("mat must be of class 'bathy' or 'buffer'")
+	
+	if (is(mat,"buffer")) mat <- mat[[1]]
 	
 	lon <- as.numeric(rownames(mat))
 	lat <- as.numeric(colnames(mat))

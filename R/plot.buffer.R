@@ -1,4 +1,6 @@
-plot.buffer <- function(buffer, outline = TRUE, add = TRUE, ...) {
+plot.buffer <- function(x, outline = TRUE, add = TRUE, ...) {
+
+	buffer <- x  # S3 compatibility
 
 	if (!is(buffer,'buffer')) stop("'buffer' must be an object of class bathy as produced by create.buffer()")
 
