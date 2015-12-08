@@ -7,7 +7,7 @@ Plots a circular buffer and or its outline
 \code{plot.buffer} is a generic function that allows the plotting of objects of class \code{buffer}, either as new plots or as a new layer added on top of an existing one. The plotting of both the bathymetry/hypsometry as well as the outline of the buffer is possible.
 }
 \usage{
-plot.buffer(buffer, outline = TRUE, add = TRUE, ...)
+\method{plot}{buffer}(buffer, outline = TRUE, add = TRUE, ...)
 }
 \arguments{
   \item{buffer}{

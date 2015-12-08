@@ -43,8 +43,8 @@ data(florida)
 plot(florida, lwd = 0.2)
 plot(florida, n = 1, lwd = 0.7, add = TRUE)
 
-# add points around which a buffer will be computed
-loc <- data.frame(c(-80,-82), c(26,24))
+# add a point around which a buffer will be created
+loc <- data.frame(-80, 26)
 points(loc, pch = 19, col = "red")
 
 # compute and print buffer
