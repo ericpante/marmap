@@ -1,5 +1,7 @@
 S3method(plot, bathy)
 S3method(summary, bathy)
+S3method(plot, buffer)
+S3method(print, buffer)
 exportPattern("^[[:alpha:]]+")
 importFrom("shape", "colorlegend")
 importFrom("reshape2", "acast")

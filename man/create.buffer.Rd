@@ -1,5 +1,6 @@
 \name{create.buffer}
 \alias{create.buffer}
+\alias{print.buffer}
 \title{
 Create a buffer of specified radius around one or several points
 }
@@ -46,8 +47,9 @@ plot(florida, n = 1, lwd = 0.7, add = TRUE)
 loc <- data.frame(c(-80,-82), c(26,24))
 points(loc, pch = 19, col = "red")
 
-# compute buffer
+# compute and print buffer
 buf <- create.buffer(florida, loc, radius=1.5)
+buf
 
 # highlight isobath with the buffer and add outline
 plot(buf, add = TRUE, n = 10, col = 2, lwd=.4)
