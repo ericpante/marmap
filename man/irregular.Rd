@@ -13,7 +13,7 @@ data(irregular)
 A three-columns data.frame containing longitude, latitude and depth/elevation data.
 }
 \author{
-Data modified form a dataset kindly provided by Noah Lottig from the university of Wisconsin \url{http://limnology.wisc.edu/personnel/lottig/}
+Data modified form a dataset kindly provided by Noah Lottig from the university of Wisconsin \url{http://limnology.wisc.edu/personnel/lottig/} in the framework of the North Temperate Lakes Long Term Ecological Research program \url{http://lter.limnology.wisc.edu}
 }
 \seealso{
 \code{\link{griddify}}
