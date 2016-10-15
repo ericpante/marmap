@@ -23,7 +23,7 @@ as.bathy <- function(x){
 	}
 	
 	# if not, it has to be a 3-column table (xyz format)
-	if (ncol(x)==3 & !exists("bathy")) {
+	if (ncol(x)==3 & !exists("bathy", inherits=FALSE)) {
 		bath <- x
 	    bath <- bath[order(bath[, 2], bath[, 1], decreasing = FALSE), ]
 
@@ -38,7 +38,7 @@ as.bathy <- function(x){
 			}
 	}
 
-	if (!exists("bathy")) stop("as.bathy requires a 3-column table, or an object of class RasterLayer or SpatialDataFrame")
+	if (!exists("bathy", inherits=FALSE)) stop("as.bathy requires a 3-column table, or an object of class RasterLayer or SpatialDataFrame")
 
 	ordered.mat <- check.bathy(bathy)
 	class(ordered.mat) <- "bathy"
