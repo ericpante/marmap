@@ -13,7 +13,7 @@ marmap is a package designed for downloading, plotting and manipulating bathymet
 Package: \tab marmap\cr
 Type: \tab Package\cr
 Version: \tab 0.9.6\cr
-Date: \tab 2016-10-15\cr
+Date: \tab 2017-01-09\cr
 }
 Import, plot and analyze bathymetric and topographic data
 }

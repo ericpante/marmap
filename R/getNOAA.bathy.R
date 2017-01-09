@@ -9,7 +9,7 @@ function(lon1,lon2,lat1,lat2, resolution = 4, keep=FALSE, antimeridian=FALSE){
 	res = resolution * 0.016666666666666667
 	
 	fetch <- function(x1,y1,x2,y2,res) {
-        WEB.REQUEST <- paste("http://mapserver.ngdc.noaa.gov/cgi-bin/public/wcs/etopo1.xyz?filename=etopo1.xyz&request=getcoverage&version=1.0.0&service=wcs&coverage=etopo1&CRS=EPSG:4326&format=xyz&resx=", res, "&resy=", res, "&bbox=", x1, ",", y1, ",", x2, ",", y2, sep = "")
+        WEB.REQUEST <- paste("https://gis.ngdc.noaa.gov/cgi-bin/public/wcs/etopo1.xyz?filename=etopo1.xyz&request=getcoverage&version=1.0.0&service=wcs&coverage=etopo1&CRS=EPSG:4326&format=xyz&resx=", res, "&resy=", res, "&bbox=", x1, ",", y1, ",", x2, ",", y2, sep = "")
 		dat <- suppressWarnings(try(read.table(WEB.REQUEST),silent=TRUE))
 		return(dat)
 	}
