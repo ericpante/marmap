@@ -33,7 +33,7 @@ Further arguments to be passed to \code{locator} when the interactive mode is us
 A matrix of class \code{bathy}.
 }
 \references{
-Pebesma, EJ, RS Bivand, (2005). Classes and methods for spatial data in R. R News 5 (2), \url{http://cran.r-project.org/doc/Rnews/.}
+Pebesma, EJ, RS Bivand, (2005). Classes and methods for spatial data in R. R News 5 (2), \url{https://cran.r-project.org/doc/Rnews/}
 
 Bivand RS, Pebesma EJ, Gomez-Rubio V (2013). Applied spatial data analysis with R, Second edition. Springer, NY. \url{http://www.asdar-book.org/}
 }

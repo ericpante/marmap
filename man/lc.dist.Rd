@@ -21,13 +21,13 @@ either \code{"dist"} or \code{"path"}. See details.
 }
 }
 \details{
-\code{lc.dist} computes least cost distances between 2 or more locations. This function relies on the package \code{gdistance} (van Etten, 2011. \url{http://CRAN.R-project.org/package=gdistance}) and on the \code{trans.mat} function to define a range of depths where the paths are possible.
+\code{lc.dist} computes least cost distances between 2 or more locations. This function relies on the package \code{gdistance} (van Etten, 2011. \url{https://CRAN.R-project.org/package=gdistance}) and on the \code{trans.mat} function to define a range of depths where the paths are possible.
 }
 \value{
 Results can be presented either as a kilometric distance matrix between all possible pairs of locations (argument \code{res="dist"}) or as a list of paths (i.e. 2-columns matrices of routes) between pairs of locations (\code{res="path"}).
 }
 \references{
-Jacob van Etten (2011). gdistance: distances and routes on geographical grids. R package version 1.1-2.  \url{http://CRAN.R-project.org/package=gdistance}
+Jacob van Etten (2011). gdistance: distances and routes on geographical grids. R package version 1.1-2.  \url{https://CRAN.R-project.org/package=gdistance}
 }
 \author{
 Benoit Simon-Bouhet

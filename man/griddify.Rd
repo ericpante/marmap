@@ -27,7 +27,7 @@ If a cell of the user-defined grig does not contain any depth/altitude value in 
 The output of \code{griddify} is an object of class \code{raster}, with \code{nlon} unique longitude values and \code{nlat} unique latitude values. 
 }
 \references{
-Robert J. Hijmans (2015). raster: Geographic Data Analysis and Modeling. R package version 2.4-20. \url{http://CRAN.R-project.org/package=raster}
+Robert J. Hijmans (2015). raster: Geographic Data Analysis and Modeling. R package version 2.4-20. \url{https://CRAN.R-project.org/package=raster}
 }
 \author{
 Eric Pante and Benoit Simon-Bouhet

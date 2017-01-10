@@ -9,7 +9,7 @@ Depends: R (>= 2.10)
 Imports: DBI, RSQLite, gdistance, geosphere, sp, raster, ncdf4, plotrix, shape, reshape2, adehabitatMA, ggplot2, methods
 Suggests: maps, mapdata, lattice, mapproj, R.rsp
 BugReports: https://github.com/ericpante/marmap/issues
-Description: Import xyz data from the NOAA, GEBCO and other sources, plot xyz data to prepare publication-ready figures, analyze xyz data to extract transects, get depth / altitude based on geographical coordinates, or calculate z-constrained least-cost paths.
+Description: Import xyz data from the NOAA (National Oceanic and Atmospheric Administration, <http://www.noaa.gov>), GEBCO (General Bathymetric Chart of the Oceans, <http://www.gebco.net>) and other sources, plot xyz data to prepare publication-ready figures, analyze xyz data to extract transects, get depth / altitude based on geographical coordinates, or calculate z-constrained least-cost paths.
 License: GPL (>= 3)
 URL: https://github.com/ericpante/marmap
 Packaged: 2017-01-09 10:52:00 UTC; ep
