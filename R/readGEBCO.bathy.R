@@ -1,4 +1,4 @@
-readGEBCO.bathy <- function(file, resolution=1){
+readGEBCO.bathy <- function(file, resolution=1, sid=FALSE){
 
 	# require(ncdf)
 
@@ -11,7 +11,11 @@ readGEBCO.bathy <- function(file, resolution=1){
 		# get data from netCDF file
 		nc <- ncdf4::nc_open(file)
 		# ncells <- length(ncdf::get.var.ncdf(nc, "xysize"))
-		z <- ncdf4::ncvar_get(nc,"elevation")
+		if (sid) {
+			z <- ncdf4::ncvar_get(nc,"sid")
+		} else {
+			z <- ncdf4::ncvar_get(nc,"elevation")
+		}
 		lat <- ncdf4::ncvar_get(nc, "lat")
 		lon <- ncdf4::ncvar_get(nc, "lon")
 	

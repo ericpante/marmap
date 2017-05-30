@@ -6,7 +6,7 @@ Read bathymetric data from a GEBCO file}
 Imports 30-sec and 1-min bathymetric data from a .nc file downloaded on the GEBCO website. 
 }
 \usage{
-readGEBCO.bathy(file, resolution = 1)
+readGEBCO.bathy(file, resolution = 1, sid = FALSE)
 }
 \arguments{
   \item{file}{
@@ -15,11 +15,14 @@ name of the \code{.nc} file
   \item{resolution}{
 resolution of the grid, in units of the selected database (default is 1; see details)
 }
+  \item{sid}{
+logical. Is the data file containing SID information?
+}
 }
 \details{
 \code{readGEBCO.bathy} reads a 30 arcseconds or 1 arcminute bathymetry file downloaded from the GEBCO (General Bathymetric Chart of the Oceans) website (British Oceanographic Data Center). The website allows the download of bathymetric data in the netCDF format. \code{readGEBCO.bathy} uses the \code{ncdf4} package to load the data into R, and parses it into an object of class \code{bathy}. 
 
-Data can be downloaded from the 30 arcseconds database (GEBCO_08) or the 1 arcminute database (GEBCO_1min, the default). A third database type, GEBCO_08 SID, is available from the website. This database includes a source identifier specifying which grid cells have depth information based on soundings ; it does not include bathymetry or topography data. \code{readGEBCO.bathy} can read this type of database and only the SID information will be included in the object of class \code{bathy}. Therefore, to display a map with both the bathymetry and the SID information, you will have to download both datasets from GEBCO, and import and plot both independently. 
+Data can be downloaded from the 30 arcseconds database (GEBCO_08) or the 1 arcminute database (GEBCO_1min, the default). A third database type, GEBCO_08 SID, is available from the website. This database includes a source identifier specifying which grid cells have depth information based on soundings ; it does not include bathymetry or topography data. \code{readGEBCO.bathy} can read this type of database when \code{sid} is set to \code{TRUE}. Then only the SID information will be included in the object of class \code{bathy}. Therefore, to display a map with both the bathymetry and the SID information, you will have to download both datasets from GEBCO, and import and plot both independently. 
 
 The argument \code{resolution} specifies the resolution of the object of class \code{bathy}. Because the resolution of GEBCO data is rather fine, we offer the possibility of downsizing the dataset with \code{resolution}. \code{resolution} is in units of the selected database: in "GEBCO_1min", \code{resolution} is in minutes; in "GEBCO_08", \code{resolution} is in 30 arcseconds (that is, \code{resolution = 3} corresponds to 3x30sec, or 1.5 arcminute).
 
