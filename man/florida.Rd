@@ -9,13 +9,13 @@ Bathymetric object of class \code{bathy} created from NOAA GEODAS data.
 data(florida)
 }
 \details{
-Data imported from the NOAA GEODAS Grid Translator webpage (\url{http://www.ngdc.noaa.gov/mgg/gdas/gd_designagrid.html}) and transformed into an object of class \code{bathy} by \code{read.bathy}. 
+Data imported from the NOAA GEODAS Grid Translator webpage (\url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}) and transformed into an object of class \code{bathy} by \code{read.bathy}. 
 }
 \value{
 A bathymetric object of class \code{bathy} with 539 rows and 659 columns.
 }
 \author{
-see \url{http://www.ngdc.noaa.gov/mgg/gdas/gd_designagrid.html}
+see \url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}
 }
 \seealso{
 \code{\link{plot.bathy}}, \code{\link{summary.bathy}}

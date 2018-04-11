@@ -24,7 +24,7 @@ further arguments to be passed to \code{read.table()}
 }
 }
 \details{
-Allows direct import of data from the NOAA GEODAS Grid Translator webpage (\url{http://www.ngdc.noaa.gov/mgg/gdas/gd_designagrid.html}). To prepare data from NOAA, fill the custom grid form, and choose "XYZ (lon,lat,depth)" as the "Output Grid Format", "No Header" as the "Output Grid Header", and either of the space, tab of comma as the column delimiter (either can be used, but "comma" is the default import format of \code{read.bathy}). Choose "omit empty grid cells" to reduce memory usage. 
+Allows direct import of data from the NOAA GEODAS Grid Translator webpage (\url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}). To prepare data from NOAA, fill the custom grid form, and choose "XYZ (lon,lat,depth)" as the "Output Grid Format", "No Header" as the "Output Grid Header", and either of the space, tab of comma as the column delimiter (either can be used, but "comma" is the default import format of \code{read.bathy}). Choose "omit empty grid cells" to reduce memory usage. 
 }
 \value{
 The output of \code{read.bathy} is a matrix of class \code{bathy}, which dimensions depends on the resolution of the grid uploaded from the NOAA GEODAS server (Grid Cell Size). The class \code{bathy} has its own methods for summarizing and ploting the data.

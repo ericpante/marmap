@@ -9,13 +9,13 @@ Bathymetric matrix of class \code{bathy} created from NOAA GEODAS data.
 data(celt)
 }
 \details{
-Data imported from the NOAA GEODAS Grid Translator webpage (\url{http://www.ngdc.noaa.gov/mgg/gdas/gd_designagrid.html}) and transformed into an object of class \code{bathy} by \code{as.bathy}. 
+Data imported from the NOAA GEODAS Grid Translator webpage (\url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}) and transformed into an object of class \code{bathy} by \code{as.bathy}. 
 }
 \value{
 A text file.
 }
 \author{
-see \url{http://www.ngdc.noaa.gov/mgg/gdas/gd_designagrid.html}
+see \url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}
 }
 \seealso{
 \code{\link{as.bathy}}, \code{\link{read.bathy}}
