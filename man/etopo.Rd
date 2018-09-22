@@ -2,8 +2,8 @@
 \alias{etopo}
 \alias{etopo.colors}
 \alias{etopo.colours}
-\alias{scale_colour_etopo}
 \alias{scale_color_etopo}
+\alias{scale_colour_etopo}
 \alias{scale_fill_etopo}
 \title{
 Etopo colours
@@ -16,7 +16,6 @@ etopo.colors(n)
 
 scale_fill_etopo(\dots)
 scale_color_etopo(\dots)
-scale_colour_etopo(\dots)
 }
 \arguments{
   \item{n}{
