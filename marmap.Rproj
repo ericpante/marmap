@@ -9,12 +9,25 @@ UseSpacesForTab: Yes
 NumSpacesForTab: 2
 Encoding: UTF-8
 
+<<<<<<< HEAD
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
 
 AutoAppendNewline: Yes
+=======
+RnwWeave: knitr
+LaTeX: XeLaTeX
+
+>>>>>>> 157b889... Exporting missing S3 methods and updating version number
 StripTrailingWhitespace: Yes
 
 BuildType: Package
 PackageUseDevtools: Yes
+<<<<<<< HEAD
 PackageInstallArgs: --no-multiarch --with-keep.source
+=======
+PackageInstallArgs: --no-multiarch --with-keep.source --resave-data
+PackageBuildArgs: --resave-data
+PackageBuildBinaryArgs: --resave-data
+PackageCheckArgs: --resave-data
+>>>>>>> 157b889... Exporting missing S3 methods and updating version number

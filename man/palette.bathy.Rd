@@ -1,9 +1,9 @@
 \name{palette.bathy}
 \alias{palette.bathy}
 \title{
-Build a bathymetry- and/or topography-constrained color palette}
+Builds a bathymetry- and/or topography-constrained color palette}
 \description{
-Build a constrained color palette based on depth / altitude bounds and given colors. 
+Builds a constrained color palette based on depth / altitude bounds and given colors.
 }
 \usage{
 palette.bathy(mat, layers, land=FALSE, default.col="white")
@@ -40,12 +40,12 @@ Eric Pante and Benoit Simon-Bouhet
 	atl <- as.bathy(nw.atlantic)
 
 # creating depth-constrained palette for the ocean only
-    newcol <- palette.bathy(mat=atl, 
+    newcol <- palette.bathy(mat=atl,
 		layers = list(c(min(atl), 0, "purple", "blue", "lightblue")),
 		land = FALSE, default.col = "grey" )
-	plot(atl, land = FALSE, n = 10, lwd = 0.5, image = TRUE, 
+	plot(atl, land = FALSE, n = 10, lwd = 0.5, image = TRUE,
 		bpal = newcol, default.col = "grey")
-	
+
 # same:
 	plot(atl, land = FALSE, n = 10, lwd = 0.5, image = TRUE,
 		bpal = list(c(min(atl), 0, "purple", "blue", "lightblue")),
@@ -56,12 +56,12 @@ Eric Pante and Benoit Simon-Bouhet
 		c(min(atl), -3000, "purple", "blue", "grey"),
 		c(-3000, -150, "white"),
 		c(-150, 0, "yellow", "green", "brown")),
-		land = FALSE, default.col = "grey")		
-	plot(atl, land = FALSE, n = 10, lwd = 0.7, image = TRUE, 
+		land = FALSE, default.col = "grey")
+	plot(atl, land = FALSE, n = 10, lwd = 0.7, image = TRUE,
 		bpal = newcol, default.col = "grey")
 
 # same
-	plot(atl, land = FALSE, n = 10, lwd = 0.7, image = TRUE, 
+	plot(atl, land = FALSE, n = 10, lwd = 0.7, image = TRUE,
 		bpal = list(c(min(atl), -3000, "purple","blue","grey"),
 					c(-3000, -150, "white"),
 					c(-150, 0, "yellow", "green", "brown")),
@@ -70,7 +70,7 @@ Eric Pante and Benoit Simon-Bouhet
 # creating depth-constrained palette for land and ocean
 	newcol <- palette.bathy(mat= atl, layers = list(
 		c(min(atl),0,"purple","blue","lightblue"),
-		c(0, max(atl), "gray90", "gray10")), 
+		c(0, max(atl), "gray90", "gray10")),
 		land = TRUE)
 	plot(atl, land = TRUE, n = 10, lwd = 0.5, image = TRUE, bpal = newcol)
 
