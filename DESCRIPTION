@@ -12,5 +12,5 @@ BugReports: https://github.com/ericpante/marmap/issues
 Description: Import xyz data from the NOAA (National Oceanic and Atmospheric Administration, <http://www.noaa.gov>), GEBCO (General Bathymetric Chart of the Oceans, <http://www.gebco.net>) and other sources, plot xyz data to prepare publication-ready figures, analyze xyz data to extract transects, get depth / altitude based on geographical coordinates, or calculate z-constrained least-cost paths.
 License: GPL (>= 3)
 URL: https://github.com/ericpante/marmap
-Packaged: 2018-09-23 21:20:00 UTC; ep
+Packaged: 2018-09-22 22:18:00 UTC; ep
 VignetteBuilder: R.rsp
