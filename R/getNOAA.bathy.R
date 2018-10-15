@@ -45,8 +45,8 @@ function(lon1,lon2,lat1,lat2, resolution = 4, keep=FALSE, antimeridian=FALSE){
 
 			l1 <- x2 ; l2 <- 180 ; l3 <- -180 ; l4 <- x1
 
-			message("Querying NOAA database ...\n")
-			message("This may take seconds to minutes, depending on grid size\n")
+			message("Querying NOAA database ...")
+			message("This may take seconds to minutes, depending on grid size")
 			left <- fetch(l1,y1,l2,y2,res)
 			right <- fetch(l3,y1,l4,y2,res)
 
@@ -64,13 +64,13 @@ function(lon1,lon2,lat1,lat2, resolution = 4, keep=FALSE, antimeridian=FALSE){
 
 		} else {
 
-			message("Querying NOAA database ...\n")
-			message("This may take seconds to minutes, depending on grid size\n")
+			message("Querying NOAA database ...")
+			message("This may take seconds to minutes, depending on grid size")
 			bath <- fetch(x1,y1,x2,y2,res)
 			if (is(bath,"try-error")) {
 				stop("The NOAA server cannot be reached\n")
 			} else {
-				message("Building bathy matrix ...\n")
+				message("Building bathy matrix ...")
 				bath2 <- as.bathy(bath)
 			}
 		}
