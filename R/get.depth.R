@@ -14,9 +14,9 @@ get.depth <- function(mat, x, y=NULL, locator=TRUE, distance=FALSE, ...){
 			if (!is.null(y)) warning("'y' has been ignored\n")
 			coord <- x ; names(coord) <- c("x","y")
 			}
-		
+
 		if (is.data.frame(x) | is.matrix(x)) {
-			
+
 			x <- as.matrix(x)
 
 			if (ncol(x) > 2) {
@@ -34,11 +34,11 @@ get.depth <- function(mat, x, y=NULL, locator=TRUE, distance=FALSE, ...){
 			if (ncol(x) == 1) {
 				if (is.null(y)) stop("with 'locator=FALSE', you must supply both 'x' and 'y' or a 2-column matrix-like 'x'")
 				coord <- list(x=x,y=y)
-				} 
+				}
 
 			}
-		
-		if (!is.list(x)) {	
+
+		if (!is.list(x)) {
 			if (is.vector(x) & !is.numeric(x)) stop("'x' must be numeric")
 			if (is.vector(x) & is.numeric(x)) {
 				if (is.null(y)) stop("with 'locator=FALSE', you must either provide both 'x' and 'y' or a 2-column matrix-like 'x'")
@@ -46,27 +46,27 @@ get.depth <- function(mat, x, y=NULL, locator=TRUE, distance=FALSE, ...){
 						coord <- list(x=x,y=y)
 				}
 			}
-			
+
 		} else {
-			cat("Waiting for interactive input: click any number of times on the map, then press 'Esc'\n")
+			message("Waiting for interactive input: click any number of times on the map, then press 'Esc'")
 			coord <- locator(type="p",...)
 		}
-	
+
 	as.numeric(rownames(mat)) -> lon
 	as.numeric(colnames(mat)) -> lat
-	
+
 	outside.lon <- any(findInterval(coord$x,range(lon),rightmost.closed=TRUE) != 1)
 	outside.lat <- any(findInterval(coord$y,range(lat),rightmost.closed=TRUE) != 1)
-	
+
 	if (outside.lon | outside.lat) stop("Some data points are oustide the range of mat")
-		
+
 	out <- data.frame(lon=coord$x, lat=coord$y)
 	out$depth <- apply(out, 1, function(x) mat[ which(abs(lon-x[1])==min(abs(lon-x[1]))) , which(abs(lat-x[2])==min(abs(lat-x[2]))) ][1])
-	
+
 	if(distance){
-		
+
 		if (nrow(out) == 1) stop("Cannot compute distance with only one point. Either set distance=FALSE or add more points")
-		
+
 		deg2km <- function(x1, y1, x2, y2) {
 
 			x1 <- x1*pi/180
@@ -82,7 +82,7 @@ get.depth <- function(mat, x, y=NULL, locator=TRUE, distance=FALSE, ...){
 
 			return(6371 * fos)
 		}
-		
+
 		dist.km = NULL
 		for(i in 2:length(out$depth)){
 			dist.km = c(dist.km, deg2km(x1=out$lon[i-1],y1=out$lat[i-1],x2=out$lon[i],y2=out$lat[i]))
@@ -90,7 +90,7 @@ get.depth <- function(mat, x, y=NULL, locator=TRUE, distance=FALSE, ...){
 		out$dist.km <- cumsum(c(0,dist.km))
 		out <- out[,c(1,2,4,3)]
 	}
-	
+
 	return(out)
 
 }

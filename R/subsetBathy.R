@@ -1,5 +1,5 @@
 subsetBathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
-	
+
 	if (!is(mat,"bathy")) stop("'mat' must be of class 'bathy'")
 
 	if (locator == FALSE) {
@@ -14,9 +14,9 @@ subsetBathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 			if (!is.null(y)) warning("'y' has been ignored\n")
 			coord <- x ; names(coord) <- c("x","y")
 			}
-		
+
 		if (is.data.frame(x) | is.matrix(x)) {
-			
+
 			x <- as.matrix(x)
 
 			if (ncol(x) > 2) {
@@ -34,11 +34,11 @@ subsetBathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 			if (ncol(x) == 1) {
 				if (is.null(y)) stop("with 'locator=FALSE', you must supply both 'x' and 'y' or a 2-column matrix-like 'x'")
 				coord <- list(x=x,y=y)
-				} 
+				}
 
 			}
-		
-		if (!is.list(x)) {	
+
+		if (!is.list(x)) {
 			if (is.vector(x) & !is.numeric(x)) stop("'x' must be numeric")
 			if (is.vector(x) & is.numeric(x)) {
 				if (is.null(y)) stop("with 'locator=FALSE', you must either provide both 'x' and 'y' or a 2-column matrix-like 'x'")
@@ -46,9 +46,9 @@ subsetBathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 						coord <- list(x=x,y=y)
 				}
 			}
-			
+
 		} else {
-			cat('Waiting for interactive input: click any number of times on the map\n')
+			message('Waiting for interactive input: click any number of times on the map')
 			coord <- locator(type="o",...)
 		}
 
@@ -72,7 +72,7 @@ subsetBathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 			new.bathy <- mat[x1:x2, y1:y2]
 			new.bathy <- check.bathy(new.bathy)
 			class(new.bathy) <- "bathy"
-			
+
 		}
 
 		if (nrow(out)>2) {
@@ -83,7 +83,7 @@ subsetBathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 			new.bathy <- mat[x1:x2, y1:y2]
 			new.bathy <- check.bathy(new.bathy)
 			class(new.bathy) <- "bathy"
-		
+
 			xyz <- as.matrix(as.xyz(new.bathy))
 			out <- as.matrix(out)
 			inside <- sp::point.in.polygon(xyz[,1],xyz[,2],out[,1],out[,2])
@@ -91,7 +91,7 @@ subsetBathy <- function(mat, x, y=NULL, locator=TRUE, ...) {
 			new.bathy <- as.bathy(xyz)
 		}
 
-	
+
 		return(new.bathy)
 
 }

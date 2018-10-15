@@ -1,5 +1,5 @@
 dist2isobath <- function(mat, x, y=NULL, isobath=0, locator=FALSE, ...) {
-	
+
 	if (!is(mat,"bathy")) stop("'mat' must be of class 'bathy'")
 
 	if (!is.numeric(isobath)) stop("'isobath' must be numeric")
@@ -20,9 +20,9 @@ dist2isobath <- function(mat, x, y=NULL, isobath=0, locator=FALSE, ...) {
 			if (!is.null(y)) warning("'y' has been ignored\n")
 			coord <- x ; names(coord) <- c("x","y")
 			}
-		
+
 		if (is.data.frame(x) | is.matrix(x)) {
-			
+
 			x <- as.matrix(x)
 
 			if (ncol(x) > 2) {
@@ -40,11 +40,11 @@ dist2isobath <- function(mat, x, y=NULL, isobath=0, locator=FALSE, ...) {
 			if (ncol(x) == 1) {
 				if (is.null(y)) stop("with 'locator=FALSE', you must supply both 'x' and 'y' or a 2-column matrix-like 'x'")
 				coord <- list(x=x,y=y)
-				} 
+				}
 
 			}
-		
-		if (!is.list(x)) {	
+
+		if (!is.list(x)) {
 			if (is.vector(x) & !is.numeric(x)) stop("'x' must be numeric")
 			if (is.vector(x) & is.numeric(x)) {
 				if (is.null(y)) stop("with 'locator=FALSE', you must either provide both 'x' and 'y' or a 2-column matrix-like 'x'")
@@ -52,26 +52,26 @@ dist2isobath <- function(mat, x, y=NULL, isobath=0, locator=FALSE, ...) {
 						coord <- list(x=x,y=y)
 				}
 			}
-			
+
 		} else {
-			cat("Waiting for interactive input: click any number of times on the map, then press 'Esc'\n")
+			message("Waiting for interactive input: click any number of times on the map, then press 'Esc'")
 			coord <- locator(type="p",...)
-		}	
-		
+		}
+
 	coord <- data.frame(x = coord$x, y = coord$y)
-		
+
 	# Get contour lines for a given isobath
 	lon <- unique(as.numeric(rownames(mat)))
 	lat <- unique(as.numeric(colnames(mat)))
 	iso <- contourLines(lon, lat, mat, levels = isobath)
-		
+
 	# Transform the list from contourLines into a SpatialLines
 	iso <- lapply(iso, function(k) sp::Line(matrix(c(k$x,k$y),ncol=2)))
 	iso <- sp::SpatialLines(list(sp::Lines(iso, ID = "a")))
-	
+
 	# Compute the shortest great circle distance between each point and the isobath
 	d <- suppressWarnings(geosphere::dist2Line(coord,iso))
-	
+
 	d <- data.frame(d[,1],coord,d[,2:3])
 	colnames(d) <- c("distance", "start.lon", "start.lat", "end.lon", "end.lat")
 	return(d)
