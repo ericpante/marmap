@@ -41,7 +41,7 @@ The name of (or path to) the SQL database to be created on disk by \code{setSQL}
 Functions \code{setSQL} and \code{subsetSQL} were built to work together. \code{setSQL} builds an SQL database and saves it on disk. \code{subsetSQL} queries that local database and the fields \code{min_lon}, \code{max_lon}, etc, are used to extract a subset of the database. The functions were built as two entities so that multiple queries can be done multiple times, without re-building the database each time. These functions were designed to access the very large (>5Go) ETOPO1 file that can be downloaded from the NOAA website (\url{http://www.ngdc.noaa.gov/mgg/global/global.html})
 }
 \value{
-\code{setSQL} returns \code{TRUE} if the database was successfully created. \code{subsetSQL} returns a matrix of class \code{bathy} that can directly be used with \code{plot.bathy}. 
+\code{setSQL} returns \code{TRUE} if the database was successfully created. \code{subsetSQL} returns a matrix of class \code{bathy} that can directly be used with \code{plot.bathy}.
 }
 \references{
 Amante, C. and B. W. Eakins, ETOPO1 1 Arc-Minute Global Relief Model: Procedures, Data Sources and Analysis. NOAA Technical Memorandum NESDIS NGDC-24, 19 pp, March 2009. \url{http://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/docs/ETOPO1.pdf}
@@ -50,18 +50,18 @@ Amante, C. and B. W. Eakins, ETOPO1 1 Arc-Minute Global Relief Model: Procedures
 Eric Pante
 }
 \note{
-If unspecified, \code{db.name} is set to "bathy_db" by default. Thus, theere must be no database file called \code{bathy_db} in the working directory prior to running \code{setSQL} unless a different name is used for the new database. 
+If unspecified, \code{db.name} is set to "bathy_db" by default. Thus, theere must be no database file called \code{bathy_db} in the working directory prior to running \code{setSQL} unless a different name is used for the new database.
 Make sure that your "bathy" input is a xyz text file (for function \code{setSQL}) with 3 columns containing longitude, latitude and depth data, in that order.
 \code{setSQL} and \code{subsetSQL} were modified on Nov. 2, 2014 to comply with RSQLite 1.0.0.
 }
 \examples{
+\dontrun{
 # load NW Atlantic data
 data(nw.atlantic)
 
 # write data to disk as a comma-separated text file
 write.table(nw.atlantic, "NW_Atlantic.csv", sep=",", quote=FALSE, row.names=FALSE)
 
-\dontrun{
 # prepare SQL database
 setSQL(bathy="NW_Atlantic.csv")
 
