@@ -34,6 +34,12 @@ getNOAA.bathy <-
     if (ncell.lat < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the latitudinal range or the resolution (i.e. use a smaller resolution value)")
 
     fetch <- function(x1, y1, x2, y2, ncell.lon, ncell.lat) {
+      ncell.lon <- floor(ncell.lon)
+      ncell.lat <- floor(ncell.lat)
+      x1 <- round(x1, 1)
+      x2 <- round(x2, 1)
+      y1 <- round(y1, 1)
+      y2 <- round(y2, 1)
       WEB.REQUEST <- paste0("https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/ETOPO1_bedrock/ImageServer/exportImage?bbox=", x1, ",", y1, ",", x2, ",", y2, "&bboxSR=4326&size=", ncell.lon, ",", ncell.lat,"&imageSR=4326&format=tiff&pixelType=S16&interpolation=+RSP_NearestNeighbor&compression=LZW&f=image")
       dat <- suppressWarnings(try(raster::raster(x = WEB.REQUEST), silent = TRUE))
       dat <- as.xyz(as.bathy(dat))
