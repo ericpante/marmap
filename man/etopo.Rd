@@ -26,7 +26,7 @@ passed to \code{scale_fill_gradientn} or \code{scale_color_gradientn}
 }
 }
 \details{
-\code{etopo.colors} is equivalent to other color scales in R (e.g. \code{\link[grDevices]{heat.colors}}, \code{\link[grDevices]{cm.colors}}).
+\code{etopo.colors} is equivalent to other color scales in R (e.g. \code{grDevices::heat.colors}, \code{grDevices::cm.colors}).
 
 \code{scale_fill/color_etopo} are meant to be used with ggplot2. They allow consistent plots in various subregions by setting the limits of the scale explicitly.
 }
