@@ -38,13 +38,13 @@ The name of (or path to) the SQL database to be created on disk by \code{setSQL}
 }
 }
 \details{
-Functions \code{setSQL} and \code{subsetSQL} were built to work together. \code{setSQL} builds an SQL database and saves it on disk. \code{subsetSQL} queries that local database and the fields \code{min_lon}, \code{max_lon}, etc, are used to extract a subset of the database. The functions were built as two entities so that multiple queries can be done multiple times, without re-building the database each time. These functions were designed to access the very large (>5Go) ETOPO1 file that can be downloaded from the NOAA website (\url{http://www.ngdc.noaa.gov/mgg/global/global.html})
+Functions \code{setSQL} and \code{subsetSQL} were built to work together. \code{setSQL} builds an SQL database and saves it on disk. \code{subsetSQL} queries that local database and the fields \code{min_lon}, \code{max_lon}, etc, are used to extract a subset of the database. The functions were built as two entities so that multiple queries can be done multiple times, without re-building the database each time. These functions were designed to access the very large (>5Go) ETOPO1 file that can be downloaded from the NOAA website (\url{https://www.ngdc.noaa.gov/mgg/global/global.html})
 }
 \value{
 \code{setSQL} returns \code{TRUE} if the database was successfully created. \code{subsetSQL} returns a matrix of class \code{bathy} that can directly be used with \code{plot.bathy}.
 }
 \references{
-Amante, C. and B. W. Eakins, ETOPO1 1 Arc-Minute Global Relief Model: Procedures, Data Sources and Analysis. NOAA Technical Memorandum NESDIS NGDC-24, 19 pp, March 2009. \url{http://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/docs/ETOPO1.pdf}
+Amante, C. and B. W. Eakins, ETOPO1 1 Arc-Minute Global Relief Model: Procedures, Data Sources and Analysis. NOAA Technical Memorandum NESDIS NGDC-24, 19 pp, March 2009. \url{https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/docs/ETOPO1.pdf}
 }
 \author{
 Eric Pante
