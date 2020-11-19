@@ -35,7 +35,7 @@ A matrix of class \code{bathy}.
 \references{
 Pebesma, EJ, RS Bivand, (2005). Classes and methods for spatial data in R. R News 5 (2), \url{https://cran.r-project.org/doc/Rnews/}
 
-Bivand RS, Pebesma EJ, Gomez-Rubio V (2013). Applied spatial data analysis with R, Second edition. Springer, NY. \url{https://www.asdar-book.org/}
+Bivand RS, Pebesma EJ, Gomez-Rubio V (2013). Applied spatial data analysis with R, Second edition. Springer, NY. \url{https://asdar-book.org}
 }
 \author{
 Benoit Simon-Bouhet
