@@ -26,12 +26,34 @@ getNOAA.bathy <-
       y1 <- lat2
     }
 
-    ncell.lon <- (x2 - x1) * 60 / resolution
-    ncell.lat <- (y2 - y1) * 60 / resolution
+    if (antimeridian) {
+      if (x1 == -180 & x2 == 180) {
+        x1 <- 0
+        x2 <- 0
+      }
 
-    if (ncell.lon < 2 & ncell.lat < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the longitudinal and longitudinal ranges or the resolution (i.e. use a smaller res value)")
-    if (ncell.lon < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the longitudinal range or the resolution (i.e. use a smaller resolution value)")
-    if (ncell.lat < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the latitudinal range or the resolution (i.e. use a smaller resolution value)")
+      l1 <- x2
+      l2 <- 180
+      l3 <- -180
+      l4 <- x1
+
+      ncell.lon.left <- (l2 - l1) * 60 / resolution
+      ncell.lon.right <- (l4 - l3) * 60 / resolution
+      ncell.lat <- (y2 - y1) * 60 / resolution
+
+      if ((ncell.lon.left + ncell.lon.right) < 2 & ncell.lat < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the longitudinal and longitudinal ranges or the resolution (i.e. use a smaller res value)")
+      if ((ncell.lon.left + ncell.lon.right) < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the longitudinal range or the resolution (i.e. use a smaller resolution value)")
+      if (ncell.lat < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the latitudinal range or the resolution (i.e. use a smaller resolution value)")
+
+    } else {
+
+      ncell.lon <- (x2 - x1) * 60 / resolution
+      ncell.lat <- (y2 - y1) * 60 / resolution
+
+      if (ncell.lon < 2 & ncell.lat < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the longitudinal and longitudinal ranges or the resolution (i.e. use a smaller res value)")
+      if (ncell.lon < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the longitudinal range or the resolution (i.e. use a smaller resolution value)")
+      if (ncell.lat < 2) stop("It's impossible to fetch an area with less than one cell. Either increase the latitudinal range or the resolution (i.e. use a smaller resolution value)")
+    }
 
     fetch <- function(x1, y1, x2, y2, ncell.lon, ncell.lat) {
       ncell.lon <- floor(ncell.lon)
@@ -61,14 +83,6 @@ getNOAA.bathy <-
     } else { # otherwise, fetch it on NOAA server
 
       if (antimeridian) {
-
-        l1 <- x2
-        l2 <- 180
-        l3 <- -180
-        l4 <- x1
-
-        ncell.lon.left <- (l2 - l1) * 60 / resolution
-        ncell.lon.right <- (l4 - l3) * 60 / resolution
 
         message("Querying NOAA database ...")
         message("This may take seconds to minutes, depending on grid size")
