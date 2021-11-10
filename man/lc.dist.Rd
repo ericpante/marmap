@@ -7,7 +7,7 @@ Computes least cost distances between two or more locations
 Computes least cost distances between two or more locations
 }
 \usage{
-lc.dist(trans,loc,res=c("dist","path"))
+lc.dist(trans, loc, res = c("dist", "path"), meters = FALSE, round = 0)
 }
 \arguments{
   \item{trans}{
@@ -18,6 +18,12 @@ A two-columns matrix or data.frame containing latitude and longitude for 2 or mo
 }
   \item{res}{
 either \code{"dist"} or \code{"path"}. See details.
+}
+  \item{meters}{
+logical. When \code{res = "dist"}, should the results be returned in kilometers (default) or in meters.
+}
+  \item{round}{
+integer indicating the number of decimal places to be used for printing results when \code{res = "dist"}.
 }
 }
 \details{
@@ -53,7 +59,7 @@ Benoit Simon-Bouhet
 # Compute transition object with no depth constraint
 	trans1 <- trans.mat(hawaii)
 
-# Compute transition object with minimum depth constraint: 
+# Compute transition object with minimum depth constraint:
 # path impossible in waters shallower than -200 meters depth
 	trans2 <- trans.mat(hawaii,min.depth=-200)
 
