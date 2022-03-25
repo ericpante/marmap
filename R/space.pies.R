@@ -251,7 +251,7 @@ space.pies <-
           xy$x[i],
           xy$y[i],
           x = as.numeric(pie.slices[i, ][pie.slices[i, ] != 0]),
-          col = as.vector(pie.colors[i, ][pie.colors[i, ] != 0]),
+          col = as.vector(pie.colors[i, ][pie.slices[i, ] != 0]),
           radius = pie.radius,
           shadow = FALSE
         )
@@ -275,7 +275,7 @@ space.pies <-
           coord[i,1],
           coord[i,2],
           x = as.numeric(pie.slices[i, ][pie.slices[i, ] != 0]),
-          col = as.vector(pie.colors[i, ][pie.colors[i, ] != 0]),
+          col = as.vector(pie.colors[i, ][pie.slices[i, ] != 0]),
           radius = pie.radius,
           shadow = FALSE
         )
