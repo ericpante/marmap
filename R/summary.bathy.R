@@ -14,7 +14,7 @@ summary.bathy = function(object, ...){
 
 	one.minute = 0.016667
 	as.numeric(rownames(object))[2] - as.numeric(rownames(object))[1] -> cell.size.centroid
-	round(cell.size.centroid / one.minute, 1) -> cell.size.minute
+	round(cell.size.centroid / one.minute, 2) -> cell.size.minute
 
 	message(paste("Bathymetric data of class 'bathy', with",dim(object)[1],"rows and",dim(object)[2],"columns"))
 	message(paste("Latitudinal range: ", lat.min," to ", lat.max, " (",abs(lat.min)," ",flag.l3," to ",abs(lat.max)," ",flag.l4,")",sep=""))

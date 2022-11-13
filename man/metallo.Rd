@@ -16,7 +16,7 @@ Sampling locations (longitude, latitude, depth in meters) for the deep-sea octoc
 A 3-column data frame
 }
 \references{
-Thoma, J. N., E. Pante, M. R. Brugler, and S. C. France. 2009. Deep-sea octocorals and antipatharians show no evidence of seamount-scale endemism in the NW Atlantic. Marine Ecology Progress Series 397:25-35. \url{http://www.int-res.com/articles/theme/m397p025.pdf}
+Thoma, J. N., E. Pante, M. R. Brugler, and S. C. France. 2009. Deep-sea octocorals and antipatharians show no evidence of seamount-scale endemism in the NW Atlantic. Marine Ecology Progress Series 397:25-35. \url{https://www.int-res.com/articles/theme/m397p025.pdf}
 }
 \seealso{
 \code{\link{nw.atlantic}}
@@ -27,30 +27,30 @@ data(nw.atlantic,metallo)
 atl <- as.bathy(nw.atlantic)
 
 ## the function plot below plots:
-## - the coastline in blue, 
-## - isobaths between 8000-4000 in light grey, 
+## - the coastline in blue,
+## - isobaths between 8000-4000 in light grey,
 ## - isobaths between 4000-500 in dark grey (to emphasize seamounts)
 
 # 1st example: function points uses first two columns ; 3rd column contains depth info
-plot(atl, deep=c(-8000,-4000,0), shallow=c(-4000,-500,0), step=c(500,500,0), 
- 	 lwd=c(0.5,0.5,1.5),lty=c(1,1,1), 
+plot(atl, deep=c(-8000,-4000,0), shallow=c(-4000,-500,0), step=c(500,500,0),
+ 	 lwd=c(0.5,0.5,1.5),lty=c(1,1,1),
  	 col=c("grey80", "grey20", "blue"),
  	 drawlabels=c(FALSE,FALSE,FALSE) )
 points(metallo, cex=1.5, pch=19,col=rgb(0,0,1,0.5))
 
 # 2nd example: plot points according to coordinates
-plot(atl, deep=c(-8000,-4000,0), shallow=c(-4000,-500,0), step=c(500,500,0), 
- 	 lwd=c(0.5,0.5,1.5),lty=c(1,1,1), 
- 	 col=c("grey80", "grey20", "blue"), 
+plot(atl, deep=c(-8000,-4000,0), shallow=c(-4000,-500,0), step=c(500,500,0),
+ 	 lwd=c(0.5,0.5,1.5),lty=c(1,1,1),
+ 	 col=c("grey80", "grey20", "blue"),
  	 drawlabels=c(FALSE,FALSE,FALSE) )
 subset(metallo, metallo$lon>-55) -> s # isolate points from the Corner Rise seamounts:
 points(s, cex=1.5, pch=19,col=rgb(0,0,1,0.5)) # only plot those points
 
 # 3rd example: point colors corresponding to a depth gradient:
 par(mai=c(1,1,1,1.5))
-plot(atl, deep=c(-6500,0), shallow=c(-50,0), step=c(500,0), 
-     lwd=c(0.3,1), lty=c(1,1), 
-     col=c("black","black"), 
+plot(atl, deep=c(-6500,0), shallow=c(-50,0), step=c(500,0),
+     lwd=c(0.3,1), lty=c(1,1),
+     col=c("black","black"),
      drawlabels=c(FALSE,FALSE,FALSE))
 
 max(metallo$depth, na.rm=TRUE) -> mx

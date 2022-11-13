@@ -6,14 +6,14 @@
 Import, plot and analyze bathymetric and topographic data
 }
 \description{
-marmap is a package designed for downloading, plotting and manipulating bathymetric and topographic data in R. It can query the ETOPO1 bathymetry and topography database hosted by the NOAA, use simple latitude-longitude-depth data in ascii format, and take advantage of the advanced plotting tools available in R to build publication-quality bathymetric maps. Functions to query data (bathymetry, sampling information, etc...) are available interactively by clicking on marmap maps. Bathymetric and topographic data can also be used to calculate projected surface areas within specified depth/altitude intervals, and constrain the calculation of realistic shortest path distances.
+marmap is a package designed for downloading, plotting and manipulating bathymetric and topographic data in R. It can query the ETOPO 2022 bathymetry and topography database hosted by the NOAA, use simple latitude-longitude-depth data in ascii format, and take advantage of the advanced plotting tools available in R to build publication-quality bathymetric maps. Functions to query data (bathymetry, sampling information, etc...) are available interactively by clicking on marmap maps. Bathymetric and topographic data can also be used to calculate projected surface areas within specified depth/altitude intervals, and constrain the calculation of realistic shortest path distances.
 }
 \details{
 \tabular{ll}{
 Package: \tab marmap\cr
 Type: \tab Package\cr
 Version: \tab 1.0.7\cr
-Date: \tab 2022-03-25\cr
+Date: \tab 2022-11-12\cr
 }
 Import, plot and analyze bathymetric and topographic data
 }

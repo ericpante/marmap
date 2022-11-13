@@ -5,7 +5,20 @@ getNOAA.bathy <-
     if (lat1 == lat2) stop("The latitudinal range defined by lat1 and lat2 is incorrect")
     if (lat1 > 90 | lat1 < -90 | lat2 > 90 | lat2 < -90) stop("Latitudes should have values between -90 and +90")
     if (lon1 < -180 | lon1 > 180 | lon2 < -180 | lon2 > 180) stop("Longitudes should have values between -180 and +180")
-    if (resolution < 1) stop("The resolution must be equal to or greater than 1")
+    if (resolution < 0) stop("The resolution must be greater than 0")
+
+    # if (resolution < 1) resolution <- round(resolution/0.25) * 0.25
+
+    if (resolution < 0.5) {
+      resolution <- 0.25
+    } else {
+      if (resolution < 1) {
+        resolution <- 0.5
+      }
+    }
+    if (resolution == 0.25) database <- "27ETOPO_2022_v1_15s_bed_elev"
+    if (resolution == 0.50) database <- "27ETOPO_2022_v1_30s_bed"
+    if (resolution  > 0.50) database <- "27ETOPO_2022_v1_60s_bed"
 
     if (is.null(path)) path <- "."
     x1 = x2 = y1 = y2 = NULL
@@ -62,7 +75,8 @@ getNOAA.bathy <-
       x2 <- round(x2, 1)
       y1 <- round(y1, 1)
       y2 <- round(y2, 1)
-      WEB.REQUEST <- paste0("https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/ETOPO1_bedrock/ImageServer/exportImage?bbox=", x1, ",", y1, ",", x2, ",", y2, "&bboxSR=4326&size=", ncell.lon, ",", ncell.lat,"&imageSR=4326&format=tiff&pixelType=S16&interpolation=+RSP_NearestNeighbor&compression=LZW&f=image")
+    # WEB.REQUEST <- paste0("https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/ETOPO1_bedrock/ImageServer/exportImage?bbox=", x1, ",", y1, ",", x2, ",", y2, "&bboxSR=4326&size=", ncell.lon, ",", ncell.lat,"&imageSR=4326&format=tiff&pixelType=S16&interpolation=+RSP_NearestNeighbor&compression=LZW&f=image")
+      WEB.REQUEST <- paste0("https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=", x1, ",", y1, ",", x2, ",", y2, "&bboxSR=4326&size=", ncell.lon, ",", ncell.lat,"&imageSR=4326&format=tiff&pixelType=F32&interpolation=+RSP_NearestNeighbor&compression=LZ77&renderingRule={%22rasterFunction%22:%22none%22}&mosaicRule={%22where%22:%22Name=%", database, "%27%22&f=image")
       dat <- suppressWarnings(try(raster::raster(x = WEB.REQUEST), silent = TRUE))
       dat <- as.xyz(as.bathy(dat))
       return(dat)

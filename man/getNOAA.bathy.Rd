@@ -36,7 +36,7 @@ Where should bathymetric data be downloaded to if \code{keep = TRUE}? Where shou
 }
 }
 \details{
-\code{getNOAA.bathy} queries the ETOPO1 database hosted on the NOAA website, given the coordinates of the area of interest and desired resolution. Users have the option of directly writing the downloaded data into a file (\code{keep = TRUE} argument ; see below). If an identical query is performed (i.e. using identical lat-long and resolution), \code{getNOAA.bathy} will load data from the file previously written to the disk instead of querying the NOAA database. This behavior should be used preferentially (1) to reduce the number of uncessary queries to the NOAA website, and (2) to reduce data load time. If the user wants to make multiple, identical queries to the NOAA website without loading the data written to disk, the data file name must be modified by the user. Alternatively, the data file can be moved outside of the present working directory.
+\code{getNOAA.bathy} queries the ETOPO 2022 database hosted on the NOAA website, given the coordinates of the area of interest and desired resolution. Users have the option of directly writing the downloaded data into a file (\code{keep = TRUE} argument ; see below). If an identical query is performed (i.e. using identical lat-long and resolution), \code{getNOAA.bathy} will load data from the file previously written to the disk instead of querying the NOAA database. This behavior should be used preferentially (1) to reduce the number of uncessary queries to the NOAA website, and (2) to reduce data load time. If the user wants to make multiple, identical queries to the NOAA website without loading the data written to disk, the data file name must be modified by the user. Alternatively, the data file can be moved outside of the present working directory.
 
 \code{getNOAA.bathy} allows users to download bathymetric data in the antimeridian region when \code{antimeridian=TRUE}. The antimeridian is the 180th meridian and is located about in the middle of the Pacific Ocean, east of New Zealand and Fidji, west of Hawaii and Tonga. For a given pair of longitude values, e.g. -150 (150 degrees West) and 150 (degrees East), you have the possibility to get data for 2 distinct regions: the area centered on the antimeridian (60 degrees wide, when \code{antimeridian = TRUE}) or the area centered on the prime meridian (300 degrees wide, when \code{antimeridian = FALSE}). It is recommended to use \code{keep = TRUE} in combination with \code{antimeridian = TRUE} since gathering data for an area around the antimeridian requires two distinct queries to NOAA servers.
 }
@@ -44,7 +44,7 @@ Where should bathymetric data be downloaded to if \code{keep = TRUE}? Where shou
 The output of \code{getNOAA.bathy} is a matrix of class \code{bathy}, which dimensions depends on the resolution of the grid uploaded from the NOAA server. The class \code{bathy} has its own methods for summarizing and plotting the data. If \code{keep=TRUE}, a csv file containing the downloaded data is produced. This file is named using the following format: 'marmap_coord_COORDINATES_res_RESOLUTION.csv' (COORDINATES separated by semicolons, and the RESOLUTION in degrees).
 }
 \references{
-Amante, C. and B. W. Eakins, ETOPO1 1 Arc-Minute Global Relief Model: Procedures, Data Sources and Analysis. NOAA Technical Memorandum NESDIS NGDC-24, 19 pp, March 2009. \url{https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/docs/ETOPO1.pdf}
+NOAA National Centers for Environmental Information. 2022: ETOPO 2022 15 Arc-Second Global Relief Model. NOAA National Centers for Environmental Information. \doi{doi.org/10.25921/fd45-gt74}
 }
 \author{
 Eric Pante and Benoit Simon-Bouhet
@@ -54,7 +54,7 @@ Eric Pante and Benoit Simon-Bouhet
 }
 \examples{
 \dontrun{
-# you must have an internet connection. This line queries the NOAA ETOPO1 database
+# you must have an internet connection. This line queries the NOAA ETOPO 2022 database
 # for data from North Atlantic, for a resolution of 10 minutes.
 
 getNOAA.bathy(lon1=-20,lon2=-90,lat1=50,lat2=20, resolution=10) -> a
