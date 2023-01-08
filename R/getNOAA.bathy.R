@@ -75,10 +75,11 @@ getNOAA.bathy <-
       x2 <- round(x2, 1)
       y1 <- round(y1, 1)
       y2 <- round(y2, 1)
-    # WEB.REQUEST <- paste0("https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/ETOPO1_bedrock/ImageServer/exportImage?bbox=", x1, ",", y1, ",", x2, ",", y2, "&bboxSR=4326&size=", ncell.lon, ",", ncell.lat,"&imageSR=4326&format=tiff&pixelType=S16&interpolation=+RSP_NearestNeighbor&compression=LZW&f=image")
       WEB.REQUEST <- paste0("https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=", x1, ",", y1, ",", x2, ",", y2, "&bboxSR=4326&size=", ncell.lon, ",", ncell.lat,"&imageSR=4326&format=tiff&pixelType=F32&interpolation=+RSP_NearestNeighbor&compression=LZ77&renderingRule={%22rasterFunction%22:%22none%22}&mosaicRule={%22where%22:%22Name=%", database, "%27%22}&f=image")
-      dat <- suppressWarnings(try(raster::raster(x = WEB.REQUEST), silent = TRUE))
+      download.file(url = WEB.REQUEST, destfile = "tmp.tif")
+      dat <- suppressWarnings(try(raster::raster("tmp.tif"), silent = TRUE))
       dat <- as.xyz(as.bathy(dat))
+      file.remove("tmp.tif")
       return(dat)
     }
 
@@ -99,7 +100,7 @@ getNOAA.bathy <-
       if (antimeridian) {
 
         message("Querying NOAA database ...")
-        message("This may take seconds to minutes, depending on grid size")
+        message("This may take seconds to minutes, depending on grid size\n")
         left  <- fetch(l1, y1, l2, y2, ncell.lon.left, ncell.lat)
         right <- fetch(l3, y1, l4, y2, ncell.lon.right, ncell.lat)
 
@@ -119,7 +120,7 @@ getNOAA.bathy <-
       } else {
 
         message("Querying NOAA database ...")
-        message("This may take seconds to minutes, depending on grid size")
+        message("This may take seconds to minutes, depending on grid size\n")
         bath <- fetch(x1, y1, x2, y2, ncell.lon, ncell.lat)
         if (is(bath,"try-error")) {
           stop("The NOAA server cannot be reached\n")
