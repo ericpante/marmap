@@ -76,7 +76,7 @@ getNOAA.bathy <-
       y1 <- round(y1, 1)
       y2 <- round(y2, 1)
       WEB.REQUEST <- paste0("https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=", x1, ",", y1, ",", x2, ",", y2, "&bboxSR=4326&size=", ncell.lon, ",", ncell.lat,"&imageSR=4326&format=tiff&pixelType=F32&interpolation=+RSP_NearestNeighbor&compression=LZ77&renderingRule={%22rasterFunction%22:%22none%22}&mosaicRule={%22where%22:%22Name=%", database, "%27%22}&f=image")
-      download.file(url = WEB.REQUEST, destfile = "tmp.tif")
+      download.file(url = WEB.REQUEST, destfile = "tmp.tif", mode = "wb")
       dat <- suppressWarnings(try(raster::raster("tmp.tif"), silent = TRUE))
       dat <- as.xyz(as.bathy(dat))
       file.remove("tmp.tif")
