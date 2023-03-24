@@ -6,11 +6,14 @@ Extract bathymetry data in a data.frame}
 Extract bathymetry data in a data.frame
 }
 \usage{
-\method{fortify}{bathy}(x, \dots)
+\method{fortify}{bathy}(model, data, \dots)
 }
 \arguments{
-  \item{x}{
+  \item{model}{
 bathymetric data matrix of class \code{bathy}, imported using \code{\link{read.bathy}}
+}
+  \item{data}{
+ignored  
 }
   \item{\dots}{
 ignored
@@ -21,7 +24,7 @@ ignored
 }
 
 \author{
-Jean-Olivier Irisson
+Jean-Olivier Irisson, Benoit Simon-Bouhet
 }
 \seealso{
 \code{\link{autoplot.bathy}}, \code{\link{as.xyz}}

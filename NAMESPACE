@@ -1,4 +1,3 @@
-S3method(autoplot, bathy)
 S3method(fortify, bathy)
 S3method(plot, bathy)
 S3method(plot, buffer)

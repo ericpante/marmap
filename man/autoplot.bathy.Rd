@@ -44,31 +44,31 @@ Jean-Olivier Irisson
 
   # basic plot
 \dontrun{
-    library("ggplot2")
-	autoplot(atl)
+  library("ggplot2")
+	autoplot.bathy(atl)
 
   # plot images
-	autoplot(atl, geom=c("tile"))
-	autoplot(atl, geom=c("raster")) # faster but not resolution independant
+	autoplot.bathy(atl, geom=c("tile"))
+	autoplot.bathy(atl, geom=c("raster")) # faster but not resolution independant
 
   # plot both!
-	autoplot(atl, geom=c("raster", "contour"))
+	autoplot.bathy(atl, geom=c("raster", "contour"))
 
   # geom names can be abbreviated
-	autoplot(atl, geom=c("r", "c"))
+	autoplot.bathy(atl, geom=c("r", "c"))
 
   # do not highlight the coastline
-	autoplot(atl, coast=FALSE)
+	autoplot.bathy(atl, coast=FALSE)
     
   # better colour scale
-  	autoplot(atl, geom=c("r", "c")) +
+  	autoplot.bathy(atl, geom=c("r", "c")) +
     scale_fill_gradient2(low="dodgerblue4", mid="gainsboro", high="darkgreen")
 
   # set aesthetics
-	autoplot(atl, geom=c("r", "c"), colour="white", size=0.1)
+	autoplot.bathy(atl, geom=c("r", "c"), colour="white", size=0.1)
   
   # topographical colour scale, see ?scale_fill_etopo
-	autoplot(atl, geom=c("r", "c"), colour="white", size=0.1) + scale_fill_etopo()
+	autoplot.bathy(atl, geom=c("r", "c"), colour="white", size=0.1) + scale_fill_etopo()
   	
 	# add sampling locations
 	data(metallo)
@@ -76,6 +76,6 @@ Jean-Olivier Irisson
 
   # an alternative contour map making use of additional mappings
   # see ?stat_contour in ggplot2 to understand the ..level.. argument
-	autoplot(atl, geom="contour", mapping=aes(colour=..level..))
+	autoplot.bathy(atl, geom="contour", mapping=aes(colour=..level..))
 }
 }

@@ -1,8 +1,8 @@
 Package: marmap
 Type: Package
 Title: Import, Plot and Analyze Bathymetric and Topographic Data
-Version: 1.0.9
-Date: 2023-01-08
+Version: 1.0.10
+Date: 2023-03-24
 Author: Eric Pante, Benoit Simon-Bouhet, and Jean-Olivier Irisson
 Maintainer: Benoit Simon-Bouhet <besibo@gmail.com>
 Depends: R (>= 2.10)
@@ -13,6 +13,6 @@ BugReports: https://github.com/ericpante/marmap/issues
 Description: Import xyz data from the NOAA (National Oceanic and Atmospheric Administration, <https://www.noaa.gov>), GEBCO (General Bathymetric Chart of the Oceans, <https://www.gebco.net>) and other sources, plot xyz data to prepare publication-ready figures, analyze xyz data to extract transects, get depth / altitude based on geographical coordinates, or calculate z-constrained least-cost paths.
 License: GPL (>= 3)
 URL: https://github.com/ericpante/marmap
-Packaged: 2023-01-08 13:50:00 UTC; bsimonbo
+Packaged: 2023-03-24 13:00:00 UTC; bsimonbo
 VignetteBuilder: R.rsp
 NeedsCompilation: no
