@@ -7,7 +7,7 @@ Differences between `sp` and `sf` : https://www.jessesadler.com/post/gis-with-r-
 
 ## list of concerned sp functions used in marmap
 
-| `sp` function  | used in `marmap` functions |---replacement function ?---------|
+| `sp` function  | used in `marmap` functions | replacement function? |
 |--------------|----------------------|----------------------|
 |sp::Line      |                  dist2isobath.R               |  |
 |sp::Lines     |                  dist2isobath.R               |  |
