@@ -1,6 +1,6 @@
 \name{marmap}
 \alias{marmap}
-\alias{marmap}
+\alias{marmap-package}
 \docType{package}
 \title{
 Import, plot and analyze bathymetric and topographic data
@@ -12,8 +12,8 @@ marmap is a package designed for downloading, plotting and manipulating bathymet
 \tabular{ll}{
 Package: \tab marmap\cr
 Type: \tab Package\cr
-Version: \tab 1.0.10\cr
-Date: \tab 2023-03-24\cr
+Version: \tab 1.0.11\cr
+Date: \tab 2023-09-13\cr
 }
 Import, plot and analyze bathymetric and topographic data
 }
