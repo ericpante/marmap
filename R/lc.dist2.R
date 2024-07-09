@@ -1,4 +1,4 @@
-lc.dist2 <- function(trans, loc, res = c("dist", "path"), unit = "meter", speed=8, round = 0) {
+lc.dist2 <- function(trans, loc, res = c("dist", "path"), unit = "meter", speed = 8, round = 0) {
 
 	# require(gdistance)
 	# require(sp)
