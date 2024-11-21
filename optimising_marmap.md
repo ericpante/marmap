@@ -25,3 +25,5 @@ ggplot2::autoplot(res)
 
 ## attempts to optimize
 
+`as.bathy`, 21/11/2024, improved
+`getNOAA.bathy`21/11/2024, improved
