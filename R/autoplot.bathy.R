@@ -1,4 +1,4 @@
-autoplot.bathy <- function(x, geom="contour", mapping=NULL, coast=TRUE, ...) {
+autoplot.bathy <- function(object, geom="contour", mapping=NULL, coast=TRUE, ...) {
   # plot an object of class bathy
 
   # expand geom argument
@@ -9,7 +9,7 @@ autoplot.bathy <- function(x, geom="contour", mapping=NULL, coast=TRUE, ...) {
   }
 
   # get a data.frame
-  xdf <- fortify.bathy(x)
+  xdf <- fortify.bathy(object)
 
   # set default mapping and add user-specified mappings
   if ( is.null(mapping) ) {

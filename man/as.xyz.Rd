@@ -17,7 +17,7 @@ matrix of class \code{bathy}.
 The use of \code{as.bathy} and \code{as.xyz} allows to swicth back and forth between the long format (xyz) and the wide format of class \code{bathy} suitable for plotting bathymetric maps, computing least cost distances, etc. \code{as.xyz} is especially usefull for exporting xyz files when data are obtained using \code{subsetSQL}, i.e. bathymetric matrices of class \code{bathy}.
 }
 \value{
-Three-column data.frame with a format similar to xyz files downloaded from the NOAA GEODAS Grid Translator webpage (\url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}). The first column contains longitude data, the second contains latitude data and the third contains depth/elevation data.
+Three-column data.frame with a format similar to xyz files downloaded from the NOAA Grid Extract webpage (\url{https://www.ncei.noaa.gov/maps/grid-extract/}). The first column contains longitude data, the second contains latitude data and the third contains depth/elevation data.
 }
 \author{
 Benoit Simon-Bouhet

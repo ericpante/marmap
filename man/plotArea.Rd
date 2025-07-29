@@ -21,7 +21,7 @@ color of the projected surface area on the map.
 Benoit Simon-Bouhet
 }
 \seealso{
-\code{\link{get.area}}, \code{\link{plot.bathy}}, \code{\link{areaPolygon}}
+\code{\link{get.area}}, \code{\link{plot.bathy}}, \code{\link[geosphere]{areaPolygon}}
 }
 \examples{
 # load and plot a bathymetry

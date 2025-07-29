@@ -1,18 +1,28 @@
 Package: marmap
 Type: Package
 Title: Import, Plot and Analyze Bathymetric and Topographic Data
-Version: 1.0.11
-Date: 2023-09-13
-Author: Eric Pante, Benoit Simon-Bouhet, and Jean-Olivier Irisson
+Version: 1.0.12
+Authors@R: c(person(given = "Eric",
+                    family = "Pante",
+                    role = "aut"),
+             person(given = "Benoit",
+                    family = "Simon-Bouhet",
+                    role = c("aut", "cre"),
+                    email = "besibo@gmail.com"),
+             person(given = "Jean-Olivier",
+                    family = "Irisson",
+                    role = "aut"))
+Date: 2025-07-30
+Author: Eric Pante [aut], Benoit Simon-Bouhet [aut, cre], Jean-Olivier Irisson [aut]
 Maintainer: Benoit Simon-Bouhet <besibo@gmail.com>
 Depends: R (>= 2.10)
 Imports: DBI, RSQLite, gdistance, geosphere, sp, raster, ncdf4,
         plotrix, shape, reshape2, adehabitatMA, ggplot2, methods
 Suggests: maps, mapdata, lattice, mapproj, R.rsp
 BugReports: https://github.com/ericpante/marmap/issues
-Description: Import xyz data from the NOAA (National Oceanic and Atmospheric Administration, <https://www.noaa.gov>), GEBCO (General Bathymetric Chart of the Oceans, <https://www.gebco.net>) and other sources, plot xyz data to prepare publication-ready figures, analyze xyz data to extract transects, get depth / altitude based on geographical coordinates, or calculate z-constrained least-cost paths.
+Description: Import bathymetric and hypsometric data from the NOAA (National Oceanic and Atmospheric Administration, <https://www.ncei.noaa.gov/products/etopo-global-relief-model>), GEBCO (General Bathymetric Chart of the Oceans, <https://www.gebco.net>) and other sources, plot xyz data to prepare publication-ready figures, analyze xyz data to extract transects, get depth / altitude based on geographical coordinates, or calculate z-constrained least-cost paths.
 License: GPL (>= 3)
 URL: https://github.com/ericpante/marmap
-Packaged: 2023-09-13 09:00:00 UTC; bsimonbo
+Packaged: 2025-07-30 00:20:00 UTC; bsimonbo
 VignetteBuilder: R.rsp
 NeedsCompilation: no

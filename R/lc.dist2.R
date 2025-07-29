@@ -14,9 +14,9 @@ lc.dist2 <- function(trans, loc, res = c("dist", "path"), unit = "meter", speed 
 	if (any(loc.depth[,3] > min.depth) | any(loc.depth[,3] < max.depth)) warning(paste("One or more points are located outside of the [",min.depth, ";", max.depth,"] depth range. You will get unrealistically huge distances unless you either increase the range of possible depths in trans.mat() or you move the problematic points in a spot where their depths fall within the [",min.depth, ";", max.depth,"] depth range.\nYou can use get.depth() to determine the depth of any point on a bathymetric map", sep=""))
 
 	if (res=="dist") {
-		x=gdistance::costDistance(trans,as.matrix(loc))
-		const1=0.000621371
-		const2=0.0005399566364038877
+		x <- gdistance::costDistance(trans,as.matrix(loc))
+		const1 <- 0.000621371
+		const2 <- 0.0005399566364038877
 		cost = switch(unit,
 			meter = round(x, round),
 			km =  round(x/1000, round),

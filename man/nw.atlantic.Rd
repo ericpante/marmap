@@ -10,13 +10,13 @@ Data imported from the NOAA GEODAS server
 data(nw.atlantic)
 }
 \details{
-Data imported from the NOAA GEODAS Grid Translator webpage (\url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}). To prepare data from NOAA, fill the custom grid form, and choose "XYZ (lon,lat,depth)" as the "Output Grid Format", "No Header" as the "Output Grid Header", and either of the space, tab or comma as the column delimiter (either can be used, but "comma" is the default import format of \code{read.bathy}). Choose "omit empty grid cells" to reduce memory usage. 
+Data imported from the NOAA Grid Extract webpage (\url{https://www.ncei.noaa.gov/maps/grid-extract/}). To prepare data from NOAA, fill the custom grid form, and choose "XYZ (lon,lat,depth)" as the "Output Grid Format", "No Header" as the "Output Grid Header", and either of the space, tab or comma as the column delimiter (either can be used, but "comma" is the default import format of \code{read.bathy}). Choose "omit empty grid cells" to reduce memory usage.
 }
 \value{
 A three-columns data.frame containing longitude, latitude and depth/elevation data.
 }
 \author{
-see \url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}
+see \url{https://www.ncei.noaa.gov/maps/grid-extract/}
 }
 \seealso{
 \code{\link{plot.bathy}}, \code{\link{summary.bathy}}

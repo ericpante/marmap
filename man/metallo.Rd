@@ -16,7 +16,7 @@ Sampling locations (longitude, latitude, depth in meters) for the deep-sea octoc
 A 3-column data frame
 }
 \references{
-Thoma, J. N., E. Pante, M. R. Brugler, and S. C. France. 2009. Deep-sea octocorals and antipatharians show no evidence of seamount-scale endemism in the NW Atlantic. Marine Ecology Progress Series 397:25-35. \url{https://www.int-res.com/articles/theme/m397p025.pdf}
+Thoma, J. N., E. Pante, M. R. Brugler, and S. C. France. 2009. Deep-sea octocorals and antipatharians show no evidence of seamount-scale endemism in the NW Atlantic. Marine Ecology Progress Series 397:25-35. \doi{https://doi.org/10.3354/meps08318}
 }
 \seealso{
 \code{\link{nw.atlantic}}

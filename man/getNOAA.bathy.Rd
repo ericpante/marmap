@@ -44,7 +44,7 @@ Where should bathymetric data be downloaded to if \code{keep = TRUE}? Where shou
 The output of \code{getNOAA.bathy} is a matrix of class \code{bathy}, which dimensions depends on the resolution of the grid uploaded from the NOAA server. The class \code{bathy} has its own methods for summarizing and plotting the data. If \code{keep=TRUE}, a csv file containing the downloaded data is produced. This file is named using the following format: 'marmap_coord_COORDINATES_res_RESOLUTION.csv' (COORDINATES separated by semicolons, and the RESOLUTION in degrees).
 }
 \references{
-NOAA National Centers for Environmental Information. 2022: ETOPO 2022 15 Arc-Second Global Relief Model. NOAA National Centers for Environmental Information. \doi{doi.org/10.25921/fd45-gt74}
+NOAA National Centers for Environmental Information. 2022: ETOPO 2022 15 Arc-Second Global Relief Model. NOAA National Centers for Environmental Information. \doi{https://doi.org/10.25921/fd45-gt74}
 }
 \author{
 Eric Pante and Benoit Simon-Bouhet

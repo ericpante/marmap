@@ -44,7 +44,7 @@ Functions \code{setSQL} and \code{subsetSQL} were built to work together. \code{
 \code{setSQL} returns \code{TRUE} if the database was successfully created. \code{subsetSQL} returns a matrix of class \code{bathy} that can directly be used with \code{plot.bathy}.
 }
 \references{
-NOAA National Centers for Environmental Information. 2022: ETOPO 2022 15 Arc-Second Global Relief Model. NOAA National Centers for Environmental Information. \doi{doi.org/10.25921/fd45-gt74}
+NOAA National Centers for Environmental Information. 2022: ETOPO 2022 15 Arc-Second Global Relief Model. NOAA National Centers for Environmental Information. \doi{https://doi.org/10.25921/fd45-gt74}
 }
 \author{
 Eric Pante

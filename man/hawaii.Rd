@@ -12,7 +12,7 @@ data(hawaii)
 data(hawaii.sites)
 }
 \details{
-\code{hawaii} contains data imported from the NOAA GEODAS Grid Translator webpage (\url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}) and transformed into an object of class \code{bathy} by \code{read.bathy}.
+\code{hawaii} contains data imported from the NOAA Grid Extract webpage (\url{https://www.ncei.noaa.gov/maps/grid-extract/}) and transformed into an object of class \code{bathy} by \code{read.bathy}.
 \code{hawaii.sites} is a 2-columns data.frame containing longitude and latitude of 6 locations spread at sea around Hawaii.
 }
 \value{
@@ -20,7 +20,7 @@ data(hawaii.sites)
 \code{hawaii.sites}: data.frame (6 rows, 2 columns)
 }
 \author{
-see \url{https://maps.ngdc.noaa.gov/viewers/wcs-client/}
+see \url{https://www.ncei.noaa.gov/maps/grid-extract/}
 }
 \seealso{
 \code{\link{plot.bathy}}, \code{\link{summary.bathy}}
