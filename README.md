@@ -14,3 +14,7 @@ install.packages("marmap")
 # install.packages("pak")
 pak::pak("ericpante/marmap")
 ```
+## Documentation
+
+Visit [CRAN's marmap page](https://cran.r-project.org/package=marmap) to read the doc and vignettes on Analysing bathymetric data, Data import and export strategies, and 
+Making and using bathymetric maps in R with marmap. 
