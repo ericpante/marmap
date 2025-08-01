@@ -1,8 +1,9 @@
 # marmap
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/marmap)](https://CRAN.R-project.org/package=marmap)
-[![](http://cranlogs.r-pkg.org/badges/last-month/marmap?color=orange)](https://cran.r-project.org/package=marmap)
+[![CRAN version](https://www.r-pkg.org/badges/version/marmap?color=green)](https://cran.r-project.org/package=marmap)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/marmap?color=orange)](https://cran.r-project.org/package=marmap)
+[![DOI plos one](https://img.shields.io/badge/doi-https://doi.org/10.1371/journal.pone.0073051-blue.svg)](https://doi.org/https://doi.org/10.1371/journal.pone.0073051)
 <!-- badges: end -->
 
 ## Import, Plot and Analyze Bathymetric and Topographic Data
