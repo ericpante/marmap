@@ -1,4 +1,4 @@
-# marmap <a <img src="man/figures/logo.png" align="right" height="138"/></a>
+# marmap <img src="man/figures/marmap_logo.png" align="right" height="138"/>
 
 <!-- badges: start -->
 [![CRAN version](https://www.r-pkg.org/badges/version/marmap?color=green)](https://cran.r-project.org/package=marmap)
