@@ -27,4 +27,4 @@ Making and using bathymetric maps in R with marmap.
 
 ## About the logo
 
-The logo was made based on the recommendations of R Packages (2e). The wave in the background is part of "[The Great Wave off Kanagawa](https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa)" (神奈川沖浪裏) by Katsushika Hokusai (1831), based on the Ukiyo-e technique. 
+The logo was made based on the recommendations of R Packages (2e). The wave in the background is part of "[The Great Wave off Kanagawa](https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa)" (神奈川沖浪裏) by Katsushika Hokusai (1831), based on the Ukiyo-e technique of woodblock printing. It’s a lovely connection between my love for woodworking and my fascination with the ocean. It is also a reference to the fact that marmap was originaly designed to help with oceanographic cruise preparation, and I have used it both on land and at sea. Check out [DAUNPAPUA](https://epante.wordpress.com/daunpapua/), an oceanographic cruise on the exploration of deep-sea biodivesrity in Papua New Guinea, which was prepared using marmap.  
