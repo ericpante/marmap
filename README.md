@@ -24,3 +24,7 @@ pak::pak("ericpante/marmap")
 
 Visit [CRAN's marmap page](https://cran.r-project.org/package=marmap) to read the doc and vignettes on Analysing bathymetric data, Data import and export strategies, and 
 Making and using bathymetric maps in R with marmap. 
+
+## About the logo
+
+The logo was made based on the recommendations of R Packages (2e). The wave in the background is part of "[The Great Wave off Kanagawa](https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa)" (神奈川沖浪裏) by Katsushika Hokusai (1831), based on the Ukiyo-e technique. 
